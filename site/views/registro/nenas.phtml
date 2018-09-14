@@ -1,0 +1,160 @@
+<div class="col-xs-12">
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+              <div><h3 class="title1"> <center>Registro</center></h3></div>
+         <form id="agregar" enctype="multipart/form-data" method="post" action=" <?php echo BASE_URL ?>registro/guardar_publicacion" >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nombre Artistico</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Artistico">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputEmail1">Tipo</label>
+             <select class="form-control" id="tipo" name="tipo">
+            <option value="">--Seleccione--</option>
+            <option value="DAMA">Damas</option>
+            <option value="CABALLERO">Caballeros</option>
+            <option value="TRANS">Trans</option>
+            
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Destrezas</label>
+            <input type="text" class="form-control" id="destrezas" name="destrezas" placeholder="Destrezas">
+          </div>
+                    <div class="form-group">
+            <label for="exampleInputEmail1">Especialidad</label>
+            <input type="text" class="form-control" id="especialidad" name="especialidad" placeholder="Especialidad">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Preview</label>
+            <input type="text" class="form-control" id="preview" name="preview" placeholder="Preview">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Estatura</label>
+            <input type="text" class="form-control" id="estatura" name="estatura" placeholder="Estatura">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Medidas</label>
+            <input type="text" class="form-control" id="medidas" name="medidas" placeholder="Medidas">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Peso</label>
+            <input type="text" class="form-control" id="peso" name="peso" placeholder="Peso">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Color de cabello</label>
+            <input type="text" class="form-control" id="color_cabello" name="color_cabello" placeholder="Color de Cabello">
+          </div>
+            <div class="form-group">
+            <label for="exampleInputEmail1">Color de Ojos</label>
+            <input type="text" class="form-control" id="color_ojos" name="color_ojos" placeholder="Color de Ojos">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputEmail1">Color de piel</label>
+            <input type="text" class="form-control" id="color_piel" name="color_piel" placeholder="Color de Piel">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Fecha de Nacimiento</label>
+            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="AA/MM/DD">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Horario</label>
+            <input type="text" class="form-control" id="horario" name="horario" placeholder="Horario">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Agencia</label>
+            <select class="form-control" id="agencia" name="agencia">
+            <option value="0">--Seleccione--</option>
+            <?php for($i=0;$i<count($this->agencias);$i++):?>
+              <option value="<?php echo $this->agencias[$i]['id_agencia'] ?>">
+              <?php echo $this->agencias[$i]['nombre_agencia'] ?>                
+              </option>
+              <?php endfor; ?>
+            </select>
+          </div>
+
+            <div class="form-group">
+            <label for="exampleInputEmail1">Localidad</label>
+            <input type="text" class="form-control" id="localidad" name="localidad" placeholder="Localidad">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">E-Mail</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail">
+          </div>
+          
+            <div class="form-group">
+            <label for="exampleInputEmail1">Telefono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Blackberry Messenger</label>
+            <input type="text" class="form-control" id="bbm" name="bbm" placeholder="Blackberry Messenger">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Whatsapp</label>
+            <input type="text" class="form-control" id="whatsapp" name="whatsapp" placeholder="Whatsapp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Facebook</label>
+            <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Facebook">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Instagram</label>
+            <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Twitter</label>
+            <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Twitter">
+          </div>
+        
+          <div class="form-group">
+            <label for="exampleInputPassword1">Fotos</label>
+            <input type="file" class="form-control"  multiple="multiple" id="files" name="fotos[]">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Publico a atender :</label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" name="publico[]" multiple="multiple" id="inlineRadio1" value="HOMBRES"> Hombre
+                  </label>
+                  <label class="radio-inline">
+                    <input type="checkbox" name="publico[]" multiple="multiple" id="inlineRadio2" value="MUJERES"> Mujer
+                  </label>
+                  <label class="radio-inline">
+                    <input type="checkbox" name="publico[]" multiple="multiple" id="inlineRadio3" value="PAREJAS"> Parejas
+                  </label>
+          </div>
+
+           <div class="row">
+              <div id="list" class="prv">Previsualizacion Fotos</div>
+            </div>
+                
+
+
+             
+          <center> <button type="submit" class="btn btn-default">Registrar</button> </center>
+        </form> 
+            
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+  
+
+
+
+

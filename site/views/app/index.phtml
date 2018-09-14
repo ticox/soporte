@@ -1,0 +1,279 @@
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Menu </h4></center> </div>
+
+	<div class="col-xs-12 col-md-6">
+
+		<table class="table ">
+		<tr class="active">
+		<td>id</td>
+		<td>titulo</td>
+		<td>enlace</td>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus); $i++): ?>
+		<tr>
+		<td><?php echo $this->menus[$i]['id_menu'] ?></td>
+		<td><?php echo $this->menus[$i]['titulo'] ?></td>
+		<td><?php echo $this->menus[$i]['enlace'] ?></td>	
+		</tr>
+		<?php endfor; ?>
+		</table>
+
+</div>
+	<div class="col-xs-12 col-md-6">
+		
+		<table class="table ">
+		<tr class="active">
+		<?php for ($i=0; $i < count($this->rol); $i++): ?>
+		
+		<td><?php echo $this->rol[$i]['nombre_role'] ?></td>
+		
+		<?php endfor; ?>
+		</tr>
+		<?php for ($i=0; $i < count($this->menus) ; $i++): ?>
+		<tr>
+			<?php for ($x=0; $x < count($this->rol) ; $x++): ?>
+			<td> <input id="permisos_ch" <?php echo $retVal = ($this->matris[$i][$x]['permiso']=="1") ? "checked" : "" ; ?> type="checkbox" data-menu="<?php echo $this->menus[$i]['id_menu'] ?>" data-rol="<?php echo $this->rol[$x]['id_role'] ?>"></td>
+			<?php endfor; ?>
+
+		</tr>
+		<?php endfor; ?>
+		</table>
+
+
+	</div> 
+	<div class="well well-lg col-md-12">  
+
+		<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Agregar Roles/Empresas </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3">
+		<div class="form-group">
+            <label for="exampleInputEmail1">Nombre del Rol/Empresa</label>
+            <input type="text" class="form-control" id="rol" name="rol" placeholder="Nombre Rol Empresa">
+          </div>
+          <center> <button type="button" id="guardar_rol" class="btn btn-default">Registrar</button> </center>
+	</div>
+
+	</div>
+	
+
+
+	
+<div class="well well-lg col-md-12"> 
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
+	
+	<div class="col-md-6 col-md-offset-3" id="div_usuario">
+ <div class="form-group ">
+              <label >Usuario</label>
+              	 <input type="hidden"  id="verificar_usuario">
+              	 <input type="hidden"  id="verificar_clave">
+                <input type="text" type="text" class="form-control" id="usuario" name="usuario" required="required">
+              	<p id="usuario_existe"> <spam class="offline"> El Nombre de usuario ya existe. </spam></p>
+              	<p id="usuario_disponible"> <spam class="online"> El Nombre de usuario esta disponible. </spam></p>
+          </div>
+          <div class="form-group">
+              <label>Contraseña</label>
+            
+                <input type="password" type="text" class="form-control" id="contraseña" name="contraseña" required="required">
+              
+          </div>
+          <div class="form-group ">
+              <label >Confirmar Contraseña</label>
+          
+                <input type="password" type="text" class="form-control" id="confirmar_contraseña" name="confirmar" required="required">
+                <p  id="pass_no_coinciden"> <spam class="offline">Las Contraseñas no coinciden.</spam></p>
+                <p  id="verificado"> <spam class="online">Ahora si puede registrar.</spam></p>
+              
+          </div>
+        
+<center> <button type="button" id="guardar_usuario" class="btn btn-default" disabled>Registrar</button> </center>
+</div>
+
+          
+	</div>
+
+
+</div>
+
+
+
+<div class="well well-lg col-md-12"> 
+
+
+<div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Administrar Usuarios</h4></center> </div>
+	
+	<div class="col-xs-6 col-xs-offset-3">
+		<label for="exampleInputEmail1">Buscar Usuario por el Login</label>
+		<center><input class="form-control" type="text" id="buscar_usuario"></center>
+	</div>
+	<div class="col-md-12" id="div_contenedor">
+		
+	</div>
+
+
+
+
+	<!-- <div class="col-md-6 col-md-offset-3">
+          <center> <button type="button" id="adm_usuarios" class="btn btn-default">Buscar</button> </center>
+	</div>
+ -->
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Poner a Funcionar Esta Parte del Sistema.... -->
+
+
+	
+<div class="well well-lg col-md-12" hidden> 
+		<div class="header-titulos col-xs-12"> <center> <h4>Colocar la web en mantenimiento</h4> </center></div>
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="activar">
+			    Activar la Web
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radio1" value="desactivar">
+			   Desactivar la Web
+			  </label>
+			</div>
+			 <div class="form-group">
+			    <label for="">Configurar la fecha:</label>
+			    <input type="date" value="<?php if (isset($this->bloqueo->fecha)){ echo $this->bloqueo->fecha;} ?>" class="form-control" id="fecha_activo" placeholder="">
+			  </div>
+			  <button type="submit" id="btn_actv" class="btn btn-default">enviar</button>
+		</div>
+		<div class="col-md-6">
+			<center><div>Estado del Sistema:</div></center>
+			<?php if(!$this->bloqueo): ?>
+				<center> <spam class="online"> ONLINE </spam> </center>
+			<?php else:  ?>
+				<center><spam class="offline"> OFFLINE </spam> </center> <br> <center> Hasta la fecha <?php echo $this->bloqueo_datos['fecha'] ?> </center>
+			<?php endif; ?>
+		</div>
+			
+		
+	</div>
+	
+</div>
+
+
+	
+
+	<div class="col-xs-12 well">
+		<div class="header-titulos col-xs-12">  <center> <h4> Log (sin funcionar aun.) </h4> </center></div>
+	<table class="table table-bordered">
+		
+		<tr>
+	
+		<td id="log_cen" colspan="7" >Ips Registrados</td>
+		
+		</tr>
+		<tr>
+	
+		<td>Total</td>
+		<td>Hoy</td>
+		<td>Esta semana</td>
+		<td>Este mes</td>
+		</tr>
+		<tr>
+	
+		<td><?php echo $this->cont['total']['num'] ?></td>
+		<td><?php echo $this->cont['hoy']['num'] ?></td>
+		<td><?php echo $this->cont['semana']['num'] ?></td>
+		<td><?php echo $this->cont['mes']['num'] ?></td>
+		</tr>
+
+		<tr><td id="log_cen" colspan="7">log del sistema</td></tr>
+		<tr>
+		<td>ip</td>
+		<td>id_usuario</td>
+		<td>login</td>
+		<td>controlador</td>
+		<td>metodo</td>
+		<td>fecha</td>
+		<td>hora</td>
+		</tr>
+
+		<?php for ($i=0; $i < count($this->logs) ; $i++): ?>
+
+		<tr>
+		<td><?php echo $this->logs[$i]['ip'] ?></td>
+		<td><?php echo $this->logs[$i]['id_usuario'] ?></td>
+		<td><?php echo $this->logs[$i]['login'] ?></td>
+		<td><?php echo $this->logs[$i]['controlador'] ?></td>
+		<td><?php echo $this->logs[$i]['metodo'] ?></td>
+		<td><?php echo $this->logs[$i]['fecha'] ?></td>
+		<td><?php echo $this->logs[$i]['hora'] ?></td>
+		</tr>
+
+
+		<?php endfor; ?>
+
+	</table>
+
+		
+		
+	</div>
+
+
+</div>
+
+
+
+<div class="modal fade" id="modalasignar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Asignar Empresa a usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="a_empresas">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="asignar_empresa_usuario">Asignar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalempresas" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ver empresas asociadas al usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ver_empresas_usuario">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+#mainNav>.container-fluid{
+
+      visibility: hidden !important;
+}
+#box2 {
+  font-size: 24px;
+  color: white;
+  font-style: italic;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: #630000;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+.terminos {
+	border: 1px solid #f0db29;
+	border-radius: 10px;
+	text-align: justify;
+	color: white;
+	margin-top: 25px;
+	padding: 10px;
+}
+
+label {
+
+	color: #fff !important;
+}
+
+.title-aviso {
+  background-color: #410707 !important;
+  /* border-color: #000; */
+  border: 1px solid #500000 !important;
+  border-radius: 7px;
+}
+
+.title-termino {
+  color: #df7979 !important;
+}
+
+.texto-top30 {
+  text-shadow: 2px 2px #000;
+  color: #FF8686 !important;
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-style: normal;
+  font-family: times;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* agregamos una fuente de dafont, que simula unos leds */
+@font-face {
+  font-family: ledbdrev;
+  src: url(./Fleftex_M.ttf) format("truetype");
+}
+/* aqui va el estilo que tendra el clock */
+
+#clock, #clock-2, #clock-3{
+  padding:0;
+  height:70px;
+  font-family: ledbdrev;
+  /*position: absolute;*/
+  top: 0px;
+  right: 0px;
+  background: #bcbd72;
+  color: #2a2807;
+  padding:4px;
+  border:2px solid #2a2807;
+  font-size:15px;
+  width: 320px;
+  text-shadow:#6d691e 5px 5px 5px,#6d691e -5px -5px 5px;
+}
+
+.clockCountdownNumber{
+  float:left;
+  background:URL('../../public/img/numeros.png');
+  display:block;
+  width:34px;
+  height:50px;
+}
+
+.clockCountdownSeparator_days,
+.clockCountdownSeparator_hours,
+.clockCountdownSeparator_minutes,
+.clockCountdownSeparator_seconds
+{
+  float:left;
+  display:block;
+  width:10px;
+  height:50px;
+}
+.clockCountdownFootItem{
+  width:80px;
+  float:left;
+  text-align:center;
+}
+.col-md-5 {
+  color: white;
+}

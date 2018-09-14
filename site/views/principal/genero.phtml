@@ -1,0 +1,69 @@
+
+			<div class="col-md-12">
+	<div class="alert-danger title-aviso">
+	<div class="row"> 
+				<div class="col-md-12">
+					<h4 class="title-termino"><center> 
+					<b> 
+					<?php if($this->busqueda_tipo == 'dama' or $this->busqueda_tipo== 'caballero'){
+
+						echo ucwords($this->busqueda_tipo).'s';
+
+					} else{
+
+						echo ucwords($this->busqueda_tipo);
+					}
+
+
+					 ?>
+					<br>
+				 
+	</b></center> </h4> </div> 
+	</div>
+	</div>
+</div>
+			<div style="width:1200px;height:800px; margin:40px auto;">
+				<div class="am-container" id="am-container">
+
+
+						<?php 
+
+						if(count($this->todos) == 0){ ?>
+
+						
+							<div class="col-md-10 col-md-offset-1 texto-mensaje"> <b> No existen registros. </b></div>
+
+					
+					<?php	} else{ 
+
+						for ($i=0; $i <count($this->todos) ; $i++) : ?>
+					
+						<div class="contenedor-img chicas">
+							<a href="#"><img width="<?php echo rand(300, 450) ?>" height="<?php echo rand(250,300) ?>" src="<?php echo BASE_URL;?>public/img/fotos/<?php echo $this->todos[$i]['fotos'][0]['nombre_foto'];?>"></img></a>
+								<div class="mascara">  
+			         				<h2><span># <?php echo $i+1 ?></span> <?php echo $this->todos[$i]['nombre_chicas'] ?></h2>  
+			         				<p><?php echo $this->todos[$i]['preview'] ?></p>
+			         				<a href="#" id="ver_niña" data-id="<?php echo $this->todos[$i]['id_chicas'] ?>" class="link">Ver Más</a>  
+								</div>
+						</div>
+
+					<?php endfor; } ?>
+					
+				
+
+
+
+     
+
+
+
+
+
+
+
+				</div>
+			</div>
+		
+		
+		
+

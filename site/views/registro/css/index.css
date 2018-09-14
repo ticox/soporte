@@ -1,0 +1,48 @@
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: #630000;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+label {
+	color: #fff9;
+}
+.prviuw {
+	float: left;
+	margin: 3px;
+	border: 1px solid #fff;
+	padding: 10px;
+	border-radius: 3px;
+}
+#list {
+	color: white;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 15px;
+	border-top: 1px solid #fff3;
+}

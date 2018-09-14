@@ -1,0 +1,54 @@
+<div class="col-xs-12">
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+              <div><h3 class="title1"> <center>Registrar Agencia</center></h3></div>
+        <form id="agregar_agencias" enctype="multipart/form-data"  method="post" action=" <?php echo BASE_URL ?>registro/guardar_agencia" >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nombre de la Agencia</label>
+            <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Nombre de la Agencia">
+          </div>
+          <div class="form-group">
+            <label for="preview">Preview</label>
+            <textarea  class="form-control" id="preview" name="preview" placeholder="preview"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Numero de Contacto</label>
+            <input type="text" class="form-control" id="nro_contacto" name="nro_contacto" placeholder="Numero de Contacto">
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleInputEmail1">Correo</label>
+            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Facebook</label>
+            <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Facebook">
+          </div>  
+            <div class="form-group">
+            <label for="exampleInputEmail1">Blackberry Messenger</label>
+            <input type="text" class="form-control" id="pin" name="pin" placeholder="PIN">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputEmail1">Whatsapp</label>
+            <input type="text" class="form-control" id="ws" name="ws" placeholder="Whatsapp">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputPassword1">Fotos</label>
+            <input type="file" class="form-control"  id="files" name="fotos[]">
+          </div>
+
+             <div class="row">
+              <div id="list" class="prv">Previsualizacion Fotos</div>
+            </div>
+                
+          <center> <button type="submit" class="btn btn-default">Registrar</button> </center>
+        </form> 
+            
+        </div>
+    </div>
+</div>
+
+</div>
