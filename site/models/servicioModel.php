@@ -24,22 +24,20 @@ class servicioModel extends Model
 
    }
 
-   public function buscar_servicio_usuario($servicio){
+   public function buscar_servicio_usuario($servicio,$estatus){
 
- 	 $sql="select * from servicio where id_servicio='".$servicio."'";
+    if($estatus=="solucionado"){
+
+    $sql="select servicio.*, solucion_servicio.* from servicio, solucion_servicio where servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and servicio.id_servicio=$servicio";
      $datos =  $this->_db->query($sql);
-  
-      return $datos->fetch();
+    }else{
 
-   }
-
-   public function buscar_servicio_solucionado(){
-
-  $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and servicio.id_servicio=$id_servicio";
+      $sql="select * from servicio where id_servicio='".$servicio."'";
      $datos =  $this->_db->query($sql);
-  
-      return $datos->fetch();
 
+    }
+
+      return $datos->fetch();
    }
 
      

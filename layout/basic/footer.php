@@ -78,9 +78,6 @@ www.OrienteX.com.ve
 <!--   <script src="<?php echo BASE_URL; ?>public/js/sweetalert2.min.js"></script> -->
   <script src="<?php echo BASE_URL; ?>public/js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="<?php echo BASE_URL; ?>public/js/main.js"></script>
-   <script>
-    $.material.init();
-  </script> 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries
@@ -114,12 +111,6 @@ www.OrienteX.com.ve
         <script src="<?php echo $_layoutParams['js'][$i] ?>" type="text/javascript"></script>
     <?php endfor; ?>
 <?php endif; ?>
-
-  <script type="text/javascript">
-$(window).load(function() {
-    $(".loader").fadeOut("slow");
-});
-</script>
 
 
 </body>

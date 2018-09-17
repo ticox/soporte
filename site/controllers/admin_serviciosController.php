@@ -43,6 +43,50 @@ class admin_serviciosController extends Controller
 
     function cambiar_estatus_servicio(){
        $this->_index->cambiar_estatus_servicio($_POST);
+
+        $this->getLibrary('class.phpmailer');
+            
+            $email_user = "soporte@cotedem.com";
+            $email_password = "Cotedem@2018";
+            $asunto = "Respuesta a su solicitud de soporte";
+            $nombre = $_POST['nombre'];
+            $mensaje = $_POST['observacion'];
+            $correo = $_POST['correo'];
+            $pedido = $_POST['pedido'];
+
+            $phpmailer = new PHPMailer();
+
+            // ---------- Datos de la cuenta de correo -----------------------------
+            $phpmailer->Username = $email_user;
+            $phpmailer->Password = $email_password; 
+            //---------------------------------------------------------------------
+            $phpmailer->SMTPSecure = 'ssl';
+            $phpmailer->Host = "box308.bluehost.com";
+            $phpmailer->Port = 465;
+            //$phpmailer->SMTPDebug = 2;
+            $phpmailer->IsSMTP();
+            $phpmailer->SMTPAuth = true;
+
+            $phpmailer->setFrom($phpmailer->Username,$nombre);
+            $phpmailer->AddAddress($correo);
+            $phpmailer->Subject =$asunto; 
+
+            $phpmailer->Body .="<h3 style='color:#000;'>Saludos ".$nombre."</h3>";
+            $phpmailer->Body .= "<h3>Su solicitud de soporte: ".$pedido." Fue <i style='color:green;'> <b> Solucionado</b> </i>.</h3><br>";
+            $phpmailer->Body .="<br> <h4> <b> Observacion/Solucion:</b></h4> <p>".$mensaje." </p>  <br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.";
+
+            $phpmailer->AddAttachment($mensaje, "attach1");
+            $phpmailer->AddBCC($correo, "bcc1");
+            $phpmailer->IsHTML(true);
+            $enviado = $phpmailer->Send();
+            if($enviado) {
+                echo 'Email Enviado Exiosamente';
+            }
+
+
+
+
+
     }
 
 
@@ -50,6 +94,7 @@ class admin_serviciosController extends Controller
 	function buscar_servicio_solucionado(){
        echo json_encode( $this->_index->buscar_servicio_solucionado($_POST['servicio']));
     }
+
 	
 }
 

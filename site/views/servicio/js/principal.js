@@ -4,6 +4,7 @@ var hardware=0;
 var funcionamiento=0;
 var otros=0;
 $("#servicio").focus();
+$(".gift2").hide();
 
 
  $("#enviar_solicitud").click(function() {  
@@ -21,7 +22,7 @@ $("#servicio").focus();
     if($("#otros").is(':checked')) {  
          otros=1;   
         }
-
+        $(".gift2").show();
  $.post(base_url + 'servicio/registrar_servicio',{
 		servicio:$('#servicio').val(),
 		software: software,
@@ -29,9 +30,10 @@ $("#servicio").focus();
 		funcionamiento:funcionamiento,
 		otros:otros
 			},function(){
+				$(".gift2").hide();
 				alertify.success('Pedido de servicio enviado correctamente.');
 
- 				setTimeout('document.location.reload()',3000);
+ 				setTimeout('document.location.reload()',2000);
           });
 
 
@@ -40,8 +42,10 @@ $("#servicio").focus();
 $(document).on('click', '#detalles_servicio', function() {
 
 var servicio=this.dataset.id_servicio;
+var estatus=this.dataset.estatus;
 	$.post(base_url + 'servicio/buscar_servicio_usuario',{
-			servicio: servicio
+			servicio: servicio,
+			estatus:estatus
 			},function(datos){
 	
 			var html=" <br><div class='panel panel-default'>";
@@ -93,14 +97,16 @@ var servicio=this.dataset.id_servicio;
 			html+="<th>Observaciones/Actividades</th></tr>";
 			html+="</thead>";
 			html+="<tbody>";
-			html+="<tr><td>Solucionado</td></tr>";
+			html+="<tr><td>"+datos.observacion+"</td></tr>";
 			html+="</tbody></table></td></tr>";
 			}	
 			
 			html+="</tbody> </table> </div>";
 			if(datos.estatus=="solucionado"){
 			
-			html+="Tarea Conluida: El  Dia 'Fecha' A las 'Hora' ";
+			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
+       
+			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
 			html+="</div>";
 			}else {
 			html+="</div>";

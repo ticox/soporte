@@ -5,6 +5,8 @@ var funcionamiento=0;
 var otros=0;
 $("#servicio").focus();
 
+$(".gift2").hide();
+
 
  $("#enviar_solicitud").click(function() {  
 
@@ -41,7 +43,7 @@ $("#servicio").focus();
  $(document).on('click', '#cambiar_estatus', function() {
 
 	var servicio=this.dataset.id_servicio;
-	$.post(base_url + 'servicio/buscar_servicio_usuario',{
+	$.post(base_url + 'admin_servicios/buscar_servicio_usuario',{
 			servicio: servicio
 			},function(datos){
 	
@@ -93,7 +95,8 @@ $("#servicio").focus();
 			html+="<textarea id='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>"
 			html+="<i><b>Cambiar Estatus:</b></i>"
 			html+="<select id='estatus' class='form-control'> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
-			html+="<input type='hidden' id='id_servicio' value='"+servicio+"'>";
+			html+="<input type='hidden' id='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
+			html+="<input type='hidden' id='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";
 			html+="</div>";
 			$("#ver_servicio_pendiente").html("");
 			$("#ver_servicio_pendiente").html(html);
@@ -104,13 +107,18 @@ $("#servicio").focus();
 
 $(document).on('click', '#cambiar_estatus_servicio', function() {
 
-
+			$(".gift2").show();
 	$.post(base_url + 'admin_servicios/cambiar_estatus_servicio',{
 			servicio:$('#id_servicio').val(),
 			observacion:$('#observacion').val(),
-			estatus:$('#estatus').val()
+			estatus:$('#estatus').val(),
+			correo:$('#correo').val(),
+			pedido:$('#servicio_solicitado').val(),
+			nombre:$('#nombre').val()
 			},function(){
+				$(".gift2").hide();
 				alertify.alert("cambio hecho exitosamente");
+				setTimeout('document.location.reload()',2000);
 	           });
     });  
 
@@ -120,7 +128,6 @@ var servicio=this.dataset.id_servicio;
 	$.post(base_url + 'admin_servicios/buscar_servicio_solucionado',{
 			servicio: servicio
 			},function(datos){
-			alert("estoy aqui xD");
 			var html=" <br><div class='panel panel-default'>";
 			html+="<div class='panel-heading'>";
 			html+=" <h3 class='panel-title'><center><b>Servicio Solicitado:</b></center></h3>";

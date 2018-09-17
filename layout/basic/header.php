@@ -126,7 +126,7 @@
 </head>
 
 <body class="cover" id="cover">
-  <div class="loader"></div>
+  <!-- <div class="loader2"></div> -->
 
   <!--==========================
     Header
@@ -149,13 +149,13 @@
         </figure>
         <ul class="full-box list-unstyled text-center">
           <li>
-            <a href="#!">
-              <i class="glyphicon glyphicon-cog"></i>
+            <a href="<?php echo BASE_URL ?>recuperar/cambiar">
+              <i data-toggle='tooltip' data-placement='bottom' title='Cambiar Contraseña' class="glyphicon glyphicon-cog"></i>
             </a>
           </li>
           <li>
             <a href="<?php echo BASE_URL ?>login/cerrar" class="btn-exit-system">
-              <i class="glyphicon glyphicon-off"></i>
+              <i data-toggle='tooltip' data-placement='bottom' title='Salir del Sistema' class="glyphicon glyphicon-off"></i>
             </a>
           </li>
         </ul>

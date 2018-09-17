@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-
-
+$(".Loader2").hide(1000);
 
 $(".logo_centro").attr("src",base_url+"public/img/logox1.png");
 $(".logo_centro").css("width", "35%");

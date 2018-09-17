@@ -35,7 +35,7 @@ class admin_serviciosModel extends Model
 
    public function buscar_servicio_usuario($servicio){
 
- 	 $sql="select * from servicio where id_servicio='".$servicio."'";
+ 	 $sql="select servicio.*, usuario.* from servicio, usuario where servicio.id_usuario=usuario.id_usuario and id_servicio='".$servicio."'";
      $datos =  $this->_db->query($sql);
   
       return $datos->fetch();
@@ -61,13 +61,7 @@ public function buscar_servicio_solucionado($id_servicio){
   
       return $datos->fetch();
 
-   }
-
-   
-
-
-
-   
+   }  
     
 
 
