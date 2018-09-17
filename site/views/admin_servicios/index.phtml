@@ -1,0 +1,158 @@
+<div class="container-fluid">
+	<div class="row">
+	
+			<div class="col-md-12"> <center> <h4> Solicitudes Pendientes </h4> </center></div>
+			
+			<div class="col-md-12">
+				
+
+				<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Empresa</th>
+					      <th scope="col">Usuario</th>
+					      <th scope="col">Servicio</th>
+					      <th scope="col">Fecha de Solicitud</th>
+					      <th scope="col">Hora</th>
+					      <th scope="col">Estatus</th>
+					      <th scope="col">Acciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					   <?php if(count($this->servicio)==''){?>
+
+					   	<tr>
+		<th colspan="8"><h4> <center> No hay solicitudes pendientes </center> </h4></th>
+
+					 <?php  }else{ ?>
+					    	<?php for ($i=0; $i < count($this->servicio); $i++): ?>
+		<tr>
+		<th><?php echo ($i+1); ?></th>
+		<td><?php echo $this->servicio[$i]['empresa'] ?></td>
+		<td><?php echo $this->servicio[$i]['nombre'].' '.$this->servicio[$i]['apellido'] ?></td>
+		<td><?php echo substr($this->servicio[$i]['pedido'], 0, 50).' ...'; ?></td>
+		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio[$i]['fecha'])); ?></td>
+		<td><?php echo $this->servicio[$i]['hora'] ?></td>	
+		<?php if($this->servicio[$i]['estatus']=='pendiente'){ ?>
+		<td class="offline">Pendiente</td>
+	<?php  } else { ?>
+		<td class="online">Solucionado</td>
+			<?php  } ?>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalcambiar" id="cambiar_estatus" data-id_servicio="<?php echo $this->servicio[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Cambiar Estatus </a></td>
+		</tr>
+		<?php endfor; ?>
+	<?php  } ?>
+					  
+					  </tbody>
+					</table>
+
+					
+			</div>
+
+
+		</div>
+
+		<div class="row">
+	
+			<div class="col-md-12"> <center> <h4> Solicitudes Resueltas </h4> </center></div>
+			
+			<div class="col-md-12">
+				
+
+				<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Empresa</th>
+					      <th scope="col">Usuario</th>
+					      <th scope="col">Servicio</th>
+					      <th scope="col">Fecha de Solicitud</th>
+					      <th scope="col">Hora</th>
+					      <th scope="col">Estatus</th>
+					      <th scope="col">Acciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					   <?php if(count($this->servicio_r)==''){?>
+
+					   	<tr>
+		<th colspan="8"><h4> <center> No hay solicitudes solucionadas </center> </h4></th>
+
+					 <?php  }else{ ?>
+					    	<?php for ($i=0; $i < count($this->servicio_r); $i++): ?>
+		<tr>
+		<th><?php echo ($i+1); ?></th>
+		<td><?php echo $this->servicio_r[$i]['empresa'] ?></td>
+		<td><?php echo $this->servicio_r[$i]['nombre'].' '.$this->servicio_r[$i]['apellido'] ?></td>
+		<td><?php echo substr($this->servicio_r[$i]['pedido'], 0, 50).' ...'; ?></td>
+		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio_r[$i]['fecha'])); ?></td>
+		<td><?php echo $this->servicio_r[$i]['hora'] ?></td>	
+		<?php if($this->servicio_r[$i]['estatus']=='pendiente'){ ?>
+		<td class="offline">Pendiente</td>
+	<?php  } else { ?>
+		<td class="online">Solucionado</td>
+			<?php  } ?>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Detalles </a></td>
+		</tr>
+		<?php endfor; ?>
+		<?php  } ?>
+					  
+					  </tbody>
+					</table>
+
+					
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+<div class="modal fade" id="modalcambiar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Cambiar estatus de solicitud </center></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ver_servicio_pendiente">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cambiar_estatus_servicio" class="btn btn-default">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalservicio" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Servicio Solucionado</center></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ver_servicio">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		
+		
+		
+

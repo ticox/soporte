@@ -8,31 +8,33 @@ class appModel extends Model
 
     
 
-public function menu($id = false,$role = false){
+public function menu($id = false){
 
-	if ($id!=false) {
-		$sql = "SELECT DISTINCT menu.* FROM menu,permisos,role,usuario, empresa_usuario WHERE\n"
+  if ($id!=false) {
+    $sql = "SELECT menu.* FROM menu,permisos,role,usuario WHERE\n"
     . "menu.id_menu=permisos.id_menu and \n"
     . "role.id_role = permisos.id_role and\n"
     . "permisos.permiso=1 and \n"
-    . "role.id_role=".$role." and\n"
+    . "role.id_role=usuario.id_role and\n"
     . "usuario.id_usuario=".$id."\n"
     . "order by id_menu asc\n";
-	$menu = $this->_db->query($sql);
-	return $menu->fetchall();
-		
-	}else{
-		$sql = "SELECT DISTINCT menu.* FROM menu,permisos,role,usuario WHERE\n"
+  $menu = $this->_db->query($sql);
+  return $menu->fetchall();
+    
+  }else{
+    $sql = "SELECT DISTINCT menu.* FROM menu,permisos,role,usuario WHERE\n"
     . "menu.id_menu=permisos.id_menu and \n"
     . "role.id_role = permisos.id_role and\n"
     . "permisos.permiso=1 and \n"
     . "role.id_role=2 \n"
     . "order by id_menu asc\n";
-	$menu = $this->_db->query($sql);
-	return $menu->fetchall();
+  $menu = $this->_db->query($sql);
+  return $menu->fetchall();
 
-	}
+
+  }
 }
+
 
     public function traer_menus(){
 
@@ -65,7 +67,7 @@ public function menu($id = false,$role = false){
 
     public function guardar_usuario($datos){
 
- $sql="INSERT INTO usuario values ('','".$datos['usuario']."' ,'" . Hash::getHash('sha1', $datos['clave'], HASH_KEY) ."','1')";
+ $sql="INSERT INTO usuario values ('','".$datos['usuario']."' ,'" . Hash::getHash('sha1', $datos['clave'], HASH_KEY) ."','".$datos['cedula']."' ,'".$datos['nombre']."' ,'".$datos['apellido']."' ,'".$datos['correo']."' ,'".$datos['empresa']."' ,'".$datos['departamento']."' ,'1','".$datos['role']."')";
         $this->_db->query($sql);
    }
 

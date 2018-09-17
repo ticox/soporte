@@ -6,10 +6,10 @@ class loginModel extends Model
         parent::__construct();
     }
     
-    public function getUsuario($usuario, $password, $empresa)
+    public function getUsuario($usuario, $password)
     {
 
-         $sql="SELECT DISTINCT usuario.*, role.nombre_role, role.id_role from usuario, empresa_usuario, role where usuario.id_usuario=empresa_usuario.id_usuario and role.id_role='".$empresa."' and usuario.id_usuario=(SELECT id_usuario from usuario where login='".$usuario."' and password= '" . Hash::getHash('sha1', $password, HASH_KEY)."')";
+         $sql="SELECT DISTINCT usuario.*, role.nombre_role from usuario, role where  role.id_role=usuario.id_role and usuario.id_usuario=(SELECT id_usuario from usuario where login='".$usuario."' and password= '" . Hash::getHash('sha1', $password, HASH_KEY)."')";
 
           $datos = $this->_db->query($sql);
         

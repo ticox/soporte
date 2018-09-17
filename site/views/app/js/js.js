@@ -214,6 +214,13 @@ $(document).on('click', '#guardar_usuario', function() {
 	 		
 			    	$.post(base_url+'app/guardar_usuario',{
 
+			    		cedula:$("#cedula").val(),
+			    		nombre:$("#nombre").val(),
+			    		apellido:$("#apellido").val(),
+			    		correo:$("#correo").val(),
+			    		empresa:$("#empresa").val(),
+			    		departamento:$("#departamento").val(),
+			    		role:$("#role_usuario").val(),
 						usuario:$("#usuario").val(),
 						clave:$("#contraseña").val()
 
@@ -221,6 +228,13 @@ $(document).on('click', '#guardar_usuario', function() {
 						$('#usuario_disponible').hide();
 						$('#verificado').hide();	
 						$("#contraseña").val("");
+						$("#cedula").val("");
+						$("#nombre").val("");
+						$("#correo").val("");
+						$("#apellido").val("");
+						$("#empresa").val("");
+						$("#departamento").val("");
+						$("#role_usuario").val("");
 						$("#usuario").val("");
 						$("#confirmar_contraseña").val("");
 						alertify.success('Usuario Creado satisfactoriamente');
@@ -389,57 +403,7 @@ $(document).on('click', '#ver_empresas', function() {
 
 /* ------------------------Eliminar Usuario-----------------*/
 
-$(document).on('click', '#eliminar_usuario', function() {
 
-	var user=this.dataset.id_usuario;
-	 		
-	 		alertify.confirm( "¿Esta realmente seguro de eliminar este usuario?", function (e) {
-			    if (e) {
-			    	$.post(base_url+'app/eliminar_usuario',{
-
-						usuario:user
-
-						},function() {
-						alertify.success('Usuario Eliminado satisfactoriamente');
-
-						$("#div_contenedor").html("");
-					});
-			        
-			    } else {
-			       alertify.error('Ha cancelado la operación');
-			    }
-			});   	
-		
-	});
-
-
-
-
-/* ------------------------Eliminar empresa a Usuario-----------------*/
-$(document).on('click', '#eliminar_empresa_usuario', function() {
-
-	var user=this.dataset.id_usuario;
-	var role=this.dataset.id_role;
-	 		
-	 		alertify.confirm( "¿Esta realmente seguro de eliminarle esta empresa a este usuario?", function (e) {
-			    if (e) {
-			    	$.post(base_url+'app/eliminar_empresa_usuario',{
-
-						usuario:user,
-						role:role
-
-						},function() {
-						alertify.success('Empresa eliminada al usuario satisfactoriamente');
-
-						$("#modalasignar .close").click();
-					});
-			        
-			    } else {
-			       alertify.error('Ha cancelado la operación');
-			    }
-			});   	
-		
-	});
 
 
 });

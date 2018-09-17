@@ -26,8 +26,7 @@ class loginController extends Controller
   
             $row = $this->_login->getUsuario(
                     $_POST['usuario'],
-                    $_POST['clave'],
-                    $_POST['s_empresa']
+                    $_POST['clave']
                     );
             
             if(!$row){
@@ -45,8 +44,9 @@ class loginController extends Controller
                         
             Session::set('autenticado', true);
             Session::set('role', $row['id_role']);
-            Session::set('empresa', $row['nombre_role']);
-            Session::set('usuario', $row['login']);
+            Session::set('empresa', $row['empresa']);
+            Session::set('departamento', $row['departamento']);
+            Session::set('usuario', $row['nombre'].' '.$row['apellido']);
             Session::set('id_usuario', $row['id_usuario']);
             Session::set('tiempo', time());
             if ($row['id_role']==99) {

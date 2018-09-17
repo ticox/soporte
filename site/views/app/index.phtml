@@ -63,6 +63,52 @@
 <div class="header-titulos col-xs-6 col-xs-offset-3"> <center>  <h4>Registrar Usuarios </h4></center> </div>
 	
 	<div class="col-md-6 col-md-offset-3" id="div_usuario">
+		<div class="form-group ">
+              <label >Cedula</label>
+              	
+                <input type="text" type="text" class="form-control" id="cedula" name="cedula" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Nombre</label>
+              	 
+                <input type="text" type="text" class="form-control" id="nombre" name="nombre" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Apellido</label>
+              	 
+                <input type="text" type="text" class="form-control" id="apellido" name="apellido" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Correo</label>
+              	 
+                <input type="text" type="text" class="form-control" id="correo" name="correo" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Empresa</label>
+              	 
+                <input type="text" type="text" class="form-control" id="empresa" name="empresa" required="required">
+              	
+          </div>
+          <div class="form-group ">
+              <label >Departamento</label>
+              	 
+                <input type="text" type="text" class="form-control" id="departamento" name="departamento" required="required">
+          </div>
+          <div class="form-group ">
+              <label >Tipo de usuario</label>
+              	 
+                <select class="form-control" id="role_usuario">
+                	<option value="">---> Seleccione <---</option>
+
+                	<?php for ($i=0; $i < count($this->rol) ; $i++): ?>
+                		<option value="<?php echo $this->rol[$i]['id_role'] ?>"><?php echo $this->rol[$i]['nombre_role'] ?></option>
+                		<?php endfor; ?>
+                </select>
+          </div>
  <div class="form-group ">
               <label >Usuario</label>
               	 <input type="hidden"  id="verificar_usuario">
@@ -261,7 +307,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="ver_empresas_usuario">
+      <div class="modal-body" id="ver_servicio">
          <h3> <center> Cargando... </center></h3>
       </div>
       <div class="modal-footer">

@@ -96,7 +96,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title> SIC - COTEDEM </title>
+  <title> SOPORTE - COTEDEM </title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -144,7 +144,7 @@
       <div class="full-box dashboard-sideBar-UserInfo">
         <figure class="full-box">
           <img src="<?php echo BASE_URL ?>public/img/avatar.jpg" alt="UserIcon">
-          <figcaption class="text-center text-titles">User: <?php echo session::get('usuario'); ?> <br> Empresa: <?php echo session::get('empresa'); ?> </figcaption>
+          <figcaption class="text-center text-titles">Usuario: <?php echo session::get('usuario'); ?> <br> Empresa: <?php echo session::get('empresa'); ?> <br> Departamento: <?php echo session::get('departamento'); ?> </figcaption>
           <!-- <figcaption class="text-center text-titles">Name: Gilberto Vargas</figcaption> -->
         </figure>
         <ul class="full-box list-unstyled text-center">
@@ -189,7 +189,7 @@
         <li>
           <a href="#!" class="btn-Notifications-area">
             <i class="glyphicon glyphicon-bell"></i>
-            <span class="badge">7</span>
+            <span class="badge"></span>
           </a>
         </li>
         <li>
