@@ -23,6 +23,7 @@ class recuperarController extends Controller
         
         $this->_view->titulo = 'Recuperar Cuenta - OrienteX';
         $this->_view->setJs(array('recuperar'));
+
         
        $this->_view->renderizar('index');
 
@@ -33,12 +34,7 @@ class recuperarController extends Controller
 		 
           $this->_view->titulo = 'Cambiar Contraseña';
          $this->_view->setJs(array('recuperar'));
-
-		 
-		
-        
-
-       
+         $this->_view->setCss(array('css'));
          $this->_view->renderizar('cambiar');
    
     } 
@@ -72,7 +68,7 @@ class recuperarController extends Controller
     public function buscarusuario(){
 
  
-echo json_encode($this->_recuperar->buscar_usuario($_POST['actual'],session::get('usuario')));  
+echo json_encode($this->_recuperar->buscar_usuario($_POST['actual'],session::get('login')));  
 
 
    }

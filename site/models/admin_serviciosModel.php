@@ -62,6 +62,13 @@ public function buscar_servicio_solucionado($id_servicio){
       return $datos->fetch();
 
    }  
+
+   public function buscar_servicios_solucionados($nombre){
+   
+$sql="select servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario where servicio.id_usuario=usuario.id_usuario and usuario.nombre like '$nombre%' and servicio.estatus='solucionado'";
+$datos = $this->_db->query($sql);
+return $datos->fetchall();
+}
     
 
 

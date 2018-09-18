@@ -41,12 +41,17 @@ class admin_serviciosController extends Controller
     }
 
 
+    function buscar_servicios_solucionados(){
+       echo json_encode( $this->_index->buscar_servicios_solucionados($_POST['usuario']));
+    }
+
+
     function cambiar_estatus_servicio(){
        $this->_index->cambiar_estatus_servicio($_POST);
 
         $this->getLibrary('class.phpmailer');
             
-            $email_user = "soporte@cotedem.com";
+            $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
             $asunto = "Respuesta a su solicitud de soporte";
             $nombre = $_POST['nombre'];

@@ -35,11 +35,11 @@ class recuperarModel extends Model
     } 
 
 
- public function buscar_usuario($clave, $usuario)
+ public function buscar_usuario($clave, $login)
     {
         
         
-        $sql="select * from usuario where login='".$usuario."' and password='" . Hash::getHash('sha1', $clave, HASH_KEY) ."'";
+     $sql="select * from usuario where login='".$login."' and password='" . Hash::getHash('sha1', $clave, HASH_KEY) ."'";
        
 
         $datos = $this->_db->query($sql);

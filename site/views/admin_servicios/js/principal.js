@@ -202,4 +202,69 @@ var servicio=this.dataset.id_servicio;
 
 
 
+function mostrar_servicios_solucionados(usuario){
+	$.post(base_url + 'admin_servicios/buscar_servicios_solucionados',{
+		usuario: usuario
+			},function(datos){
+			console.log(datos);
+			var html=" <br><div class='panel panel-default'>";
+			html+="<div class='panel-heading'>";
+			html+=" <h3 class='panel-title'><center><b>Resultado</b></center></h3>";
+			html+="</div>";
+			html+="<div class='panel-body'>";
+			html+="<div class='table-responsive'>";
+			
+			html+="<table class='table table-striped table-hover '><thead>";
+			html+="<tr class='default'>";
+			html+="<th>#</th>";
+			html+="<th>Empresa</th>";
+			html+="<th>Usuario</th>";
+			html+="<th>Servicio</th>";
+			html+="<th>Fecha de Solicitud</th>";
+			html+="<th>Hora</th>";
+			html+="<th>Estatus</th>";
+			html+="<th>Acciones</th>";
+			html+="</tr>";
+			html+="</thead>";
+			html+="<tbody>";
+		if(datos==""){
+			
+			html+="<tr><td colspan='5'> <b><center>No Se Encontraron Resultados</center></b></td></tr>";
+			html+="</tbody> </table> </div> </div> </div>";
+			$("#div_contenedor").html("");
+			$("#div_contenedor").html(html);
+			exit();
+			}	
+			for(var i = 0; i < datos.length; i++)
+			{	
+
+			var newfecha = datos[i].fecha.split('-').reverse().join('/');
+			html+="<tr><td>" + (i+1); + "</td>";
+			html+="<td>" + datos[i].empresa + "</td>";
+			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
+			html+="<td>" + datos[i].pedido + "</td>";
+			html+="<td>" + newfecha + "</td>";
+			html+="<td>" + datos[i].hora + "</td>";
+			html+="<td>" + datos[i].estatus + "</td>";
+			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a></td>";
+			}
+			
+			html+="</tbody> </table> </div> </div> </div>";
+			$("#div_contenedor").html("");
+			$("#div_contenedor").html(html);
+				
+	           },"json");
+};
+
+
+
+
+$(document).on("keyup", "#buscar_servicio_s", function(){
+	usuario=$("#buscar_servicio_s").val();
+	mostrar_servicios_solucionados(usuario);
+
+});
+
+
+
 });

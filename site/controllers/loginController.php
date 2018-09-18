@@ -47,6 +47,7 @@ class loginController extends Controller
             Session::set('empresa', $row['empresa']);
             Session::set('departamento', $row['departamento']);
             Session::set('usuario', $row['nombre'].' '.$row['apellido']);
+            Session::set('login', $row['login']);
             Session::set('id_usuario', $row['id_usuario']);
             Session::set('tiempo', time());
             if ($row['id_role']==99) {

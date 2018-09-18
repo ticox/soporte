@@ -66,13 +66,13 @@ $( document ).on( "click", "#cambiarclave", function() {
 				if(!datos){
 
 
-					alertify.alert("Clave ACtual Incorrecta");
+					alertify.alert("Clave Actual Incorrecta");
 				}
 				else {
 			
 						$.post(base_url + 'recuperar/cambiarclave','actual='+$("#actual").val()+ '&nueva='+$("#nueva").val(), function(){
 							alertify.success("Clave cambiada exitosamente");
-								javascript:history.back()
+								setTimeout('document.location.reload()',2000);
 
 					}); }
 		

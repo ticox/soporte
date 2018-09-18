@@ -40,7 +40,7 @@ class servicioController extends Controller
             $nombre = session::get('usuario');
             $empresa = session::get('empresa');
             $mensaje = $_POST['servicio'];
-            $correo = "soporte@cotedem.com";
+            $correo = "info@cotedem.com";
 
             $software='No';
             $hardware='No';
@@ -80,7 +80,7 @@ class servicioController extends Controller
             $phpmailer->SMTPAuth = true;
 
             $phpmailer->setFrom($phpmailer->Username,$nombre);
-            $phpmailer->AddAddress("info@cotedem.com");
+            $phpmailer->AddAddress("info@cotedem.com","soporte@cotedem.com");
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<h1 style='color:#000;'>".$nombre." de ".$empresa."</h1>";
