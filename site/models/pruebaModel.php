@@ -1,6 +1,6 @@
 <?php
 
-class inaModel extends Model
+class pruebaModel extends Model
 {
     public function __construct() {
         parent::__construct();

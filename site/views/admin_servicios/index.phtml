@@ -5,8 +5,8 @@
 			
 			<div class="col-md-12">
 				
-
-				<table class="table">
+<div class="table-responsive">
+				<table class="table table-responsive">
 					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">#</th>
@@ -14,7 +14,7 @@
 					      <th scope="col">Usuario</th>
 					      <th scope="col">Servicio</th>
 					      <th scope="col">Fecha de Solicitud</th>
-					      <th scope="col">Hora</th>
+					      <th scope="col">Fecha Tentativa</th>
 					      <th scope="col">Estatus</th>
 					      <th scope="col">Acciones</th>
 					    </tr>
@@ -28,12 +28,17 @@
 					 <?php  }else{ ?>
 					    	<?php for ($i=0; $i < count($this->servicio); $i++): ?>
 		<tr>
+
+			<?php if($this->servicio[$i]['fecha_atencion']==""){
+				$newDate2 = "No se definió";}
+				else{ $newDate2 = date("d/m/Y", strtotime($this->servicio[$i]['fecha_atencion'])); }?>
+			<?php $newDate = date("d/m/Y", strtotime($this->servicio[$i]['fecha']));?>
 		<th><?php echo ($i+1); ?></th>
 		<td><?php echo $this->servicio[$i]['empresa'] ?></td>
 		<td><?php echo $this->servicio[$i]['nombre'].' '.$this->servicio[$i]['apellido'] ?></td>
 		<td><?php echo substr($this->servicio[$i]['pedido'], 0, 50).' ...'; ?></td>
-		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio[$i]['fecha'])); ?></td>
-		<td><?php echo $this->servicio[$i]['hora'] ?></td>	
+		<td><?php echo $newDate." ".$this->servicio[$i]['hora']  ?></td>
+		<td><?php echo $newDate2." ".$this->servicio[$i]['hora_atencion'] ?></td>		
 		<?php if($this->servicio[$i]['estatus']=='pendiente'){ ?>
 		<td class="offline">Pendiente</td>
 	<?php  } else { ?>
@@ -47,7 +52,7 @@
 					  </tbody>
 					</table>
 
-					
+				</div>	
 			</div>
 
 
@@ -56,14 +61,12 @@
 		<div class="row">
 	
 			<div class="col-md-12"> <center> <h4> Solicitudes Resueltas </h4> </center></div>
-					<div class="col-xs-6 col-xs-offset-3">
+					<div class="col-xs-12 col-md-6 col-md-offset-3">
 				<i for="exampleInputEmail1">Buscar Servicios por Nombre de Usuarios</i>
 				<center><input class="form-control" type="text" id="buscar_servicio_s"></center>
 			</div>
-			<div class="col-md-12" id="div_contenedor">
-				
-
-				<table class="table">
+			<div class="col-md-12 table-responsive" id="div_contenedor">
+				  <table class="table ">
 					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">#</th>
@@ -103,6 +106,7 @@
 					  
 					  </tbody>
 					</table>
+				
 
 					
 			</div>

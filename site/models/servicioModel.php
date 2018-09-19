@@ -10,7 +10,7 @@ class servicioModel extends Model
 
     public function registrar_servicio($datos){
 
- 	 $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$datos['software']."' ,'".$datos['hardware']."' ,'".$datos['funcionamiento']."' ,'".$datos['otros']."' , curdate() , curtime(),'".session::get('id_usuario')."','pendiente')";
+ 	 $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$datos['software']."' ,'".$datos['hardware']."' ,'".$datos['funcionamiento']."' ,'".$datos['otros']."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente')";
         $this->_db->query($sql);
    }
 

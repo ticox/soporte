@@ -91,9 +91,10 @@ $(".gift2").hide();
 			html+="</tbody> </table> </div>";
 			
 
-			html+="<i><b>Observaciones/Actividades:</b></i>"
-			html+="<textarea id='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>"
-			html+="<i><b>Cambiar Estatus:</b></i>"
+			html+="<i><b>Observaciones/Actividades:</b></i>";
+			html+="<textarea id='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>";
+			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='capture' capture='camera'> <br>"; 
+			html+="<i><b>Cambiar Estatus:</b></i>";
 			html+="<select id='estatus' class='form-control'> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
 			html+="<input type='hidden' id='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
 			html+="<input type='hidden' id='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";

@@ -13,8 +13,10 @@
 				      	<textarea class="form-control" id="servicio" autofocus placeholder="Escriba su inconveniente aqui."></textarea>
 				    </div>
 				  </div>
+				  </div>
+				  <div class="col-md-6">
 				  <div class="form-group formulario">
-             		 	<label class="formulario"> Motivo de la atención </label>
+             		 	<label class="formulario"><b> Motivo de la atención </b></label>
             
                 		<div class="form-check ">
 						  <input class="form-check-input" type="checkbox" value="1" id="software">
@@ -44,6 +46,29 @@
               
           			</div>
 				  </div>
+
+				  <div class="col-md-6">
+				
+				  <div class="form-group row">
+				    	<center> <label for="staticEmail" class="form-label formulario"> <b>Informacion Adicional </b></label> </center>
+				  </div>
+				  <div class="form-group row col-md-6">
+				    	<label class="formulario"> Fecha de la posible atención </label>
+				    <div>
+				      	<input class="form-control" type="date" min="<?php $hoy=date("Y-m-d"); echo $hoy;?>" id="fecha_atencion">
+				    </div>
+				  </div>
+				  <div class="form-group row col-md-6">
+				    	<label class="formulario"> Hora de la atención  </label>
+				    <div>
+				      	<input class="form-control" type="time" min="09:00" max="16:00" id="hora_atencion" required="true">
+				    </div>
+				  </div>
+				 
+						
+              
+          			</div>
+				  </div>
 			
 					<center> <button type="button" id="enviar_solicitud" class="btn btn-default">Enviar Solicitud</button> </center>
 			</div>
@@ -51,7 +76,7 @@
 			
 			<div class="col-md-12">
 				
-
+				<div class="col-md-12 table-responsive">
 				<table class="table">
 					  <thead class="thead-dark">
 					    <tr>
@@ -83,7 +108,7 @@
 					  </tbody>
 					</table>
 
-					
+					</div>	
 			</div>
 
 

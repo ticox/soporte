@@ -28,7 +28,9 @@ $(".gift2").hide();
 		software: software,
 		hardware:hardware,
 		funcionamiento:funcionamiento,
-		otros:otros
+		otros:otros,
+		hora_atencion:$('#hora_atencion').val(),
+		fecha_atencion:$('#fecha_atencion').val()
 			},function(){
 				$(".gift2").hide();
 				alertify.success('Pedido de servicio enviado correctamente.');
