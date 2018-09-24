@@ -89,15 +89,15 @@ $(".gift2").hide();
 			html+="</tr>";
 			
 			html+="</tbody> </table> </div>";
-			
 
 			html+="<i><b>Observaciones/Actividades:</b></i>";
-			html+="<textarea id='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>";
-			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='capture' capture='camera'> <br>"; 
+			html+="<textarea id='observacion' name='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>";
+			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='cargar_imagen' name='foto[]' capture='camera'> <br>";
+			html+="<div id='list' class='col-md-12 titulo-img'><center> <h4> Previsualización </h4> </center></div><br>"; 
 			html+="<i><b>Cambiar Estatus:</b></i>";
-			html+="<select id='estatus' class='form-control'> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
-			html+="<input type='hidden' id='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
-			html+="<input type='hidden' id='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";
+			html+="<select id='estatus' name='estatus' class='form-control'> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
+			html+="<input type='hidden' id='id_servicio' name='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
+			html+="<input type='hidden' id='correo' name='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";
 			html+="</div>";
 			$("#ver_servicio_pendiente").html("");
 			$("#ver_servicio_pendiente").html(html);
@@ -180,15 +180,22 @@ var servicio=this.dataset.id_servicio;
 			html+="<tbody>";
 			html+="<tr><td>"+datos.observacion+"</td></tr>";
 			html+="</tbody></table></td></tr>";
+			
+			
 			}	
 			
 			html+="</tbody> </table> </div>";
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
-       
+
+       		if(datos.imagen_solucion!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+			}
 			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
+			
 			html+="</div>";
+
 			}else {
 			html+="</div>";
 
@@ -266,6 +273,45 @@ $(document).on("keyup", "#buscar_servicio_s", function(){
 
 });
 
+/*-----------------------------Cargar Imagen en el sistema--------------------------*/
 
+
+
+
+function archivo(input)
+{
+  $("div#prevista").remove();
+  $('#list').addClass('active');
+  reader=Array();
+  for (var i = 0; i < input.files.length ;  i++)
+  {
+    reader[i] = new FileReader();
+    reader[i].numero= i;
+    reader[i].onloadstart= function(){
+
+      $('#list').after('<div id="cargarr'+this.numero+'" class="col-xs-6 col-sm-4 col-md-12 col-lg-2 ">img ==='+this.numero+'</div>' );
+
+    }
+    reader[i].onloadend= function(){
+
+      $('div#cargarr'+this.numero).remove();
+    }
+    reader[i].onload= function()
+    {
+      $('#list').after('<div id="prevista" class="col-md-12 prviuw"> <center><img class="zoom" id="imagen2" width="400px" height="200px" src="'+this.result+' " ></center></div> <br>' );
+    }
+    reader[i].readAsDataURL(input.files[i]);
+  }
+
+  console.log(reader);
+  
+}
+
+
+$(document).on("change", "#cargar_imagen", function(){
+
+alert("hola");
+archivo(this);
+});
 
 });

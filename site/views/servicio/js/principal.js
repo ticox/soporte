@@ -9,19 +9,30 @@ $(".gift2").hide();
 
  $("#enviar_solicitud").click(function() {  
 
+var cont=0;
  	if($("#software").is(':checked')) {  
-         software=1;   
+         software=1;
+         cont++;
         }
 
     if($("#hardware").is(':checked')) {  
          hardware=1;   
+        cont++;
         }
     if($("#funcionamiento").is(':checked')) {  
          funcionamiento=1;   
+        cont++;
         }
     if($("#otros").is(':checked')) {  
          otros=1;   
+        cont++;
         }
+
+if($('#servicio').val()=='' || cont==0){
+
+alertify.alert("Por favor Llene el pedido y/o seleccione por lo menos un motivo.")
+exit();
+}
         $(".gift2").show();
  $.post(base_url + 'servicio/registrar_servicio',{
 		servicio:$('#servicio').val(),
@@ -101,15 +112,22 @@ var estatus=this.dataset.estatus;
 			html+="<tbody>";
 			html+="<tr><td>"+datos.observacion+"</td></tr>";
 			html+="</tbody></table></td></tr>";
+			
+			
 			}	
 			
 			html+="</tbody> </table> </div>";
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
-       
+
+       		if(datos.imagen_solucion!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+			}
 			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
+			
 			html+="</div>";
+
 			}else {
 			html+="</div>";
 

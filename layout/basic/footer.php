@@ -70,7 +70,6 @@ www.OrienteX.com.ve
 <script src="<?php echo BASE_URL; ?>public/js/alertify.min.js" type="text/javascript"></script>
   <script src="<?php echo BASE_URL; ?>public/js/jquery.js" type="text/javascript"></script>
   <script src="<?php echo BASE_URL; ?>public/js/config.js" type="text/javascript"></script>
-  
   <script src="<?php echo BASE_URL; ?>public/js/bootstrap.min.js"></script>
  <script src="<?php echo BASE_URL; ?>public/js/ripples.min.js"></script>
   <script src="<?php echo BASE_URL; ?>public/js/material.min.js"></script>
@@ -78,6 +77,8 @@ www.OrienteX.com.ve
 <!--   <script src="<?php echo BASE_URL; ?>public/js/sweetalert2.min.js"></script> -->
   <script src="<?php echo BASE_URL; ?>public/js/jquery.mCustomScrollbar.concat.min.js"></script>
   <script src="<?php echo BASE_URL; ?>public/js/main.js"></script>
+  <script src="<?php echo BASE_URL; ?>public/js/jquery.magnifier.js"></script>
+  
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries

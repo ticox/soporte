@@ -7,6 +7,7 @@ class admin_serviciosController extends Controller
 	private $_index;
     public function __construct() {
         parent::__construct();
+          $this->getLibrary('simpleimage');
   	 $this->_index=$this->loadModel('admin_servicios');	
       
     }
@@ -47,9 +48,11 @@ class admin_serviciosController extends Controller
 
 
     function cambiar_estatus_servicio(){
-       $this->_index->cambiar_estatus_servicio($_POST);
+       $this->_index->cambiar_estatus_servicio($_POST,$_FILES);
 
-        $this->getLibrary('class.phpmailer');
+       $this->redireccionar('admin_servicios');
+
+        /*$this->getLibrary('class.phpmailer');
             
             $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -86,7 +89,7 @@ class admin_serviciosController extends Controller
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }
+            }*/
 
 
 

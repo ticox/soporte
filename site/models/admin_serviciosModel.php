@@ -43,14 +43,25 @@ class admin_serviciosModel extends Model
    }
 
 
-   public function cambiar_estatus_servicio($datos){
+   public function cambiar_estatus_servicio($datos,$fotos){
+    if($fotos['foto']['name']==''){
 
-    $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['servicio']."')";
-      $this->_db->query($sql);
-
-     echo $sql2="update servicio SET estatus='".$datos['estatus']."' WHERE id_servicio='".$datos['servicio']."'";
+       $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['id_servicio']."','')";
+                  $this->_db->query($sql);
+    }else{
+      $target_path = "public/img/soluciones/";
+                  $nombre='solucion-'.$fotos['foto']['name'][0];
+                  $target_path = $target_path .$nombre;
+                  $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['id_servicio']."','".$nombre."')";
+                  $this->_db->query($sql);
+                  move_uploaded_file($fotos['foto']['tmp_name'][0], $target_path); 
+                  $obj_img = new SimpleImage();
+                  $obj_img->load($target_path);
+                  //$obj_img->resize(234,135);
+                  $obj_img->save($target_path);
+}
+      $sql2="update servicio SET estatus='".$datos['estatus']."' WHERE id_servicio='".$datos['id_servicio']."'";
       $this->_db->query($sql2);
-      
       return 0;
    }
 
