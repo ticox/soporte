@@ -259,8 +259,8 @@ function mostrar_usuarios(usuario){
 			
 			html+="<table class='table table-striped table-hover '><thead>";
 			html+="<tr class='default'>";
-			html+="<th>Nombre</th>";
 			html+="<th>Cedula</th>";
+			html+="<th>Nombre</th>";
 			html+="<th>login</th>";
 			html+="<th>Acciones</th>";
 			html+="</tr>";
@@ -276,12 +276,10 @@ function mostrar_usuarios(usuario){
 			}	
 			for(var i = 0; i < datos.length; i++)
 			{	
-			html+="<tr><td>" + datos[i].login + "</td>";
+			html+="<tr><td>" + datos[i].cedula + "</td>";
+			html+="<td>" + datos[i].nombre + "</td>";
 			html+="<td>" + datos[i].login + "</td>";
-			html+="<td>" + datos[i].login + "</td>";
-			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a>";
-			html+=" <a data-toggle='modal' id='asignar_empresa' data-target='#modalasignar' title='Asignar Empresa' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-plus'></span></a>";
-			html+=" <a data-toggle='modal' id='ver_empresas' data-target='#modalempresas' title='Ver Empresas' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class=' glyphicon glyphicon-th-list'></span></a></td>";
+			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a></td>";
 			
 
 			}
@@ -346,6 +344,30 @@ $(document).on('click', '#asignar_empresa_usuario', function() {
 			    	
 		
 	});
+
+$(document).on('click', '#eliminar_usuario', function() {
+
+	var id_usuario=this.dataset.id_usuario;
+	 		alertify.confirm( "¿Esta realmente seguro de eliminar a este usuario?", function (e) {
+			    if (e) {
+			    	$.post(base_url+'app/eliminar_usuario',{
+
+						usuario:id_usuario
+
+						},function() {
+						alertify.success('Usuario eliminado exitosamente.');
+						 setTimeout('document.location.reload()',1000);
+				
+					});
+			        
+			    } else {
+			       alertify.error('Ha cancelado la operación');
+			    }
+			});  
+			    	
+		
+	});
+
 
 
 

@@ -52,7 +52,7 @@ class admin_serviciosController extends Controller
 
        $this->redireccionar('admin_servicios');
 
-        /*$this->getLibrary('class.phpmailer');
+        $this->getLibrary('class.phpmailer');
             
             $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -80,7 +80,7 @@ class admin_serviciosController extends Controller
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<h3 style='color:#000;'>Saludos ".$nombre."</h3>";
-            $phpmailer->Body .= "<h3>Su solicitud de soporte: ".$pedido." Fue <i style='color:green;'> <b> Solucionado</b> </i>.</h3><br>";
+            $phpmailer->Body .= "<h3>Su solicitud de soporte, fue <i style='color:green;'> <b> Solucionado</b> </i>.</h3><br>";
             $phpmailer->Body .="<br> <h4> <b> Observacion/Solucion:</b></h4> <p>".$mensaje." </p>  <br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.";
 
             $phpmailer->AddAttachment($mensaje, "attach1");
@@ -89,7 +89,7 @@ class admin_serviciosController extends Controller
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }*/
+            }
 
 
 
