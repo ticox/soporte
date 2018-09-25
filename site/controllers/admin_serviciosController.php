@@ -15,7 +15,10 @@ class admin_serviciosController extends Controller
     public function index()
     {
 
-
+if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
+        
 			
 			$this->_view->setJs(array('principal'));
 			$this->_view->setCss(array('css','style'));
@@ -50,9 +53,9 @@ class admin_serviciosController extends Controller
     function cambiar_estatus_servicio(){
        $this->_index->cambiar_estatus_servicio($_POST,$_FILES);
 
-       $this->redireccionar('admin_servicios');
+   
 
-        $this->getLibrary('class.phpmailer');
+      $this->getLibrary('class.phpmailer');
             
             $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -80,8 +83,8 @@ class admin_serviciosController extends Controller
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<h3 style='color:#000;'>Saludos ".$nombre."</h3>";
-            $phpmailer->Body .= "<h3>Su solicitud de soporte, fue <i style='color:green;'> <b> Solucionado</b> </i>.</h3><br>";
-            $phpmailer->Body .="<br> <h4> <b> Observacion/Solucion:</b></h4> <p>".$mensaje." </p>  <br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.";
+            $phpmailer->Body .= "<p>Su solicitud de soporte, fue <i style='color:green;'> <b> Solucionado</b> </i>.</p><br>";
+            $phpmailer->Body .="<br> <p> <b> Observacion/Solucion:</b></h4> <p>".$mensaje." </p>  <br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.</p>";
 
             $phpmailer->AddAttachment($mensaje, "attach1");
             $phpmailer->AddBCC($correo, "bcc1");
@@ -93,7 +96,7 @@ class admin_serviciosController extends Controller
 
 
 
-
+    $this->redireccionar('admin_servicios');
 
     }
 

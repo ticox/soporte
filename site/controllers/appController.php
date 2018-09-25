@@ -19,7 +19,9 @@ class appController extends Controller
     public function index()
     {
 
- 
+            if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
 			$this->_view->setJs(array('js','jscolor'));
 			$this->_view->setCss(array('css'));
         	$this->_view->titulo = 'menus';

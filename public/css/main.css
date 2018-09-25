@@ -47,6 +47,9 @@ body, html{
 
 }
 
+
+#usuario
+
 .gift2 {
     position: fixed;
     left: 0px;
@@ -68,7 +71,11 @@ body, html{
 
     color: red;
 }
+.mostrar_img{
 
+		width:400px;
+		height:200px;
+	}
 
 .zoom{
 
@@ -609,6 +616,11 @@ body, html{
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+	.mostrar_img{
+
+		width:200px;
+		height:100px;
 	}
 	.dashboard-sideBar-ct{
 		background-color: #000;

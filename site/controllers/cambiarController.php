@@ -13,7 +13,10 @@ class cambiarController extends Controller
    
    public function index()
     {
-
+if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
+    
         $this->_view->usu = Session::get('usuario');   
         $this->_view->titulo = 'Cambiar contraseña - OrienteX';
         $this->_view->setJs(array('cambiar'));

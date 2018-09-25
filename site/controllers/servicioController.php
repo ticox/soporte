@@ -7,6 +7,7 @@ class servicioController extends Controller
 	private $_index;
     public function __construct() {
         parent::__construct();
+        $this->getLibrary('simpleimage');
   	 $this->_index=$this->loadModel('servicio');	
       
     }
@@ -15,7 +16,10 @@ class servicioController extends Controller
     {
 
 
-			
+			if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
+        
 			$this->_view->setJs(array('principal'));
 			$this->_view->setCss(array('css','style'));
         	$this->_view->titulo = 'Pedido/Servicio - COTEDEM';
@@ -30,7 +34,7 @@ class servicioController extends Controller
 	}
 
 	function registrar_servicio(){
-       $this->_index->registrar_servicio($_POST);
+    $this->_index->registrar_servicio($_POST,$_FILES);
 
      $this->getLibrary('class.phpmailer');
             
@@ -41,11 +45,14 @@ class servicioController extends Controller
             $empresa = session::get('empresa');
             $mensaje = $_POST['servicio'];
             $correo = "info@cotedem.com";
+            $fecha_atencion= $_POST['fecha_atencion'];
+            $hora_atencion= $_POST['hora_atencion'];
 
             $software='No';
             $hardware='No';
             $funcionamiento='No';
             $otros='No';
+            $otrosrespuesta='No';
 
             if($_POST['software']==1){
 
@@ -63,7 +70,7 @@ class servicioController extends Controller
 
              if($_POST['otros']==1){
 
-                 $otros='Si';
+                 $otrosrespuesta=$_POST['otrosrespuesta'];
             }
 
             $phpmailer = new PHPMailer();
@@ -80,12 +87,14 @@ class servicioController extends Controller
             $phpmailer->SMTPAuth = true;
 
             $phpmailer->setFrom($phpmailer->Username,$nombre);
-            $phpmailer->AddAddress("info@cotedem.com","soporte@cotedem.com");
+            $phpmailer->AddAddress("soporte@cotedem.com","soporte@cotedem.com");
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<h1 style='color:#000;'>".$nombre." de ".$empresa."</h1>";
-            $phpmailer->Body .= "<h3> Servicio Solicitado: ".$mensaje." </h3></br> <br> <b>Mantenimiento de software:</b> ".$software;
-            $phpmailer->Body .="<br> <b>Mantenimiento de hardware:</b> ".$hardware."<br> <b> Pruebas de funcionamiento:</b> ".$funcionamiento."<br> <b>otros:</b> ".$otros."<br>";
+            $phpmailer->Body .= "<p> Servicio Solicitado: ".$mensaje." </p></br> <br> Mantenimiento de software:".$software;
+            $phpmailer->Body .="<br> Mantenimiento de hardware: ".$hardware."<br>  Pruebas de funcionamiento: ".$funcionamiento."<br>Otros: <p>".$otrosrespuesta."</p><br>";
+
+           // $phpmailer->Body .="Fecha tentativa propuesta por el usuario: El dia"+$_POST['fecha_atencion']+"  a las ";
 
             $phpmailer->AddAttachment($mensaje, "attach1");
             $phpmailer->AddBCC("soporte@cotedem.com", "bcc1");
@@ -94,6 +103,8 @@ class servicioController extends Controller
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
             }
+
+            $this->redireccionar('servicio');
 
     }
 

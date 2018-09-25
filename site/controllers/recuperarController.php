@@ -14,6 +14,11 @@ class recuperarController extends Controller
    public function index()
     {
 
+        if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
+        
+
         if(Session::get('autenticado')):
             $this->_view->usu=$this->_recuperar->traerid_enc(Session::get('id_usuario'));
             else:

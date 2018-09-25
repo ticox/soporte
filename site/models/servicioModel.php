@@ -8,10 +8,46 @@ class servicioModel extends Model
 
 
 
-    public function registrar_servicio($datos){
+    public function registrar_servicio($datos,$fotos){
 
- 	 $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$datos['software']."' ,'".$datos['hardware']."' ,'".$datos['funcionamiento']."' ,'".$datos['otros']."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente')";
-        $this->_db->query($sql);
+$software=0;
+$hardware=0;
+$funcionamiento=0;
+$otros=0;
+
+if(isset($datos['software'])){
+$software=1;
+}
+
+if(isset($datos['hardware'])){
+$hardware=1;
+}
+
+if(isset($datos['funcionamiento'])){
+$funcionamiento=1;
+}
+
+if(isset($datos['otros'])){
+$otros=$datos['otrosrespuesta'];
+}
+
+    if($fotos['foto']['name'][0]==''){
+
+        $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','')";
+                  $this->_db->query($sql);
+    }else{
+
+      $target_path = "public/img/problemas/";
+                  $nombre='problema-'.$fotos['foto']['name'][0];
+                  $target_path = $target_path .$nombre;
+                  $sql="insert into servicio values('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."' ,'".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','".$nombre."')";
+                 $this->_db->query($sql);
+                  move_uploaded_file($fotos['foto']['tmp_name'][0], $target_path); 
+                  $obj_img = new SimpleImage();
+                  $obj_img->load($target_path);
+                  //$obj_img->resize(234,135);
+                  $obj_img->save($target_path);
+}
    }
 
 

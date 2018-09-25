@@ -14,7 +14,9 @@ class principalController extends Controller
     public function index()
     {
 
-
+			if(!Session::get('autenticado')){
+            $this->redireccionar('login');
+        }
 			
 			$this->_view->setJs(array('principal','jquery.montage'));
 			$this->_view->setCss(array('css','style'));

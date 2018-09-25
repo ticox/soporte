@@ -49,7 +49,12 @@ $(".gift2").hide();
 	
 			var html=" <br><div class='panel panel-default'>";
 			html+="<div class='panel-heading'>";
-			html+=" <h3 class='panel-title'><center><b>Servicio Solicitado:</b></center></h3>";
+			html+=" <h3 class='panel-title'><center><b>Servicio Solicitado:</b>";
+			if(datos.fecha_atencion!=''){
+				var newfecha3 = datos.fecha_atencion.split('-').reverse().join('/');
+				html+="<br>Tentativamente para el dia: "+newfecha3+" a las "+datos.hora_atencion;
+			}
+			html+="</center></h3>";
 			html+="</div>";
 			html+="<div class='panel-body'>";
 
@@ -61,7 +66,7 @@ $(".gift2").hide();
 			html+="<th>Mantenimiento de software</th>";
 			html+="<th>Mantenimiento de hardware</th>";
 			html+="<th>Pruebas de funcionamiento</th>";
-			html+="<th>otros</th>";
+			html+="<th>Otros</th>";
 			html+="</tr>";
 			html+="</thead>";
 			html+="<tbody>";
@@ -81,14 +86,21 @@ $(".gift2").hide();
 			}else{
 				html+="<td>NO</td>";
 			}
-			if(datos.otros==1){
-				html+="<td>SI</td>";
-			}else{
+			if(datos.otros=='0'){
 				html+="<td>NO</td>";
+			}else{
+				html+="<td>SI</td>";
 			}
 			html+="</tr>";
+			if(datos.otros!='0'){
+				html+="<tr><td colspan='4'><b>Otros:</b> "+datos.otros+"</td><tr>";
+			}
 			
-			html+="</tbody> </table> </div>";
+			html+="</tbody> </table>";
+			html+="</div>";
+			if(datos.imagen_pedido!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			}
 
 			html+="<i><b>Observaciones/Actividades:</b></i>";
 			html+="<textarea id='observacion' name='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>";
@@ -163,13 +175,22 @@ var servicio=this.dataset.id_servicio;
 			}else{
 				html+="<td>NO</td>";
 			}
-			if(datos.otros==1){
-				html+="<td>SI</td>";
-			}else{
+			if(datos.otros=='0'){
 				html+="<td>NO</td>";
+			}else{
+				html+="<td>SI</td>";
 			}
 			html+="</tr>";
-		
+			if(datos.otros!='0'){
+				html+="<tr><td colspan='4'><b>Otros:</b> "+datos.otros+"</td><tr>";
+			}
+			
+			html+="</tbody> </table>";
+			html+="</div>";
+			if(datos.imagen_pedido!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			}
+
 
 			if(datos.estatus=="solucionado"){
 			
@@ -188,9 +209,8 @@ var servicio=this.dataset.id_servicio;
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
-
        		if(datos.imagen_solucion!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
 			}
 			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
 			
@@ -310,7 +330,7 @@ function archivo(input)
 
 $(document).on("change", "#cargar_imagen", function(){
 
-alert("hola");
+
 archivo(this);
 });
 

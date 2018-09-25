@@ -44,7 +44,7 @@ class admin_serviciosModel extends Model
 
 
    public function cambiar_estatus_servicio($datos,$fotos){
-    if($fotos['foto']['name']==''){
+    if($fotos['foto']['name'][0]==''){
 
        $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['id_servicio']."','')";
                   $this->_db->query($sql);
