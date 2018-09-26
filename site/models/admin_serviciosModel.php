@@ -46,13 +46,13 @@ class admin_serviciosModel extends Model
    public function cambiar_estatus_servicio($datos,$fotos){
     if($fotos['foto']['name'][0]==''){
 
-       $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['id_servicio']."','')";
+       $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','','".$datos['hora_inicio']."')";
                   $this->_db->query($sql);
     }else{
       $target_path = "public/img/soluciones/";
                   $nombre='solucion-'.$fotos['foto']['name'][0];
                   $target_path = $target_path .$nombre;
-                  $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), curtime(),'".$datos['id_servicio']."','".$nombre."')";
+                  $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','".$nombre."','','".$datos['hora_inicio']."')";
                   $this->_db->query($sql);
                   move_uploaded_file($fotos['foto']['tmp_name'][0], $target_path); 
                   $obj_img = new SimpleImage();

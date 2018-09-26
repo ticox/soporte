@@ -103,14 +103,16 @@ $(".gift2").hide();
 			}
 
 			html+="<i><b>Observaciones/Actividades:</b></i>";
-			html+="<textarea id='observacion' name='observacion' class='form-control' placeholder='Agregue la observacion aqui...'></textarea>";
+			html+="<textarea id='observacion' name='observacion' class='form-control' placeholder='Agregue la observacion aqui...' required='true'></textarea>";
 			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='cargar_imagen' name='foto[]' capture='camera'> <br>";
 			html+="<div id='list' class='col-md-12 titulo-img'><center> <h4> Previsualización </h4> </center></div><br>"; 
 			html+="<i><b>Cambiar Estatus:</b></i>";
-			html+="<select id='estatus' name='estatus' class='form-control'> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
+			html+="<select id='estatus' name='estatus' class='form-control' required='true'> <option value=''>--Seleccione--</option> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
 			html+="<input type='hidden' id='id_servicio' name='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
 			html+="<input type='hidden' id='correo' name='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";
+			html+="<p><b>Configure la hora de inicio del servicio:</b></p> <input type='time' id='hora_inicio' class='form-control' name='hora_inicio' required='true'><p><b>Configure la hora final del servicio:</b></p> <input type='time' id='hora_fin' class='form-control' name='hora_fin' required='true'>";
 			html+="</div>";
+			
 			$("#ver_servicio_pendiente").html("");
 			$("#ver_servicio_pendiente").html(html);
 				
@@ -212,8 +214,42 @@ var servicio=this.dataset.id_servicio;
        		if(datos.imagen_solucion!=''){
        		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
 			}
-			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
-			
+
+			inicio = datos.hora_inicio;
+			  fin = datos.hora_solucion;
+			  inicioMinutos = parseInt(inicio.substr(3,2));
+			  inicioHoras = parseInt(inicio.substr(0,2));
+			  
+			  finMinutos = parseInt(fin.substr(3,2));
+			  finHoras = parseInt(fin.substr(0,2));
+
+			  transcurridoMinutos = finMinutos - inicioMinutos;
+			  transcurridoHoras = finHoras - inicioHoras;
+			  
+			  if (transcurridoMinutos < 0) {
+			    transcurridoHoras--;
+			    transcurridoMinutos = 60 + transcurridoMinutos;
+			  }
+			  
+			  horas = transcurridoHoras.toString();
+			  minutos = transcurridoMinutos.toString();
+			  
+			  if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			  if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			  horas+":"+minutos;
+
+			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b>, Se inició a las <b>"+datos.hora_inicio+" </b> y finalizo <b>"+datos.hora_solucion+"</b> <br> Duracion: "+horas+" Horas y "+minutos+" Minutos . </i>";
+
+			  
+
+
+
 			html+="</div>";
 
 			}else {

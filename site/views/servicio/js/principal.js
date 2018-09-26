@@ -76,12 +76,7 @@ var estatus=this.dataset.estatus;
 	
 			var html=" <br><div class='panel panel-default'>";
 			html+="<div class='panel-heading'>";
-			html+=" <h3 class='panel-title'><center><b>Servicio Solicitado:</b>";
-			if(datos.fecha_atencion!=''){
-				var newfecha3 = datos.fecha_atencion.split('-').reverse().join('/');
-				html+="<br>Tentativamente para el dia: "+newfecha3+" a las "+datos.hora_atencion;
-			}
-			html+="</center></h3>";
+			html+=" <h3 class='panel-title'><center><b>Servicio Solicitado:</b></center></h3>";
 			html+="</div>";
 			html+="<div class='panel-body'>";
 
@@ -93,7 +88,7 @@ var estatus=this.dataset.estatus;
 			html+="<th>Mantenimiento de software</th>";
 			html+="<th>Mantenimiento de hardware</th>";
 			html+="<th>Pruebas de funcionamiento</th>";
-			html+="<th>otros</th>";
+			html+="<th>Otros</th>";
 			html+="</tr>";
 			html+="</thead>";
 			html+="<tbody>";
@@ -123,6 +118,12 @@ var estatus=this.dataset.estatus;
 				html+="<tr><td colspan='4'><b>Otros:</b> "+datos.otros+"</td><tr>";
 			}
 			
+			html+="</tbody> </table>";
+			html+="</div>";
+			if(datos.imagen_pedido!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			}
+
 
 			if(datos.estatus=="solucionado"){
 			
@@ -132,6 +133,7 @@ var estatus=this.dataset.estatus;
 			html+="</thead>";
 			html+="<tbody>";
 			html+="<tr><td>"+datos.observacion+"</td></tr>";
+			html+="</tbody></table></td></tr>";
 			
 			
 			}	
@@ -140,31 +142,52 @@ var estatus=this.dataset.estatus;
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
-
        		if(datos.imagen_solucion!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
 			}
-			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b> A las <b>"+datos.hora_solucion+"</b> </i>";
-			
+
+			inicio = datos.hora_inicio;
+			  fin = datos.hora_solucion;
+			  inicioMinutos = parseInt(inicio.substr(3,2));
+			  inicioHoras = parseInt(inicio.substr(0,2));
+			  
+			  finMinutos = parseInt(fin.substr(3,2));
+			  finHoras = parseInt(fin.substr(0,2));
+
+			  transcurridoMinutos = finMinutos - inicioMinutos;
+			  transcurridoHoras = finHoras - inicioHoras;
+			  
+			  if (transcurridoMinutos < 0) {
+			    transcurridoHoras--;
+			    transcurridoMinutos = 60 + transcurridoMinutos;
+			  }
+			  
+			  horas = transcurridoHoras.toString();
+			  minutos = transcurridoMinutos.toString();
+			  
+			  if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			  if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			  horas+":"+minutos;
+
+			html+="<i class='online'>Tarea Conluida: El  Dia <b>"+newfecha+" </b>, Se inició a las <b>"+datos.hora_inicio+" </b> y finalizo <b>"+datos.hora_solucion+"</b> <br> Duracion: "+horas+" Horas y "+minutos+" Minutos . </i>";
+
+			  
+
+
+
 			html+="</div>";
 
 			}else {
 			html+="</div>";
 
 			}
-
-			if(datos.estatus=="pendiente"){
-	
-
-       		if(datos.imagen_pedido!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
-			}
 			
-			html+="</div>";
-
-			}else {
-			html+="</div>";
-			}
 
 			$("#ver_servicio").html("");
 			$("#ver_servicio").html(html);

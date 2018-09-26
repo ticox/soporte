@@ -55,7 +55,7 @@ if(!Session::get('autenticado')){
 
    
 
-      $this->getLibrary('class.phpmailer');
+     /* $this->getLibrary('class.phpmailer');
             
             $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -92,7 +92,7 @@ if(!Session::get('autenticado')){
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }
+            }*/
 
 
 

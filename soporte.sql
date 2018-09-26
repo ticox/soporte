@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2018 a las 21:23:15
+-- Tiempo de generación: 26-09-2018 a las 23:34:29
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -43,7 +43,7 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `id_usuario`, `ip`, `controlador`, `metodo`, `fecha`, `hora`) VALUES
-(1, 2, '::1', 'login', 'index', '2018-09-10', '16:17:28');
+(1, 1, '::1', 'login', 'index', '2018-09-10', '16:17:28');
 
 -- --------------------------------------------------------
 
@@ -62,6 +62,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `titulo`, `enlace`) VALUES
+(1, 'Inicio', 'principal'),
 (10, 'Administrar Roles/Usuarios', 'app'),
 (15, 'Pedido/Servicio', 'servicio'),
 (16, 'Administrar Servicios', 'admin_servicios');
@@ -86,7 +87,10 @@ CREATE TABLE `permisos` (
 INSERT INTO `permisos` (`id_permisos`, `id_menu`, `id_role`, `permiso`) VALUES
 (42, 10, 1, 1),
 (43, 15, 3, 1),
-(44, 16, 1, 1);
+(44, 16, 1, 1),
+(45, 1, 1, 1),
+(46, 1, 3, 1),
+(47, 15, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -121,21 +125,15 @@ CREATE TABLE `servicio` (
   `software` int(11) NOT NULL,
   `hardware` int(11) NOT NULL,
   `funcionamiento` int(11) NOT NULL,
-  `otros` int(11) NOT NULL,
+  `otros` varchar(1000) COLLATE utf8_bin NOT NULL,
   `fecha` varchar(100) COLLATE utf8_bin NOT NULL,
   `hora` varchar(100) COLLATE utf8_bin NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `estatus` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'pendiente'
+  `fecha_atencion` varchar(50) COLLATE utf8_bin DEFAULT 'No se agrego',
+  `hora_atencion` varchar(50) COLLATE utf8_bin NOT NULL,
+  `estatus` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT 'pendiente',
+  `imagen_pedido` varchar(100) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `servicio`
---
-
-INSERT INTO `servicio` (`id_servicio`, `pedido`, `software`, `hardware`, `funcionamiento`, `otros`, `fecha`, `hora`, `id_usuario`, `estatus`) VALUES
-(1, 'Mi pc no quiere prender no se que le sucede :(', 1, 1, 1, 1, '2018-09-17', '09:08:05', 8, 'solucionado'),
-(9, 'Outlook no responde, se detiene en «Procesando», deja de funcionar, se inmoviliza o se bloquea, no puedo hacer nada, necesito ayuda.', 0, 0, 1, 0, '2018-09-17', '11:31:53', 8, 'solucionado'),
-(10, 'necesito ayuda mi maquina no enciende', 0, 1, 0, 0, '2018-09-17', '13:05:40', 8, 'solucionado');
 
 -- --------------------------------------------------------
 
@@ -148,17 +146,11 @@ CREATE TABLE `solucion_servicio` (
   `observacion` varchar(1000) COLLATE utf8_bin NOT NULL,
   `fecha_solucion` varchar(200) COLLATE utf8_bin NOT NULL,
   `hora_solucion` varchar(200) COLLATE utf8_bin NOT NULL,
-  `id_servicio` int(11) NOT NULL
+  `id_servicio` int(11) NOT NULL,
+  `imagen_solucion` varchar(200) COLLATE utf8_bin NOT NULL,
+  `fecha_inicio` varchar(200) COLLATE utf8_bin NOT NULL,
+  `hora_inicio` varchar(200) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `solucion_servicio`
---
-
-INSERT INTO `solucion_servicio` (`id_solucion`, `observacion`, `fecha_solucion`, `hora_solucion`, `id_servicio`) VALUES
-(1, 'lo solucione xD', '2018-09-17', '13:03:11', 9),
-(3, 'solucionado ', '2018-09-17', '13:06:04', 10),
-(4, 'asdasdasd', '2018-09-17', '13:54:52', 1);
 
 -- --------------------------------------------------------
 
@@ -198,8 +190,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `login`, `password`, `cedula`, `nombre`, `apellido`, `correo`, `empresa`, `departamento`, `estado`, `id_role`) VALUES
 (1, 'admin', '53362d5ea52a28e1a960323ea19b02cb2b828026', 0, 'Administrador', 'Administrador', 'info@cotedem.com', 'Cotedem', 'Root', 1, 1),
-(8, '23347026', '57fa44c4ec0086728d36c0b764cddb42a0b7e33c', 23347026, 'Gilberto', 'Vargas', 'soporte@cotedem.com', 'Cotedem', 'Soporte', 1, 3),
-(9, 'prueba', '1a36d2b3d5446d5be9f5967934cb4c406d930392', 123456, 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 1, 3);
+(8, '23347026', '537feb6a6bebf07d10cfad65928b23aa1968cbfa', 23347026, 'Gilberto', 'Vargas', 'soporte@cotedem.com', 'Cotedem', 'Soporte', 1, 3),
+(11, 'anny', 'f976cd7266ad36f9d345b76fb9f19878be38855f', 1706926746, 'Ana', 'Chiriboga', 'dario.urvina@outlook.com', 'Lexvalor', 'Gerencia', 1, 3),
+(12, 'durvina', '9c1f943e63b8fe12bd59a478ecb4a84f2d373475', 1802832608, 'Dario ', 'Urvina', 'durvina@cotedem.com', 'Cotedem ', '', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -281,7 +274,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `id_permisos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_permisos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `role`
@@ -293,13 +286,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `solucion_servicio`
 --
 ALTER TABLE `solucion_servicio`
-  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `switch`
@@ -311,7 +304,7 @@ ALTER TABLE `switch`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
