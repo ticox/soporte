@@ -55,7 +55,7 @@ if(!Session::get('autenticado')){
 
    
 
-     /* $this->getLibrary('class.phpmailer');
+     $this->getLibrary('class.phpmailer');
             
             $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -64,6 +64,8 @@ if(!Session::get('autenticado')){
             $mensaje = $_POST['observacion'];
             $correo = $_POST['correo'];
             $pedido = $_POST['pedido'];
+            $horai = $_POST['hora_inicio'];
+            $horaf =  $_POST['hora_fin'];
 
             $phpmailer = new PHPMailer();
 
@@ -86,13 +88,16 @@ if(!Session::get('autenticado')){
             $phpmailer->Body .= "<p>Su solicitud de soporte, fue <i style='color:green;'> <b> Solucionado</b> </i>.</p><br>";
             $phpmailer->Body .="<br> <p> <b> Observacion/Solucion:</b></h4> <p>".$mensaje." </p>  <br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.</p>";
 
+             //$phpmailer->Body .= "<p>Se inicio hoy a las "+$horai+" horas, y se finalizo a las "+$horaf+" horas</p><br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.</p>";
+
+
             $phpmailer->AddAttachment($mensaje, "attach1");
             $phpmailer->AddBCC($correo, "bcc1");
             $phpmailer->IsHTML(true);
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }*/
+            }
 
 
 
