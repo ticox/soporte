@@ -259,10 +259,10 @@ function mostrar_usuarios(usuario){
 			
 			html+="<table class='table table-striped table-hover '><thead>";
 			html+="<tr class='default'>";
-			html+="<th>Cedula</th>";
-			html+="<th>Nombre</th>";
-			html+="<th>login</th>";
-			html+="<th>Acciones</th>";
+			html+="<th>CEDULA</th>";
+			html+="<th>NOMBRES Y APELLIDOS</th>";
+			html+="<th>LOGIN</th>";
+			html+="<th>ACCIONES</th>";
 			html+="</tr>";
 			html+="</thead>";
 			html+="<tbody>";
@@ -277,7 +277,7 @@ function mostrar_usuarios(usuario){
 			for(var i = 0; i < datos.length; i++)
 			{	
 			html+="<tr><td>" + datos[i].cedula + "</td>";
-			html+="<td>" + datos[i].nombre + "</td>";
+			html+="<td>" + datos[i].nombre + " " + datos[i].apellido + "</td>";
 			html+="<td>" + datos[i].login + "</td>";
 			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a></td>";
 			
