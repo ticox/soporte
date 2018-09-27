@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2018 a las 23:34:29
+-- Tiempo de generación: 27-09-2018 a las 18:47:25
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -189,10 +189,31 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `login`, `password`, `cedula`, `nombre`, `apellido`, `correo`, `empresa`, `departamento`, `estado`, `id_role`) VALUES
-(1, 'admin', '53362d5ea52a28e1a960323ea19b02cb2b828026', 0, 'Administrador', 'Administrador', 'info@cotedem.com', 'Cotedem', 'Root', 1, 1),
-(8, '23347026', '537feb6a6bebf07d10cfad65928b23aa1968cbfa', 23347026, 'Gilberto', 'Vargas', 'soporte@cotedem.com', 'Cotedem', 'Soporte', 1, 3),
-(11, 'anny', 'f976cd7266ad36f9d345b76fb9f19878be38855f', 1706926746, 'Ana', 'Chiriboga', 'dario.urvina@outlook.com', 'Lexvalor', 'Gerencia', 1, 3),
-(12, 'durvina', '9c1f943e63b8fe12bd59a478ecb4a84f2d373475', 1802832608, 'Dario ', 'Urvina', 'durvina@cotedem.com', 'Cotedem ', '', 1, 1);
+(1, 'admin', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 0, 'Soporte ', 'Cotedem Cia. Ltda. ', 'soporte@cotedem.com', 'COTEDEM', 'Root', 1, 1),
+(2, 'durvina', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1802832608, 'Dario ', 'Urvina', 'durvina@cotedem.com', 'COTEDEM', 'Root', 1, 1),
+(3, 'agonzalez', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1718479890, 'ANA LUCIA', 'GONZALEZ ALULEMA', 'rrhh@ingelcom.com.ec', 'INGELCOM', 'Recursos Humanos', 1, 3),
+(4, 'aricaurte', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1715868699, 'ARACELI', 'RICAURTE TOLEDO', 'aricaurte@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(5, 'aolmos', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 503255366, 'ANDRES', 'OLMOS', 'tecsupervisor@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(6, 'cvaldivieso', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1712928884, 'CHRISTIAN ANDRES', 'VALDIVIESO PABON', 'ventas1@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(7, 'cconde', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1709086472, 'CRISTINA', 'CONDE', 'cconde@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(8, 'singelcom', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1802832608, 'DARIO', 'URVINA LOPEZ', 'sistemas@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(9, 'lmuñoz', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1723118178, 'LEONARDO', 'MUÑOZ POZO', 'financiero@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(10, 'dsanguña', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1715904320, 'DAVID', 'SANGUÑA', 'asistentecompras@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(11, 'dgaliano', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1002835815, 'DIEGO ARMANDO', 'GALIANO YEPEZ', 'dgaliano@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(12, 'emoya', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1803394814, 'EDGAR MEDARDO', 'MOYA GUACHI', 'ventas2@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(13, 'garmijo', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1713569737, 'GONZALO ARMANDO', 'ARMIJO CHANGOLUISA', 'garmijo@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(14, 'hgonzalez', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1719856377, 'HECTOR PATRICIO', 'GONZALEZ GOMEZ', 'hgonzalez@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(15, 'hmoran', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1723403703, 'HENRY', 'MORAN', 'ecommerce@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(16, 'jconstante', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1708014764, 'JAIME ANTONIO', 'CONSTANTE HERRERA', 'jconstante@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(17, 'jquishpe', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1724420698, 'JOHANA', 'QUISHPE SONGOR', 'contabilidad@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(18, 'jjiron', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1714435334, 'JORGE EDUARDO', 'JIRON PROA?O', 'jjiron@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(19, 'mnolivos', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1710563683, 'MARGARITA DEL ROCIO', 'NOLIVOS SUQUILLO', 'margaritanolivos@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(20, 'malmachi', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1, 'MARLENE', 'ALMACHI', 'miferreteria@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(21, 'mcaiza', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1719371997, 'MAYRA', 'CAIZA', 'asisconta@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(22, 'rzambrano', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1721549010, 'RUBEN ZAMBRANO', 'ZAMBRANO', 'ventas3@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(23, 'squimbiurco', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1714628268, 'SYLVIA', 'QUIMBIURCO', 'cobranzas@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(24, 'vjacome', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 0, 'VICTOR ', 'JACOME', 'vjacome@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
+(25, 'vzambrano', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1308878188, 'VALERIA', 'ZAMBRANO', 'compras@ingelcom.com.ec', 'INGELCOM', '', 1, 3);
 
 --
 -- Índices para tablas volcadas
@@ -286,13 +307,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `solucion_servicio`
 --
 ALTER TABLE `solucion_servicio`
-  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `switch`
@@ -304,7 +325,7 @@ ALTER TABLE `switch`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas

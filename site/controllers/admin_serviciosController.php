@@ -53,7 +53,12 @@ if(!Session::get('autenticado')){
     function cambiar_estatus_servicio(){
        $this->_index->cambiar_estatus_servicio($_POST,$_FILES);
 
-   
+            $horai = $_POST['hora_inicio'];
+            $horaf = $_POST['hora_fin'];
+
+            $hora_inicio = explode(":", $horai);
+            $hora_fin = explode(":", $horaf);
+  
 
      $this->getLibrary('class.phpmailer');
             

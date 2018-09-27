@@ -36,7 +36,7 @@ class servicioController extends Controller
 	function registrar_servicio(){
     $this->_index->registrar_servicio($_POST,$_FILES);
 
-        $this->getLibrary('class.phpmailer');
+        /*$this->getLibrary('class.phpmailer');
             
             $email_user = "soporte@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -102,7 +102,7 @@ class servicioController extends Controller
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }
+            }*/
 
             $this->redireccionar('servicio');
 
