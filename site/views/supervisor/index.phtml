@@ -1,0 +1,164 @@
+<div class="container-fluid">
+
+		<div class="row">
+	
+			<div class="col-md-12"> <center> <h4> Solicitudes de <?php echo session::get('empresa'); ?> </h4> </center></div>
+			<div class="col-md-12"> <center> <h4> Total Solicitudes (<?php echo count($this->servicio_r); ?>) </h4> </center></div>
+					<div class="col-xs-12 col-md-6 col-md-offset-3 ">
+				<div class="col-md-12" for="exampleInputEmail1"> <center>  <p><b>Filtrar por fecha de solución </b> </p> </center></div>
+				<div class="col-md-6"><center> <b>Desde:</b> </center>
+
+					<input type="date"  class="form-control" id="fecha1" name="fecha1">
+				</div>
+				<div class="col-md-6"><center> <b>Hasta:</b> </center>
+
+					<input type="date"  class="form-control" id="fecha2" name="fecha2">
+				</div>
+
+				<div class="col-md-6 col-md-offset-3">
+
+					<center> <button class="bnt btn-default btn-xs" id="buscar_x_fecha">Buscar</button> </center>
+				</div>
+
+			</div>
+			<div class="col-md-12 table-responsive" id="div_contenedor">
+				  <table class="table ">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Usuario</th>
+					      <th scope="col">Servicio</th>
+					      <th scope="col">Fecha de atención</th>
+					      <th scope="col">Hora de atención</th>
+					      <th scope="col">Duración</th>
+					      <th scope="col">Acciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					   <?php if(count($this->servicio_r)==''){?>
+
+					   	<tr>
+		<th colspan="8"><h4> <center> No hay solicitudes solucionadas </center> </h4></th>
+
+					 <?php  }else{ ?>
+					    	<?php for ($i=0; $i < count($this->servicio_r); $i++): ?>
+		<tr>
+		<th><?php echo ($i+1); ?></th>
+		<td><?php echo $this->servicio_r[$i]['nombre'].' '.$this->servicio_r[$i]['apellido'] ?></td>
+		<td><?php echo substr($this->servicio_r[$i]['pedido'], 0, 50).' ...'; ?></td>
+		<td><?php echo $this->servicio_r[$i]['fecha_solucion']?></td>
+		<td><?php echo $this->servicio_r[$i]['hora_inicio'].'-'.$this->servicio_r[$i]['hora_solucion']?></td>
+		
+		<?php 
+
+		$horaini = $this->servicio_r[$i]['hora_inicio'];
+		$horafin = $this->servicio_r[$i]['hora_solucion'];
+
+	
+
+	$horai=substr($horaini,0,2);
+
+	$mini=substr($horaini,3,2);
+
+	$segi=substr($horaini,6,2);
+
+ 
+
+	$horaf=substr($horafin,0,2);
+
+	$minf=substr($horafin,3,2);
+
+	$segf=substr($horafin,6,2);
+
+ 
+
+	$ini=((($horai*60)*60)+($mini*60)+$segi);
+
+	$fin=((($horaf*60)*60)+($minf*60)+$segf);
+
+ 
+
+	$dif=$fin-$ini;
+
+ 
+
+	$difh=floor($dif/3600);
+
+	$difm=floor(($dif-($difh*3600))/60);
+
+	$difs=$dif-($difm*60)-($difh*3600);
+
+	$duracion = date("H:i:s",mktime($difh,$difm,$difs));
+
+		?>
+
+		<td> <?php echo $duracion ?></td>	
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-list"> </i> Detalles </a></td>
+		</tr>
+		<?php endfor; ?>
+		<?php  } ?>
+					  
+					  </tbody>
+					</table>
+				
+
+					
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+<div class="modal fade" id="modalcambiar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Cambiar estatus de solicitud</center></h3>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>admin_servicios/cambiar_estatus_servicio" >
+      <div class="modal-body" id="ver_servicio_pendiente">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+  	
+      <div class="gift2"></div>
+      <div class="modal-footer">
+        <button type="" id="cambiar_estatus_servicios" class="btn btn-default">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalservicio" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Servicio Solucionado</center></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ver_servicio">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		
+		
+		
+

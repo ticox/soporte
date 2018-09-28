@@ -1,14 +1,14 @@
 <?php
 
 
-class admin_serviciosController extends Controller
+class supervisorController extends Controller
 {
 	
 	private $_index;
     public function __construct() {
         parent::__construct();
           $this->getLibrary('simpleimage');
-  	 $this->_index=$this->loadModel('admin_servicios');	
+  	 $this->_index=$this->loadModel('supervisor');	
       
     }
 
@@ -45,8 +45,8 @@ if(!Session::get('autenticado')){
     }
 
 
-    function buscar_servicios_solucionados(){
-       echo json_encode( $this->_index->buscar_servicios_solucionados($_POST['usuario']));
+    function buscar_x_fecha(){
+       echo json_encode( $this->_index->buscar_x_fecha($_POST['fecha1'],$_POST['fecha2']));
     }
 
 

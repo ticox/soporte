@@ -261,36 +261,37 @@ var servicio=this.dataset.id_servicio;
     });  
 
 
+$(document).on("click", "#buscar_x_fecha", function(){
+	fecha1=$("#fecha1").val();
+	fecha2=$("#fecha2").val();
+	mostrar_servicios_solucionados(fecha1,fecha2);
+
+});
 
 
-function mostrar_servicios_solucionados(usuario){
-	$.post(base_url + 'admin_servicios/buscar_servicios_solucionados',{
-		usuario: usuario
+function mostrar_servicios_solucionados(fecha1,fecha2){
+	$.post(base_url + 'supervisor/buscar_x_fecha',{
+		fecha1: fecha1,
+		fecha2: fecha2
 			},function(datos){
 			console.log(datos);
-			var html=" <br><div class='panel panel-default'>";
-			html+="<div class='panel-heading'>";
-			html+=" <h3 class='panel-title'><center><b>Resultado</b></center></h3>";
-			html+="</div>";
-			html+="<div class='panel-body'>";
-			html+="<div class='table-responsive'>";
+			var html="<div class='table-responsive'>";
 			html+="<table class='table table-striped table-hover '><thead>";
 			html+="<tr class='default'>";
 			html+="<th>#</th>";
-			html+="<th>Empresa</th>";
 			html+="<th>Usuario</th>";
 			html+="<th>Servicio</th>";
-			html+="<th>Fecha de Solicitud</th>";
-			html+="<th>Hora</th>";
-			html+="<th>Estatus</th>";
+			html+="<th>Fecha de solución</th>";
+			html+="<th>Hora de atención</th>";
+			html+="<th>Duración</th>";
 			html+="<th>Acciones</th>";
 			html+="</tr>";
 			html+="</thead>";
 			html+="<tbody>";
 		if(datos==""){
 			
-			html+="<tr><td colspan='5'> <b><center>No Se Encontraron Resultados</center></b></td></tr>";
-			html+="</tbody> </table> </div> </div> </div>";
+			html+="<tr><td colspan='8'> <b><center>No Se Encontraron Resultados</center></b></td></tr>";
+			html+="</tbody> </table> </div>";
 			$("#div_contenedor").html("");
 			$("#div_contenedor").html(html);
 			exit();
@@ -298,18 +299,17 @@ function mostrar_servicios_solucionados(usuario){
 			for(var i = 0; i < datos.length; i++)
 			{	
 
-			var newfecha = datos[i].fecha.split('-').reverse().join('/');
+			var newfecha = datos[i].fecha_solucion.split('-').reverse().join('/');
 			html+="<tr><td>" + (i+1); + "</td>";
-			html+="<td>" + datos[i].empresa + "</td>";
 			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
 			html+="<td>" + datos[i].pedido + "</td>";
 			html+="<td>" + newfecha + "</td>";
-			html+="<td>" + datos[i].hora + "</td>";
-			html+="<td>" + datos[i].estatus + "</td>";
+			html+="<td>" + datos[i].hora_inicio+"-"+datos[i].hora_solucion+"</td>";
+			html+="<td>Calcular</td>";
 			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a></td>";
 			}
 			
-			html+="</tbody> </table> </div> </div> </div>";
+			html+="</tbody> </table> </div>";
 			$("#div_contenedor").html("");
 			$("#div_contenedor").html(html);
 				
@@ -319,11 +319,6 @@ function mostrar_servicios_solucionados(usuario){
 
 
 
-$(document).on("keyup", "#buscar_servicio_s", function(){
-	usuario=$("#buscar_servicio_s").val();
-	mostrar_servicios_solucionados(usuario);
-
-});
 
 /*-----------------------------Cargar Imagen en el sistema--------------------------*/
 

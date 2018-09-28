@@ -68,8 +68,8 @@ class appController extends Controller
     }
 
 
-     function buscar_empresas(){
-       echo json_encode( $this->app->buscar_empresas());
+     function buscar_roles(){
+       echo json_encode( $this->app->traer_roles());
     }
 function buscar_empresas_usuario(){
        echo json_encode( $this->app->buscar_empresas_usuario($_POST['usuario']));
@@ -120,26 +120,18 @@ function registrar_menu(){
     }
 
 
+      function editar_usuario(){
 
-    function eliminar_chicas(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->eliminar_chicas($_POST['id_chica']));
+       echo json_encode($this->app->editar_usuario($_POST['id_usuario']));
     }
 
-    function pago_chicas(){
-       $this->chicas=$this->loadModel('principal');
-       echo json_encode($this->chicas->pago_chicas($_POST['id_chica'],$_POST['meses']));
+
+    function modificar_usuario(){
+
+       $this->app->modificar_usuario($_POST);
     }
 
-    function fotos_chicas(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->fotos_chicas($_POST['id_chica']));
-    }
 
-    function foto_perfil(){
-        $this->chicas=$this->loadModel('principal');
-        echo json_encode($this->chicas->foto_perfil($_POST['id_foto'],$_POST['id_chica']));
-    }
     
     function updonw(){
      $objeto=$this->loadModel('app');

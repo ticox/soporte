@@ -54,18 +54,15 @@ public function menu($id = false){
 
     $sql="select * from role";
        
-
         $datos = $this->_db->query($sql);
               //  $datos->setFetchMode(PDO::FETCH_ASSOC);
 
         return $datos->fetchall();
 
-
     }
 
 
-
-    public function guardar_usuario($datos){
+ public function guardar_usuario($datos){
 
  $sql="INSERT INTO usuario values ('','".$datos['usuario']."' ,'" . Hash::getHash('sha1', $datos['clave'], HASH_KEY) ."','".$datos['cedula']."' ,'".$datos['nombre']."' ,'".$datos['apellido']."' ,'".$datos['correo']."' ,'".$datos['empresa']."' ,'".$datos['departamento']."' ,'1','".$datos['role']."')";
         $this->_db->query($sql);
@@ -74,12 +71,29 @@ public function menu($id = false){
 
 public function buscar_usuario($nombre){
    
-$sql="select * from usuario 
-WHERE usuario.login 
-like '$nombre%'";
+$sql="select usuario.*, role.nombre_role as rol from usuario,role 
+WHERE usuario.id_role=role.id_role and usuario.login 
+like '$nombre%' ORDER by (nombre) ASC";
 $datos = $this->_db->query($sql);
 return $datos->fetchall();
 }
+
+
+public function editar_usuario($id_usuario){
+   
+$sql="select usuario.*, role.nombre_role as rol from usuario,role 
+WHERE usuario.id_role=role.id_role and usuario.id_usuario=$id_usuario";
+$datos = $this->_db->query($sql);
+return $datos->fetch();
+}
+
+public function modificar_usuario($datos){
+
+  $sql="UPDATE usuario SET cedula='".$datos['cedula']."', nombre='".$datos['nombre']."', apellido='".$datos['apellido']."', correo='".$datos['correo']."', empresa='".$datos['empresa']."', departamento='".$datos['departamento']."',id_role='".$datos['rol']."' WHERE id_usuario='".$datos['id_usuario']."'";
+$datos = $this->_db->query($sql);
+}
+
+
 
 
     public function verificar_login($usuario){
@@ -98,18 +112,6 @@ return $datos->fetchall();
     }
 
 
-    public function buscar_empresas(){
-
-
-    $sql="select * from role";
-
-            $datos = $this->_db->query($sql);
-        //$datos->setFetchMode(PDO::FETCH_ASSOC);
-
-       return $datos->fetchall();
-    
-
-    }
 
 
 public function buscar_empresas_usuario($id_usuario){

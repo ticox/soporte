@@ -1,18 +1,12 @@
 <?php
 
-class admin_serviciosModel extends Model
+class supervisorModel extends Model
 {
     public function __construct() {
         parent::__construct();
     }
 
 
-
-    public function registrar_servicio($datos){
-
- 	 $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$datos['software']."' ,'".$datos['hardware']."' ,'".$datos['funcionamiento']."' ,'".$datos['otros']."' , curdate() , curtime(),'".session::get('id_usuario')."','pendiente')";
-        $this->_db->query($sql);
-   }
 
 
    public function buscar_servicios_admin(){
@@ -26,7 +20,7 @@ class admin_serviciosModel extends Model
 
    public function buscar_servicios_admin_solucionados(){
 
-   $sql="select servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado'";
+   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."'";
      $datos =  $this->_db->query($sql);
   
       return $datos->fetchall();
@@ -65,14 +59,14 @@ class admin_serviciosModel extends Model
       return 0;
    }
 
-public function buscar_servicio_solucionado($id_servicio){
+public function buscar_x_fecha($fecha1,$fecha2){
 
-  /* $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and servicio.id_servicio=$id_servicio";*/
+   /* $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and and usuario.empresa=";*/
 
-  $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido from servicio, usuario, solucion_servicio where servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.id_usuario=solucion_servicio.id_usuario_sol and servicio.id_servicio=$id_servicio";
+    $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."' and solucion_servicio.fecha_solucion BETWEEN '".$fecha1."' and '".$fecha2."'";
      $datos =  $this->_db->query($sql);
   
-      return $datos->fetch();
+      return $datos->fetchall();
 
    }  
 

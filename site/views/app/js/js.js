@@ -261,7 +261,9 @@ function mostrar_usuarios(usuario){
 			html+="<tr class='default'>";
 			html+="<th>CEDULA</th>";
 			html+="<th>NOMBRES Y APELLIDOS</th>";
+			html+="<th>EMPRESA</th>";
 			html+="<th>LOGIN</th>";
+			html+="<th>ROL</th>";
 			html+="<th>ACCIONES</th>";
 			html+="</tr>";
 			html+="</thead>";
@@ -278,8 +280,10 @@ function mostrar_usuarios(usuario){
 			{	
 			html+="<tr><td>" + datos[i].cedula + "</td>";
 			html+="<td>" + datos[i].nombre + " " + datos[i].apellido + "</td>";
+			html+="<td>" + datos[i].empresa + "</td>";
 			html+="<td>" + datos[i].login + "</td>";
-			html+="<td><a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a></td>";
+			html+="<td>" + datos[i].rol + "</td>";
+			html+="<td><a id='editar_usuario' data-toggle='modal' data-target='#modalusuario' data-toggle='tooltip' data-placement='bottom' title='Editar Usuario' data-login='"+datos[i].login+"' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-pencil'></span></a> <a id='eliminar_usuario' data-toggle='tooltip' data-placement='bottom' title='Eliminar Usuario' data-id_usuario='"+datos[i].id_usuario+"'><span class='glyphicon glyphicon-trash'></span></a></td>";
 			
 
 			}
@@ -301,23 +305,76 @@ $(document).on("keyup", "#buscar_usuario", function(){
 });
 
 
-$(document).on('click', '#asignar_empresa', function() {
+$(document).on('click', '#editar_usuario', function() {
 	 		
 	 		var login=this.dataset.login;
 	 		var user=this.dataset.id_usuario;
 
-	 		$.post(base_url + 'app/buscar_empresas', function(datos){
-				var html="<center>Asignar Empresa para: "+login+" </br> </center></br>";
-				html+="<select class='form-control' id='empresas'>";
-				for (var i =0; datos.length>i; i++) {
-					html+="<option value="+datos[i].id_role+">"+datos[i].nombre_role+"</option>";
+	 		$.post(base_url + 'app/editar_usuario',{
+			id_usuario: user
+			},function(datos){
+				var html="<center>USUARIO: <b>"+login+"</b> </br> </center></br>";
+
+				$.post(base_url + 'app/buscar_roles', function(datos1){
+		
+				html+="<div class='col-md-12'><b><center>CEDULA: </center></b> </div>";
+				html+="<div class='col-md-12'><input id='cedulax' class='form-control' value='"+datos.cedula+"'></div>";
+				html+="<div class='col-md-6'><b>NOMBRES</b> </div> <div class='col-md-6'><b>APELLIDOS</b> </div>";
+				html+="<div class='col-md-6'><input id='nombrex' class='form-control' value='"+datos.nombre+"'></div> <div class='col-md-6'><input id='apellidox' class='form-control' value='"+datos.apellido+"'></div>";
+				html+="<div class='col-md-12'><b><center>CORREO: </center></b> </div>";
+				html+="<div class='col-md-12'><input id='correox' class='form-control' value='"+datos.correo+"'></div>";
+				html+="<div class='col-md-6'><b>EMPRESA</b> </div> <div class='col-md-6'><b>DEPARTAMENTO</b> </div>";
+				html+="<div class='col-md-6'><input id='empresax' class='form-control' value='"+datos.empresa+"'></div> <div class='col-md-6'><input id='departamentox' class='form-control' value='"+datos.departamento+"'></div>";
+				html+="<div class='col-md-12'><b><center>TIPO USUARIO: </center></b> </div>";
+				html+="<div class='col-md-12'> <input type='text' value='"+user+"' id='id_usuario' hidden><select class='form-control' id='role'>";
+				html+="<option value=''>--Seleccione--</option>";
+				for (var i =0; datos1.length>i; i++) {
+					html+="<option value='"+datos1[i].id_role+"'>"+datos1[i].nombre_role+"</option>";
 				}
 
-				html+="</select></br> <input type='hidden' id='id_usuario' value='"+user+"'> ";
+				html+="</select></div>";
 
-				 $("#a_empresas").html("");
-				 $("#a_empresas").html(html);
+				$("#e_usuario").html("");
+				$("#e_usuario").html(html);
+				
 	           },'json');
+
+
+
+				 
+	           },'json');
+			    	
+		
+	});
+
+
+
+
+
+$(document).on('click', '#modificar_usuario', function() {
+	 		alertify.confirm( "¿Esta realmente seguro de modificar la información de este usuario?", function (e) {
+			    if (e) {
+			    	$.post(base_url+'app/modificar_usuario',{
+
+						cedula:$("#cedulax").val(),
+						nombre:$("#nombrex").val(),
+						apellido:$("#apellidox").val(),
+						correo:$("#correox").val(),
+						empresa:$("#empresax").val(),
+						departamento:$("#departamentox").val(),
+						rol:$("#role").val(),
+						id_usuario:$("#id_usuario").val()
+
+						},function() {
+						alertify.success('Usuario modificado exitosamente');
+
+						$("#modalusuario .close").click();
+					});
+			        
+			    } else {
+			       alertify.error('Ha cancelado la operación');
+			    }
+			});  
 			    	
 		
 	});
