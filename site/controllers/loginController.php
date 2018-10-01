@@ -18,7 +18,7 @@ class loginController extends Controller
         }
         
         $this->_view->titulo = 'Iniciar Sesion';
-        $this->_view->setCss(array('css'));
+        $this->_view->setCss(array('css','bootstrap-material-design.min'));
         $this->_view->setJs(array('js'));
 
         if(isset($_POST['enviar'])){

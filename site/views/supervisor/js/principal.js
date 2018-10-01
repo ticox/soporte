@@ -298,14 +298,44 @@ function mostrar_servicios_solucionados(fecha1,fecha2){
 			}	
 			for(var i = 0; i < datos.length; i++)
 			{	
+			var str = datos[i].pedido;
+			var res = str.slice(0, 50);
 
+			  var inicio = datos[i].hora_inicio;
+			  var fin = datos[i].hora_solucion;
+			   var inicioMinutos = parseInt(inicio.substr(3,2));
+			  var inicioHoras = parseInt(inicio.substr(0,2));
+			  
+			 var finMinutos = parseInt(fin.substr(3,2));
+			  var finHoras = parseInt(fin.substr(0,2));
+
+			  var transcurridoMinutos = finMinutos - inicioMinutos;
+			  var transcurridoHoras = finHoras - inicioHoras;
+			  
+			  if (transcurridoMinutos < 0) {
+			    transcurridoHoras--;
+			    transcurridoMinutos = 60 + transcurridoMinutos;
+			  }
+			  
+			  horas = transcurridoHoras.toString();
+			  minutos = transcurridoMinutos.toString();
+			  
+			  if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			  if (minutos.length < 2) {
+			    minutos = "0"+minutos;
+			  }
+			  
+			  var duracion=horas+":"+minutos;
 			var newfecha = datos[i].fecha_solucion.split('-').reverse().join('/');
 			html+="<tr><td>" + (i+1); + "</td>";
 			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
-			html+="<td>" + datos[i].pedido + "</td>";
+			html+="<td>" + res +"...</td>";
 			html+="<td>" + newfecha + "</td>";
 			html+="<td>" + datos[i].hora_inicio+"-"+datos[i].hora_solucion+"</td>";
-			html+="<td>Calcular</td>";
+			html+="<td>" + duracion + "</td>";
 			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a></td>";
 			}
 			

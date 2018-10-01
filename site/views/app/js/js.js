@@ -329,8 +329,11 @@ $(document).on('click', '#editar_usuario', function() {
 				html+="<div class='col-md-12'> <input type='text' value='"+user+"' id='id_usuario' hidden><select class='form-control' id='role'>";
 				html+="<option value=''>--Seleccione--</option>";
 				for (var i =0; datos1.length>i; i++) {
+					if(datos1[i].id_role==datos.id_role){
+					html+="<option value='"+datos1[i].id_role+"' selected>"+datos1[i].nombre_role+"</option>";
+				}else{
 					html+="<option value='"+datos1[i].id_role+"'>"+datos1[i].nombre_role+"</option>";
-				}
+				}}
 
 				html+="</select></div>";
 

@@ -44,10 +44,20 @@ if(!Session::get('autenticado')){
        echo json_encode( $this->_index->buscar_servicio_usuario($_POST['servicio']));
     }
 
+    function editar_servicio_s(){
+       echo json_encode( $this->_index->editar_servicio_s($_POST['id_servicio']));
+    }
+
 
     function buscar_servicios_solucionados(){
        echo json_encode( $this->_index->buscar_servicios_solucionados($_POST['usuario']));
     }
+
+ function modificar_solucion_servicio(){
+    $this->_index->modificar_solucion_servicio($_POST);
+    }
+
+    
 
 
     function cambiar_estatus_servicio(){

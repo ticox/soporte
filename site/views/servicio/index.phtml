@@ -1,7 +1,11 @@
 <div class="container-fluid">
-	<div class="row">
+	<div class="row well">
+		<div class="col-md-2" style="padding-top: 1%;">
+
+					<center> <a class="bnt btn-default btn-xs" type="submit" href="<?php BASE_URL; ?>solicitudes"> <span class="glyphicon glyphicon-th-list"></span> Mis Solicitudes</a> </center>
+				</div>
 		<div class="gift2"></div>
-		<div class="col-md-12 well">
+		<div class="col-md-12">
 			 <form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>servicio/registrar_servicio" > 
 			<div class="col-md-12"> <center> <h4> Registro de solicitud de servicio </h4> </center></div>
 
@@ -14,48 +18,33 @@
 				    </div>
 				  </div>
 				  </div>
-				  <div class="col-md-6">
-				  <div class="form-group formulario">
-             		 	<label class="formulario"><b> Motivo de la atención </b></label>
-            
-                		<div class="form-check ">
-						  <input class="form-check-input" type="checkbox" value="1" name ="software" id="software">
-						  <label class="form-check-label formulario" for="defaultCheck1">
-						    Mantenimiento de Software
-						  </label>
-						</div>
-						<div class="form-check ">
-						  <input class="form-check-input" type="checkbox" value="1" id="hardware" name="hardware">
-						  <label class="form-check-label formulario" for="defaultCheck1">
-						    Mantenimiento de Hardware
-						  </label>
-						</div>
-						<div class="form-check ">
-						  <input class="form-check-input" type="checkbox" value="1" id="funcionamiento" name="funcionamiento">
-						  <label class="form-check-label formulario" for="defaultCheck1">
-						    Pruebas de Funcionamiento
-						  </label>
-						</div>
+				  <div class="col-md-12">
+<div class="col-md-12 formulario"><b> <center> Motivo de la atención </center> </b></div>
+				  	<label class="checkbox-inline" style="padding: 1%;">
+  <input class="form-check-input" type="checkbox" value="1" name ="software" id="software"> Mantenimiento de Software
+</label>
+<label class="checkbox-inline" style="padding: 1%;">
+  <input class="form-check-input" type="checkbox" value="1" id="hardware" name="hardware"> Mantenimiento de Hardware
+</label>
+<label class="checkbox-inline" style="padding: 1%;">
+  <input class="form-check-input" type="checkbox" value="1" id="funcionamiento" name="funcionamiento"> Pruebas de Funcionamiento
+</label>
+<label class=" checkbox-inline" style="padding: 1%;">
+  <input class="form-check-input" type="checkbox" value="1" id="otros" name="otros"> Otros
+</label>
 
-						<div class="form-check ">
-						  <input class="form-check-input" type="checkbox" value="1" id="otros" name="otros">
-						  <label class="form-check-label formulario" for="defaultCheck1">
-						    Otros
-						  </label>
-						</div>
 						<div class="form-group" id="divotros">
 						 <textarea id="otrosrespuesta" name="otrosrespuesta" class="form-control" autofocus placeholder="Responda aqui."></textarea>
 						</div>
 
-
               
           			</div>
-				  </div>
-				  <div class="col-md-6">
+				  
+				  <div class="col-md-3" style="padding-top: 3%;">
 				      	<p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='cargar_imagen' name='foto[]' capture='camera'> </p>
 				    </div>
 
-				    <div class="col-md-12" id='list'>
+				    <div class="col-md-9" id='list' style="padding-top: 3%;">
 				      	<center> <p><b>Previsualización</b></p> </center>
 				    </div>
 

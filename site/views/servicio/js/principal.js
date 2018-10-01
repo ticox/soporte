@@ -217,7 +217,7 @@ function archivo(input)
     }
     reader[i].onload= function()
     {
-      $('#list').after('<div id="prevista" class="col-md-12 prviuw"> <center><img class="zoom" id="imagen2" width="300px" height="150px" src="'+this.result+' " ></center></div> <br>' );
+      $('#list').after('<div id="prevista" class="col-md-9 col-md-offset-3 prviuw"> <center><img class="zoom" id="imagen2" width="300px" height="150px" src="'+this.result+' " ></center></div> <br>' );
     }
     reader[i].readAsDataURL(input.files[i]);
   }

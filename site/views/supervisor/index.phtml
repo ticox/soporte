@@ -3,7 +3,11 @@
 		<div class="row">
 	
 			<div class="col-md-12"> <center> <h4> Solicitudes de <?php echo session::get('empresa'); ?> </h4> </center></div>
-			<div class="col-md-12"> <center> <h4> Total Solicitudes (<?php echo count($this->servicio_r); ?>) </h4> </center></div>
+			<div class="col-md-6 col-md-offset-3"> <center> <h4> Total solicitudes realizadas (<?php echo count($this->servicio_r); ?>) </h4> </center></div>
+			<div class="col-md-2" style="padding-top: 1%;">
+
+					<center> <a class="bnt btn-default btn-xs" target="_blank" type="submit" href="<?php BASE_URL; ?>pdf/Reporte_x_empresa"> <span class="glyphicon glyphicon-file"></span>Generar Reporte</a> </center>
+				</div>
 					<div class="col-xs-12 col-md-6 col-md-offset-3 ">
 				<div class="col-md-12" for="exampleInputEmail1"> <center>  <p><b>Filtrar por fecha de solución </b> </p> </center></div>
 				<div class="col-md-6"><center> <b>Desde:</b> </center>
@@ -15,9 +19,9 @@
 					<input type="date"  class="form-control" id="fecha2" name="fecha2">
 				</div>
 
-				<div class="col-md-6 col-md-offset-3">
+				<div class="col-md-6 col-md-offset-3" style="padding-top: 3%;">
 
-					<center> <button class="bnt btn-default btn-xs" id="buscar_x_fecha">Buscar</button> </center>
+					<center> <button class="bnt btn-default btn-xs"  id="buscar_x_fecha">Buscar</button> </center>
 				</div>
 
 			</div>

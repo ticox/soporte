@@ -42,6 +42,18 @@ class admin_serviciosModel extends Model
 
    }
 
+   public function editar_servicio_s($id_servicio){
+
+    $sql="select servicio.*, solucion_servicio.* from servicio, solucion_servicio where servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and servicio.id_servicio=$id_servicio";
+
+
+     $datos =  $this->_db->query($sql);
+  
+      return $datos->fetch();
+
+   }
+
+
 
    public function cambiar_estatus_servicio($datos,$fotos){
     if($fotos['foto']['name'][0]==''){
@@ -82,7 +94,17 @@ $sql="select servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from 
 $datos = $this->_db->query($sql);
 return $datos->fetchall();
 }
+
+public function modificar_solucion_servicio($datos){
+   
+ echo $sql="UPDATE solucion_servicio SET observacion='".$datos['observacion']."',fecha_solucion='".$datos['fecha_solucion']."',hora_solucion='".$datos['hora_solucion']."',hora_inicio='".$datos['hora_inicio']."' WHERE id_solucion='".$datos['id_solucion']."'";
+
+      $this->_db->query($sql);
+      return 0;
+   }
     
+
+   
 
 
 }?>

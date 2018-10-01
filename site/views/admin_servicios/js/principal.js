@@ -325,6 +325,49 @@ $(document).on("keyup", "#buscar_servicio_s", function(){
 
 });
 
+$(document).on('click', '#editar_servicio_s', function() {
+	 		
+	 		var user=this.dataset.id_servicio;
+
+	 		$.post(base_url + 'admin_servicios/editar_servicio_s',{
+			id_servicio: user
+			},function(datos){
+
+				var html="<div class='col-md-12'><b><center>Observacion: </center></b> </div>";
+				html+="<div class='col-md-12'><textarea id='observacionx' class='form-control'>"+datos.observacion+"</textarea></div>";
+				html+="<div class='col-md-12'><b>Fecha Solución</b></div>";
+				html+="<div class='col-md-12'><input type='date' id='fecha_sx' class='form-control' value='"+datos.fecha_solucion+"'></div>";
+				html+="<div class='col-md-6'><b>Hora inicio</b> </div> <div class='col-md-6'><b>Hora fin</b> </div>";
+				html+="<div class='col-md-6'><input id='hora_iniciox' class='form-control' value='"+datos.hora_inicio+"'></div> <div class='col-md-6'><input id='hora_finx' class='form-control' value='"+datos.hora_solucion+"'> <input type='hidden' id='id_solucion' class='form-control' value='"+datos.id_solucion+"'></div>";
+				//html+="<div class='col-md-12'><b><center>imagen solucion: </center></b> </div>";
+				//html+="<div class='col-md-12'><input type='file' id='imgx'></div>";
+				
+
+				$("#e_servicio_s").html("");
+				$("#e_servicio_s").html(html);
+				 
+	           },'json');
+			    	
+});
+
+
+$(document).on('click', '#guardar_servicio_modificado', function() {
+
+	 		$.post(base_url + 'admin_servicios/modificar_solucion_servicio',{
+			observacion:$('#observacionx').val(),
+			fecha_solucion:$('#fecha_sx').val(),
+			hora_inicio:$('#hora_iniciox').val(),
+			hora_solucion:$('#hora_finx').val(),
+			id_solucion:$('#id_solucion').val()
+			},function(){
+				alertify.success("Solución modificada exitosamente.");
+
+				$("#modaleservicio .close").click();
+				
+	           });
+			    	
+});
+
 /*-----------------------------Cargar Imagen en el sistema--------------------------*/
 
 

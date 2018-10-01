@@ -99,7 +99,7 @@
 	<?php  } else { ?>
 		<td class="online">Solucionado</td>
 			<?php  } ?>
-			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-list"> </i> Detalles </a></td>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-list"> </i> Detalles </a> <a href="javascript:null()"  data-toggle="modal" data-target="#modaleservicio" id="editar_servicio_s" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Editar </a></td>
 		</tr>
 		<?php endfor; ?>
 		<?php  } ?>
@@ -163,6 +163,28 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="modaleservicio" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Editar Servicio</center></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="e_servicio_s">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer" style="padding-top: 1%;">
+        <button type="button" id="guardar_servicio_modificado" class="btn btn-default">Guardar Cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 		
 		

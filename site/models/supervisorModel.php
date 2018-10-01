@@ -27,6 +27,18 @@ class supervisorModel extends Model
 
    }
 
+   public function buscar_servicios_admin_solucionados_reporte(){
+
+   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."'";
+     
+     $datos = $this->_db->query($sql);
+      $datos->setFetchMode(PDO::FETCH_ASSOC);
+    $this->datoss = $datos->fetchall();
+
+   }
+
+   
+
    public function buscar_servicio_usuario($servicio){
 
  	 $sql="select servicio.*, usuario.* from servicio, usuario where servicio.id_usuario=usuario.id_usuario and id_servicio='".$servicio."'";

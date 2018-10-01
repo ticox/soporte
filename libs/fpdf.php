@@ -386,7 +386,7 @@ function Header()
         $this->setx(($this->w)-60);
         $this->Cell(40,4,'Pagina :'.$this->PageNo(),0,0,'L');
          $this->setx(10);
-        $this->Cell(40,4,'KEIKO C.A.',0,0,'L');
+        $this->Cell(40,4,'COTEDEM CIA. LTDA.',0,0,'L');
    
         $this->ln();  
 
