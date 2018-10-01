@@ -1,0 +1,71 @@
+<div class="container-fluid">
+	<div class="row">
+		
+			<div class="col-md-12"> <center> <h4> Mis Solicitudes </h4> </center></div>
+			
+			<div class="col-md-12">
+				
+				<div class="col-md-12 table-responsive">
+				<table class="table">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Servicio</th>
+					      <th scope="col">Fecha de Solicitud</th>
+					      <th scope="col">Hora</th>
+					      <th scope="col">Estatus</th>
+					      <th scope="col">Acciones</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					   
+					    	<?php for ($i=0; $i < count($this->servicio); $i++): ?>
+		<tr>
+		<th><?php echo ($i+1); ?></th>
+		<td><?php echo substr($this->servicio[$i]['pedido'], 0, 70).' ...'; ?></td>
+		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio[$i]['fecha'])); ?></td>
+		<td><?php echo $this->servicio[$i]['hora'] ?></td>	
+		<?php if($this->servicio[$i]['estatus']=='pendiente'){ ?>
+		<td class="offline">Pendiente</td>
+	<?php  } else { ?>
+		<td class="online">Solucionado</td>
+			<?php  } ?>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio[$i]['id_servicio'] ?>" data-estatus="<?php echo $this->servicio[$i]['estatus'] ?>"> <i class="glyphicon glyphicon-list-alt"> </i> Detalles </a></td>
+		</tr>
+		<?php endfor; ?>
+					  
+					  </tbody>
+					</table>
+
+					</div>	
+			</div>
+
+
+		</div>
+</div>
+
+
+
+<div class="modal fade" id="modalservicio" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel"><center>Ver los detalles del servicio </center></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="ver_servicio">
+         <h3> <center> Cargando... </center></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+		
+		
+		
+

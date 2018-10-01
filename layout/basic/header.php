@@ -111,7 +111,7 @@
   <link href="<?php echo BASE_URL; ?>public/css/alertify.core.css" rel="stylesheet" type="text/css" /> 
   <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/main.css">
   <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/bootstrap-material-design.min.css">
+  <!--<link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/bootstrap-material-design.min.css">-->
   <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/bootstrap-material-design.css">
   <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/ripples.min.css">
   <link rel="stylesheet" href="<?php echo BASE_URL ?>public/css/sweetalert2.css">
