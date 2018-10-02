@@ -50,7 +50,7 @@
 		<th><?php echo ($i+1); ?></th>
 		<td><?php echo $this->servicio_r[$i]['nombre'].' '.$this->servicio_r[$i]['apellido'] ?></td>
 		<td><?php echo substr($this->servicio_r[$i]['pedido'], 0, 50).' ...'; ?></td>
-		<td><?php echo $this->servicio_r[$i]['fecha_solucion']?></td>
+		<td><?php echo  $newDate = date("d/m/Y", strtotime($this->servicio_r[$i]['fecha_solucion']));?></td>
 		<td><?php echo $this->servicio_r[$i]['hora_inicio'].'-'.$this->servicio_r[$i]['hora_solucion']?></td>
 		
 		<?php 

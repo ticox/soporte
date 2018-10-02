@@ -31,8 +31,8 @@ class pdfController extends Controller
 			$this->_pdf->SetFont('Arial','',6);
 
 			$this->_pdf->Cell(40,4, utf8_decode('USUARIO'),1,0,'C');
-			$this->_pdf->Cell(60,4, utf8_decode('SERVICIO'),1,0,'C');
-			$this->_pdf->Cell(25,4, utf8_decode('FECHA DE ATENCIÓN'),1,0,'C');
+			$this->_pdf->Cell(65,4, utf8_decode('SERVICIO'),1,0,'C');
+			$this->_pdf->Cell(40,4, utf8_decode('FECHA DE ATENCIÓN'),1,0,'C');
 			$this->_pdf->Cell(25,4, utf8_decode('HORA ATENCIÓN'),1,0,'C');
 			$this->_pdf->Cell(20,4, utf8_decode('DURACIÓN'),1,1,'C');
 			$total_horas_de_servicio=0;
@@ -41,8 +41,17 @@ class pdfController extends Controller
 				$horaini = $this->modelo->datoss[$i]['hora_inicio'];
 						$horafin = $this->modelo->datoss[$i]['hora_solucion'];
 
-					
-
+			//$newDate = date("D d/m/Y", strtotime($this->modelo->datoss[$i]['fecha_inicio']));	
+			
+			// En windows
+			//setlocale(LC_TIME, 'spanish');
+			setlocale(LC_TIME, 'es_ES.UTF-8');
+			$newDate=strftime("%A, %d de %B de %Y", strtotime($this->modelo->datoss[$i]['fecha_inicio']));
+			
+			/*setlocale(LC_TIME, 'es_CO.UTF-8');
+			$date = date_create($this->modelo->datoss[$i]['fecha_inicio']);
+			$ = strftime("%A, %d %B %G", strtotime($date->date));*/
+// Imprime mi�rcoles, 08 de marzo del 2017
 					$horai=substr($horaini,0,2);
 
 					$mini=substr($horaini,3,2);
@@ -78,8 +87,8 @@ class pdfController extends Controller
 					$duracion = date("H:i:s",mktime($difh,$difm,$difs));
 				
 			$this->_pdf->Cell(40,4, utf8_decode($this->modelo->datoss[$i]['nombre'].' '.$this->modelo->datoss[$i]['apellido']),1,0,'L');
-			$this->_pdf->Cell(60,4, utf8_decode(substr($this->modelo->datoss[$i]['pedido'], 0, 60).' ...'),1,0,'L');
-			$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['fecha_solucion']),1,0,'L');
+			$this->_pdf->Cell(65,4, utf8_decode(substr($this->modelo->datoss[$i]['pedido'], 0, 60).' ...'),1,0,'L');
+			$this->_pdf->Cell(40,4, utf8_decode($newDate),1,0,'L');
 			$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['hora_inicio'].' '.$this->modelo->datoss[$i]['hora_solucion']),1,0,'L');
 			$this->_pdf->Cell(20,4, utf8_decode($duracion),1,1,'L');
 

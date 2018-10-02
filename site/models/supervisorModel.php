@@ -20,7 +20,7 @@ class supervisorModel extends Model
 
    public function buscar_servicios_admin_solucionados(){
 
-   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."'";
+   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."' order by (solucion_servicio.fecha_inicio) DESC";
      $datos =  $this->_db->query($sql);
   
       return $datos->fetchall();
@@ -29,7 +29,7 @@ class supervisorModel extends Model
 
    public function buscar_servicios_admin_solucionados_reporte(){
 
-   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."'";
+   $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."' order by (solucion_servicio.fecha_inicio) DESC";
      
      $datos = $this->_db->query($sql);
       $datos->setFetchMode(PDO::FETCH_ASSOC);

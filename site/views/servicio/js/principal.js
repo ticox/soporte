@@ -8,6 +8,20 @@ $(".gift2").hide();
 $("#divotros").hide();
 
 
+
+ $("#enviar_solicitud").click(function() { 
+ 
+ if($('#servicio').val()!=''){
+
+$("#enviar_solicitud").attr('disabled','disabled');
+alertify.success('Pedido de servicio enviado correctamente.');
+$("#enviar_solicitud").submit();
+}
+    });  
+
+
+
+
  $("#enviar_solicitudes").click(function() {  
 
 var cont=0;
@@ -141,7 +155,7 @@ var estatus=this.dataset.estatus;
 			html+="</tbody> </table> </div>";
 			if(datos.estatus=="solucionado"){
 			
-			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
+			var newfecha = datos.fecha_inicio.split('-').reverse().join('/');
        		if(datos.imagen_solucion!=''){
        		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
 			}

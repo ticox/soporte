@@ -126,6 +126,66 @@ if(!Session::get('autenticado')){
     $this->redireccionar('admin_servicios');
 
     }
+function buscar_informacion_correo(){
+       echo json_encode( $this->_index->buscar_informacion_correo($_POST['id_servicio']));
+    }
+
+
+     function reenviar_correo(){
+
+
+     $this->getLibrary('class.phpmailer');
+            
+            $email_user = "info@cotedem.com";
+            $email_password = "Cotedem@2018";
+            $asunto = "Respuesta a su solicitud de soporte";
+            $nombre = $_POST['nombre'];
+            $mensaje = $_POST['observacion'];
+            $correo = $_POST['correo'];
+            $phpmailer = new PHPMailer();
+
+            // ---------- Datos de la cuenta de correo -----------------------------
+            $phpmailer->Username = $email_user;
+            $phpmailer->Password = $email_password; 
+            //---------------------------------------------------------------------
+            $phpmailer->SMTPSecure = 'ssl';
+            $phpmailer->Host = "box308.bluehost.com";
+            $phpmailer->Port = 465;
+            //$phpmailer->SMTPDebug = 2;
+            $phpmailer->IsSMTP();
+            $phpmailer->SMTPAuth = true;
+
+            $phpmailer->setFrom($phpmailer->Username,$nombre);
+            $phpmailer->AddAddress($correo);
+            $phpmailer->Subject =$asunto; 
+
+            $phpmailer->Body .="<spam style='color:#000;'>Estimado (a) <b>".$nombre."</b></spam>";
+            $phpmailer->Body .= "<p> Nos permitimos indicar que su requierimiento de soporte, fue <i style='color:green;'> <b> Solucionado.</b> </i></p>";
+            $phpmailer->Body .="<p> <b> Observación/Solución:</b> </p> <p>".$mensaje." </p>";
+             $phpmailer->Body .="<p>Si desea obtener mayor información de su soporte lo invitamos a ingresar en su usuario y verificar los detalles en sus solicitudes.</p>";
+             $phpmailer->Body .="<p>Sin mas que agregar, se despide el equipo de soporte de Cotedem Cia. Ltda.</p>";
+             $phpmailer->Body .="<img src='https://cotedem.com/img/LogoCotedem.png' border='0' />";  
+        
+         
+
+             //$phpmailer->Body .= "<p>Se inicio hoy a las "+$horai+" horas, y se finalizo a las "+$horaf+" horas</p><br> Sin mas que agregar, se Despide el equipo de soporte de Cotedem.</p>";
+
+
+            $phpmailer->AddAttachment($mensaje, "attach1");
+            $phpmailer->AddBCC($correo, "bcc1");
+            $phpmailer->IsHTML(true);
+            // Activo condificacción utf-8
+            $phpmailer->CharSet = 'UTF-8';
+            $enviado = $phpmailer->Send();
+            if($enviado) {
+                echo 'Email Enviado Exiosamente';
+            }
+
+
+
+    $this->redireccionar('admin_servicios');
+
+    }
 
 
 

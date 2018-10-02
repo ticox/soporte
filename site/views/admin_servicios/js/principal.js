@@ -110,6 +110,7 @@ $(".gift2").hide();
 			html+="<select id='estatus' name='estatus' class='form-control' required='true'> <option value=''>--Seleccione--</option> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
 			html+="<input type='hidden' id='id_servicio' name='id_servicio' value='"+servicio+"'><input type='hidden' id='servicio_solicitado' value='"+datos.pedido+"'>";
 			html+="<input type='hidden' id='correo' name='correo' value='"+datos.correo+"'><input type='hidden' id='nombre' name='nombre' value='"+datos.nombre+" "+datos.apellido+ "'>";
+			html+="<p><b>Configure la fecha del servicio:</b></p> <input type='date' id='fecha_inicio' class='form-control' name='fecha_inicio' required='true'>";
 			html+="<p><b>Configure la hora de inicio del servicio:</b></p> <input type='time' id='hora_inicio' class='form-control' name='hora_inicio' required='true'><p><b>Configure la hora final del servicio:</b></p> <input type='time' id='hora_fin' class='form-control' name='hora_fin' required='true'>";
 			html+="</div>";
 			
@@ -122,7 +123,7 @@ $(".gift2").hide();
 
 $(document).on('click', '#cambiar_estatus_servicio', function() {
 
-			$(".gift2").show();
+			
 	$.post(base_url + 'admin_servicios/cambiar_estatus_servicio',{
 			servicio:$('#id_servicio').val(),
 			observacion:$('#observacion').val(),
@@ -135,6 +136,29 @@ $(document).on('click', '#cambiar_estatus_servicio', function() {
 				alertify.alert("cambio hecho exitosamente");
 				setTimeout('document.location.reload()',2000);
 	           });
+    });  
+
+
+
+$(document).on('click', '#reenviar_correo', function() {
+
+			$(".gift2").show();
+	$.post(base_url + 'admin_servicios/buscar_informacion_correo',{
+			id_servicio:$('#id_servicioxx').val()
+			
+			},function(datos){
+			var nombre=datos.nombre+' '+datos.apellido
+			$.post(base_url + 'admin_servicios/reenviar_correo',{
+			observacion:datos.observacion,
+			correo:datos.correo,
+			nombre:nombre
+			},function(){
+				$(".gift2").hide();
+			alertify.alert("Correo Reenviado Exitosamente.");
+			$("#modalservicio .close").click();
+	           });
+
+	           },'json');
     });  
 
 $(document).on('click', '#detalles_servicio', function() {
@@ -206,11 +230,11 @@ var servicio=this.dataset.id_servicio;
 			
 			
 			}	
-			
+			html+="<input type='hidden' value='"+datos.observacion+"' id='observacionxx'><input type='hidden' value='"+datos.correo+"' id='correoxx'><input type='hidden' value='"+datos.nombre+" "+datos.apellido+"' id='nombrexx'><input type='hidden' value='"+datos.id_servicio+"' id='id_servicioxx'>";
 			html+="</tbody> </table> </div>";
 			if(datos.estatus=="solucionado"){
 			
-			var newfecha = datos.fecha_solucion.split('-').reverse().join('/');
+			var newfecha = datos.fecha_inicio.split('-').reverse().join('/');
        		if(datos.imagen_solucion!=''){
        		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
 			}

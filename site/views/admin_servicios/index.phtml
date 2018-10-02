@@ -1,4 +1,5 @@
 <div class="container-fluid">
+	<div class="gift2"></div>
 	<div class="row">
 	
 			<div class="col-md-12"> <center> <h4> Solicitudes Pendientes </h4> </center></div>
@@ -73,7 +74,7 @@
 					      <th scope="col">Empresa</th>
 					      <th scope="col">Usuario</th>
 					      <th scope="col">Servicio</th>
-					      <th scope="col">Fecha de Solicitud</th>
+					      <th scope="col">Fecha de Solución</th>
 					      <th scope="col">Hora</th>
 					      <th scope="col">Estatus</th>
 					      <th scope="col">Acciones</th>
@@ -92,7 +93,7 @@
 		<td><?php echo $this->servicio_r[$i]['empresa'] ?></td>
 		<td><?php echo $this->servicio_r[$i]['nombre'].' '.$this->servicio_r[$i]['apellido'] ?></td>
 		<td><?php echo substr($this->servicio_r[$i]['pedido'], 0, 50).' ...'; ?></td>
-		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio_r[$i]['fecha'])); ?></td>
+		<td><?php echo $newDate = date("d/m/Y", strtotime($this->servicio_r[$i]['fecha_inicio'])); ?></td>
 		<td><?php echo $this->servicio_r[$i]['hora'] ?></td>	
 		<?php if($this->servicio_r[$i]['estatus']=='pendiente'){ ?>
 		<td class="offline">Pendiente</td>
@@ -157,7 +158,7 @@
          <h3> <center> Cargando... </center></h3>
       </div>
       <div class="modal-footer">
-        
+        <button type="button" id="reenviar_correo" class="btn btn-default">Reenviar Correo</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
