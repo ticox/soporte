@@ -89,7 +89,7 @@ class pdfController extends Controller
 			$this->_pdf->Cell(40,4, utf8_decode($this->modelo->datoss[$i]['nombre'].' '.$this->modelo->datoss[$i]['apellido']),1,0,'L');
 			$this->_pdf->Cell(65,4, utf8_decode(substr($this->modelo->datoss[$i]['pedido'], 0, 60).' ...'),1,0,'L');
 			$this->_pdf->Cell(40,4, utf8_decode($newDate),1,0,'L');
-			$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['hora_inicio'].' '.$this->modelo->datoss[$i]['hora_solucion']),1,0,'L');
+			$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['hora_inicio'].' - '.$this->modelo->datoss[$i]['hora_solucion']),1,0,'L');
 			$this->_pdf->Cell(20,4, utf8_decode($duracion),1,1,'L');
 
 

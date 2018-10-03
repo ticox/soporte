@@ -329,7 +329,7 @@ function mostrar_servicios_solucionados(fecha1,fecha2){
 			  }
 			  
 			  var duracion=horas+":"+minutos;
-			var newfecha = datos[i].fecha_solucion.split('-').reverse().join('/');
+			var newfecha = datos[i].fecha_inicio.split('-').reverse().join('/');
 			html+="<tr><td>" + (i+1); + "</td>";
 			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
 			html+="<td>" + res +"...</td>";

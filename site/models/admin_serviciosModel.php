@@ -63,7 +63,8 @@ class admin_serviciosModel extends Model
                   $this->_db->query($sql);
     }else{
       $target_path = "public/img/soluciones/";
-                  $nombre='solucion-'.$fotos['foto']['name'][0];
+      $randon=mt_rand(1,1000);
+                  $nombre='solucion-'.$randon.$fotos['foto']['name'][0];
                   $target_path = $target_path .$nombre;
                  echo $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','".$nombre."','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
                   $this->_db->query($sql);
@@ -103,7 +104,7 @@ public function buscar_servicio_solucionado($id_servicio){
 
    public function buscar_servicios_solucionados($nombre){
    
-$sql="select servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario where servicio.id_usuario=usuario.id_usuario and usuario.nombre like '$nombre%' and servicio.estatus='solucionado'";
+ $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and solucion_servicio.id_servicio=servicio.id_servicio and usuario.nombre like '$nombre%' and servicio.estatus='solucionado'";
 $datos = $this->_db->query($sql);
 return $datos->fetchall();
 }

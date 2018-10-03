@@ -304,7 +304,7 @@ function mostrar_servicios_solucionados(usuario){
 			html+="<th>Empresa</th>";
 			html+="<th>Usuario</th>";
 			html+="<th>Servicio</th>";
-			html+="<th>Fecha de Solicitud</th>";
+			html+="<th>Fecha de Solución</th>";
 			html+="<th>Hora</th>";
 			html+="<th>Estatus</th>";
 			html+="<th>Acciones</th>";
@@ -321,16 +321,18 @@ function mostrar_servicios_solucionados(usuario){
 			}	
 			for(var i = 0; i < datos.length; i++)
 			{	
-
-			var newfecha = datos[i].fecha.split('-').reverse().join('/');
+			var str = datos[i].pedido;
+			var res = str.slice(0, 50);
+			var newfecha = datos[i].fecha_inicio.split('-').reverse().join('/');
 			html+="<tr><td>" + (i+1); + "</td>";
 			html+="<td>" + datos[i].empresa + "</td>";
 			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
-			html+="<td>" + datos[i].pedido + "</td>";
+			html+="<td>" + res +"...</td>";
 			html+="<td>" + newfecha + "</td>";
 			html+="<td>" + datos[i].hora + "</td>";
 			html+="<td>" + datos[i].estatus + "</td>";
-			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a></td>";
+			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a>";
+			html+="<a href='javascript:null()'  data-toggle='modal' data-target='#modaleservicio' id='editar_servicio_s' data-id_servicio='"+datos[i].id_servicio+"'> <i class='glyphicon glyphicon-pencil'></i> Editar </a></td>";
 			}
 			
 			html+="</tbody> </table> </div> </div> </div>";
@@ -360,7 +362,7 @@ $(document).on('click', '#editar_servicio_s', function() {
 				var html="<div class='col-md-12'><b><center>Observacion: </center></b> </div>";
 				html+="<div class='col-md-12'><textarea id='observacionx' class='form-control'>"+datos.observacion+"</textarea></div>";
 				html+="<div class='col-md-12'><b>Fecha Solución</b></div>";
-				html+="<div class='col-md-12'><input type='date' id='fecha_sx' class='form-control' value='"+datos.fecha_solucion+"'></div>";
+				html+="<div class='col-md-12'><input type='date' id='fecha_sx' class='form-control' value='"+datos.fecha_inicio+"'></div>";
 				html+="<div class='col-md-6'><b>Hora inicio</b> </div> <div class='col-md-6'><b>Hora fin</b> </div>";
 				html+="<div class='col-md-6'><input id='hora_iniciox' class='form-control' value='"+datos.hora_inicio+"'></div> <div class='col-md-6'><input id='hora_finx' class='form-control' value='"+datos.hora_solucion+"'> <input type='hidden' id='id_solucion' class='form-control' value='"+datos.id_solucion+"'></div>";
 				//html+="<div class='col-md-12'><b><center>imagen solucion: </center></b> </div>";

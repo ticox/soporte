@@ -23,10 +23,12 @@ class servicioController extends Controller
 			$this->_view->setJs(array('principal'));
 			$this->_view->setCss(array('css','style'));
         	$this->_view->titulo = 'Pedido/Servicio - COTEDEM';
-
-        	$servicios=$this->_index->buscar_servicios_usuarios();
+            if(session::get('role')==1){
+        	$usuarios=$this->_index->buscar_usuarios();
         	
-        	$this->_view->servicio=$servicios;
+        	$this->_view->usuarios=$usuarios;
+            }
+
 			$this->_view->renderizar('index');
 
 							
@@ -36,7 +38,8 @@ class servicioController extends Controller
 	function registrar_servicio(){
     $this->_index->registrar_servicio($_POST,$_FILES);
 
-        /*$this->getLibrary('class.phpmailer');
+        if(session::get('role')!=1){
+        $this->getLibrary('class.phpmailer');
             
             $email_user = "soporte@cotedem.com";
             $email_password = "Cotedem@2018";
@@ -102,7 +105,8 @@ class servicioController extends Controller
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
-            }*/
+            }
+        }
 
             $this->redireccionar('servicio');
 

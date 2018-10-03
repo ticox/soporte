@@ -126,6 +126,7 @@ if(!Session::get('autenticado')){
     $this->redireccionar('admin_servicios');
 
     }
+    
 function buscar_informacion_correo(){
        echo json_encode( $this->_index->buscar_informacion_correo($_POST['id_servicio']));
     }
