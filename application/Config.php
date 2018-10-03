@@ -8,7 +8,7 @@ define('APP_SLOGAN', 'Soporte');
 define('APP_COMPANY', 'COTEDEM');
 define('APP_TLF', '');
 define('APP_EMAIL', '');
-define('SESSION_TIME', 1000000);
+define('SESSION_TIME', 60);
 define('HASH_KEY', '4f6a6d832be79');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
