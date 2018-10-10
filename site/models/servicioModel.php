@@ -6,13 +6,7 @@ class servicioModel extends Model
         parent::__construct();
     }
 
-
-
-    public function registrar_servicio($datos,$fotos){
-
-
-
-
+public function registrar_servicio($datos,$fotos){
 
 $software=0;
 $hardware=0;
@@ -34,7 +28,6 @@ $funcionamiento=1;
 if(isset($datos['otros'])){
 $otros=$datos['otrosrespuesta'];
 }
-
     if($fotos['foto']['name'][0]==''){
 
         if(session::get('role')==1){
@@ -45,11 +38,7 @@ $otros=$datos['otrosrespuesta'];
 
           $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','')";
             $this->_db->query($sql);
-
         }
-
-
-
 
     }else{
 
@@ -70,10 +59,7 @@ $otros=$datos['otrosrespuesta'];
                   //$obj_img->resize(234,135);
                   $obj_img->save($target_path);
 }
-
-
    }
-
 
    public function buscar_servicios_usuarios(){
 
@@ -81,9 +67,7 @@ $otros=$datos['otrosrespuesta'];
   
      $datos =  $this->_db->query($sql);
       return $datos->fetchall();
-
    }
-
 
 
 public function buscar_usuarios(){
@@ -92,7 +76,6 @@ public function buscar_usuarios(){
   
      $datos =  $this->_db->query($sql);
       return $datos->fetchall();
-
    }
 
    public function buscar_servicio_usuario($servicio,$estatus){
@@ -104,18 +87,11 @@ public function buscar_usuarios(){
     }else{
 
       $sql="select * from servicio where id_servicio='".$servicio."'";
-     $datos =  $this->_db->query($sql);
+      $datos =  $this->_db->query($sql);
 
     }
-
       return $datos->fetch();
    }
+}
 
-     
-
-
-   
-    
-
-
-}?>
+?>

@@ -39,9 +39,9 @@ abstract class Controller
                         
                         }
                             
-                //------------------------------log del sistema
+                //------------------------------log del sistema-----------------------------
 
-                       /* if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+                       if (!empty($_SERVER['HTTP_CLIENT_IP'])){
                                 $ip=$_SERVER['HTTP_CLIENT_IP'];
                             }else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
                             $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -49,7 +49,7 @@ abstract class Controller
                             $ip=$_SERVER['REMOTE_ADDR'];
                         }
                         $this->_ip=$ip;
-                        $this->_modelo->log($ip,new Request,$usuario);*/
+                        $this->_modelo->log($ip,new Request,$usuario);
    
     }
     

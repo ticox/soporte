@@ -40,6 +40,12 @@ if(!Session::get('autenticado')){
     }
 
 
+
+        function buscar_servicios_admin_solucionados(){
+       echo json_encode( $this->_index->buscar_servicios_admin_solucionados());
+    }
+
+
     function buscar_servicio_usuario(){
        echo json_encode( $this->_index->buscar_servicio_usuario($_POST['servicio']));
     }

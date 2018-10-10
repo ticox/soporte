@@ -5,17 +5,13 @@ class supervisorModel extends Model
     public function __construct() {
         parent::__construct();
     }
-
-
-
-
+    
    public function buscar_servicios_admin(){
 
  	 $sql="select servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario where servicio.id_usuario=usuario.id_usuario and servicio.estatus='pendiente'";
      $datos =  $this->_db->query($sql);
   
       return $datos->fetchall();
-
    }
 
    public function buscar_servicios_admin_solucionados(){
@@ -24,7 +20,6 @@ class supervisorModel extends Model
      $datos =  $this->_db->query($sql);
   
       return $datos->fetchall();
-
    }
 
    public function buscar_servicios_admin_solucionados_reporte(){
@@ -36,6 +31,15 @@ class supervisorModel extends Model
     $this->datoss = $datos->fetchall();
 
    }
+
+   public function buscar_x_fecha_reporte($fecha1,$fecha2){
+
+    $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.empresa from servicio, usuario, solucion_servicio where servicio.id_usuario=usuario.id_usuario and servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.empresa='".session::get('empresa')."' and solucion_servicio.fecha_solucion BETWEEN '".$fecha1."' and '".$fecha2."' order by (solucion_servicio.fecha_inicio) DESC";
+        $datos = $this->_db->query($sql);
+        $datos->setFetchMode(PDO::FETCH_ASSOC);
+       $this->datoss = $datos->fetchall();
+
+   }  
 
    
 

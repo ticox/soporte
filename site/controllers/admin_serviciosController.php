@@ -57,6 +57,13 @@ if(!Session::get('autenticado')){
     $this->_index->modificar_solucion_servicio($_POST);
     }
 
+    function eliminar_servicio_pendiente(){
+    $this->_index->eliminar_servicio_pendiente($_POST['id_servicio']);
+    }
+
+    function eliminar_solucion_servicio(){
+    $this->_index->eliminar_solucion_servicio($_POST['id_servicio']);
+    }
     
 
 
@@ -95,14 +102,14 @@ if(!Session::get('autenticado')){
             $phpmailer->IsSMTP();
             $phpmailer->SMTPAuth = true;
 
-            $phpmailer->setFrom($phpmailer->Username,$nombre);
+            $phpmailer->setFrom($phpmailer->Username,'Soporte COTEDEM');
             $phpmailer->AddAddress($correo);
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<spam style='color:#000;'>Estimado (a) <b>".$nombre."</b></spam>";
             $phpmailer->Body .= "<p> Nos permitimos indicar que su requierimiento de soporte, fue <i style='color:green;'> <b> Solucionado.</b> </i></p>";
             $phpmailer->Body .="<p> <b> Observación/Solución:</b> </p> <p>".$mensaje." </p>";
-             $phpmailer->Body .="<p>Si desea obtener mayor información de su soporte lo invitamos a ingresar en su usuario y verificar los detalles en sus solicitudes.</p>";
+             $phpmailer->Body .="<p>Si desea obtener mayor información de su soporte lo invitamos a ingresar su usuario y verificar los detalles en sus solicitudes. Haga clic aqui <a href='https://Cotedem.com/soporte/'> Sistema Soporte Cotedem.</a></p>";
              $phpmailer->Body .="<p>Sin mas que agregar, se despide el equipo de soporte de Cotedem Cia. Ltda.</p>";
              $phpmailer->Body .="<img src='https://cotedem.com/img/LogoCotedem.png' border='0' />";  
         
@@ -156,14 +163,14 @@ function buscar_informacion_correo(){
             $phpmailer->IsSMTP();
             $phpmailer->SMTPAuth = true;
 
-            $phpmailer->setFrom($phpmailer->Username,$nombre);
+            $phpmailer->setFrom($phpmailer->Username,'Soporte COTEDEM');
             $phpmailer->AddAddress($correo);
             $phpmailer->Subject =$asunto; 
 
             $phpmailer->Body .="<spam style='color:#000;'>Estimado (a) <b>".$nombre."</b></spam>";
             $phpmailer->Body .= "<p> Nos permitimos indicar que su requierimiento de soporte, fue <i style='color:green;'> <b> Solucionado.</b> </i></p>";
             $phpmailer->Body .="<p> <b> Observación/Solución:</b> </p> <p>".$mensaje." </p>";
-             $phpmailer->Body .="<p>Si desea obtener mayor información de su soporte lo invitamos a ingresar en su usuario y verificar los detalles en sus solicitudes.</p>";
+             $phpmailer->Body .="<p>Si desea obtener mayor información de su soporte lo invitamos a ingresar su usuario y verificar los detalles en sus solicitudes. Haga clic aqui <a href='https://Cotedem.com/soporte/'> Sistema Soporte Cotedem.</a></p>";
              $phpmailer->Body .="<p>Sin mas que agregar, se despide el equipo de soporte de Cotedem Cia. Ltda.</p>";
              $phpmailer->Body .="<img src='https://cotedem.com/img/LogoCotedem.png' border='0' />";  
         

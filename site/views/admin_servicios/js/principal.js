@@ -40,6 +40,66 @@ $(".gift2").hide();
     });  
 
 
+$("#cambiar_estatus_servicios").click(function() { 
+ 
+ if($('#observacion').val()!='' && $('#estatus').val()!='' && $('#fecha_inicio').val()!='' && $('#hora_inicio').val()!='' && $('#hora_fin').val()!=''){
+
+$("#cambiar_estatus_servicios").attr('disabled','disabled');
+alertify.success('Su cambio se esta enviando correctamente.');
+$("#cambiar_estatus_servicios").submit();
+}
+    });
+
+
+
+	$(document).on('click', '#eliminar_servicio_pendiente', function() {
+
+		var id_servicio=this.dataset.id_servicio;
+ 
+	 alertify.confirm( "¿Esta realmente seguro de eliminar este servicio?", function (e) {
+			    if (e) {
+			    	 $.post(base_url + 'admin_servicios/eliminar_servicio_pendiente',{
+			id_servicio:id_servicio
+			},function(){
+				alertify.alert("Servicio eliminado exitosamente");
+				setTimeout('document.location.reload()',1000);
+	           });
+			        
+			    } else {
+			       alertify.error('Ha cancelado la operación');
+			    }
+			}); 
+
+    });
+
+
+	$(document).on('click', '#eliminar_solucion_servicio', function() {
+		var id_servicio=this.dataset.id_servicio;
+  	alertify.confirm( "¿Esta realmente seguro de eliminar este servicio?", function (e) {
+			    if (e) {
+			    	 $.post(base_url + 'admin_servicios/eliminar_solucion_servicio',{
+			id_servicio:id_servicio
+			},function(){
+				alertify.alert("Servicio eliminado exitosamente");
+				setTimeout('document.location.reload()',1000);
+	           });
+			        
+			    } else {
+			       alertify.error('Ha cancelado la operación');
+			    }
+			}); 
+    });
+
+
+$("#pdf_detallado").click(function() { 
+
+	var id=$('#id_servicioxx').val();
+
+	document.location=base_url+'pdf/reporte_detallado2?id='+id;
+
+    });
+
+
  $(document).on('click', '#cambiar_estatus', function() {
 
 	var servicio=this.dataset.id_servicio;

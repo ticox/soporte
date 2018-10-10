@@ -1,8 +1,8 @@
 <div class="container-fluid">
 	<div class="row well">
-	<form id="form_agregar_cliente" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>servicio/registrar_servicio" >	
+	<form id="form_agregar_servicio" enctype="multipart/form-data" method="post" action="<?php echo BASE_URL ?>servicio/registrar_servicio" >	
 		<div class="col-md-2" style="padding-top: 1%;">
-
+					<input type="hidden" value="<?php echo session::get('role') ?>" id="id_role">
 					<center> <a class="bnt btn-default btn-xs" type="submit" href="<?php BASE_URL; ?>solicitudes"> <span class="glyphicon glyphicon-th-list"></span> Mis Solicitudes</a> </center>
 				</div>
 				<?php if(session::get('role')==1){ ?>
@@ -11,7 +11,7 @@
 					<select class="form-control" name="id_usuario" id="id_usuario" required="true">
 						<option value=''>--Seleccione--</option>
 						<?php for ($i=0; $i < count($this->usuarios); $i++): ?>
-                		<option value="<?php echo $this->usuarios[$i]['id_usuario'] ?>"><?php echo $this->usuarios[$i]['login'] ?></option>
+                		<option value="<?php echo $this->usuarios[$i]['id_usuario'] ?>"><?php echo $this->usuarios[$i]['nombre'].' '.$this->usuarios[$i]['apellido'] ?></option>
                 		<?php endfor; ?>
 					</select>
 				</div>

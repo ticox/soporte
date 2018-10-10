@@ -10,14 +10,27 @@ $("#divotros").hide();
 
 
  $("#enviar_solicitud").click(function() { 
- 
+ if($('#id_role').val()==1){
+
+ 	 if($('#servicio').val()!='' && $('#id_usuario').val()!=''){
+
+	document.getElementById('form_agregar_servicio').submit();
+	//$("#enviar_solicitud").submit();
+	$("#enviar_solicitud").attr('disabled','disabled');
+	alertify.success('Pedido de servicio enviado correctamente.');
+}
+
+ }else{
+
  if($('#servicio').val()!=''){
 
+
+document.getElementById('form_agregar_servicio').submit();
+//$("#enviar_solicitud").submit();
 $("#enviar_solicitud").attr('disabled','disabled');
 alertify.success('Pedido de servicio enviado correctamente.');
-$("#enviar_solicitud").submit();
 }
-    });  
+  }  });  
 
 
 

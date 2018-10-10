@@ -40,6 +40,15 @@ $(".gift2").hide();
     });  
 
 
+ $("#pdf_servicios_solucion").click(function() { 
+
+	//var id=$('#id_servicioxx').val();
+
+	document.location=base_url+'pdf/Reporte_x_empresa_s';
+
+    });
+
+
  $(document).on('click', '#cambiar_estatus', function() {
 
 	var servicio=this.dataset.id_servicio;
@@ -270,11 +279,13 @@ $(document).on("click", "#buscar_x_fecha", function(){
 
 
 function mostrar_servicios_solucionados(fecha1,fecha2){
-	$.post(base_url + 'supervisor/buscar_x_fecha',{
+
+	if($('#fecha1').val()=='' && $('#fecha2').val()=='' ){
+
+		$.post(base_url + 'supervisor/buscar_servicios_admin_solucionados',{
 		fecha1: fecha1,
 		fecha2: fecha2
 			},function(datos){
-			console.log(datos);
 			var html="<div class='table-responsive'>";
 			html+="<table class='table table-striped table-hover '><thead>";
 			html+="<tr class='default'>";
@@ -288,31 +299,29 @@ function mostrar_servicios_solucionados(fecha1,fecha2){
 			html+="</tr>";
 			html+="</thead>";
 			html+="<tbody>";
-		if(datos==""){
+		if(datos=="")
+		{
 			
 			html+="<tr><td colspan='8'> <b><center>No Se Encontraron Resultados</center></b></td></tr>";
 			html+="</tbody> </table> </div>";
 			$("#div_contenedor").html("");
 			$("#div_contenedor").html(html);
 			exit();
-			}	
+		}	
 			for(var i = 0; i < datos.length; i++)
 			{	
 			var str = datos[i].pedido;
 			var res = str.slice(0, 50);
+			var inicio = datos[i].hora_inicio;
+			var fin = datos[i].hora_solucion;
+			var inicioMinutos = parseInt(inicio.substr(3,2));
+			var inicioHoras = parseInt(inicio.substr(0,2));
+			var finMinutos = parseInt(fin.substr(3,2));
+			var finHoras = parseInt(fin.substr(0,2));
+			var transcurridoMinutos = finMinutos - inicioMinutos;
+			var transcurridoHoras = finHoras - inicioHoras;
 
-			  var inicio = datos[i].hora_inicio;
-			  var fin = datos[i].hora_solucion;
-			   var inicioMinutos = parseInt(inicio.substr(3,2));
-			  var inicioHoras = parseInt(inicio.substr(0,2));
-			  
-			 var finMinutos = parseInt(fin.substr(3,2));
-			  var finHoras = parseInt(fin.substr(0,2));
-
-			  var transcurridoMinutos = finMinutos - inicioMinutos;
-			  var transcurridoHoras = finHoras - inicioHoras;
-			  
-			  if (transcurridoMinutos < 0) {
+			if (transcurridoMinutos < 0) {
 			    transcurridoHoras--;
 			    transcurridoMinutos = 60 + transcurridoMinutos;
 			  }
@@ -320,15 +329,15 @@ function mostrar_servicios_solucionados(fecha1,fecha2){
 			  horas = transcurridoHoras.toString();
 			  minutos = transcurridoMinutos.toString();
 			  
-			  if (horas.length < 2) {
+			if (horas.length < 2) {
 			    horas = "0"+horas;
 			  }
 			  
-			  if (minutos.length < 2) {
+			if (minutos.length < 2) {
 			    minutos = "0"+minutos;
 			  }
-			  
-			  var duracion=horas+":"+minutos;
+
+			var duracion=horas+":"+minutos;
 			var newfecha = datos[i].fecha_inicio.split('-').reverse().join('/');
 			html+="<tr><td>" + (i+1); + "</td>";
 			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
@@ -344,16 +353,85 @@ function mostrar_servicios_solucionados(fecha1,fecha2){
 			$("#div_contenedor").html(html);
 				
 	           },"json");
+
+	}else if($('#fecha1').val()=='' || $('#fecha2').val()==''){
+			alertify.alert("Por favor llene ambas fechas.");
+	}else{
+	$.post(base_url + 'supervisor/buscar_x_fecha',{
+		fecha1: fecha1,
+		fecha2: fecha2
+			},function(datos){
+			var html="<div class='table-responsive'>";
+			html+="<table class='table table-striped table-hover '><thead>";
+			html+="<tr class='default'>";
+			html+="<th>#</th>";
+			html+="<th>Usuario</th>";
+			html+="<th>Servicio</th>";
+			html+="<th>Fecha de solución</th>";
+			html+="<th>Hora de atención</th>";
+			html+="<th>Duración</th>";
+			html+="<th>Acciones</th>";
+			html+="</tr>";
+			html+="</thead>";
+			html+="<tbody>";
+		if(datos=="")
+		{
+			
+			html+="<tr><td colspan='8'> <b><center>No Se Encontraron Resultados</center></b></td></tr>";
+			html+="</tbody> </table> </div>";
+			$("#div_contenedor").html("");
+			$("#div_contenedor").html(html);
+			exit();
+		}	
+			for(var i = 0; i < datos.length; i++)
+			{	
+			var str = datos[i].pedido;
+			var res = str.slice(0, 50);
+			var inicio = datos[i].hora_inicio;
+			var fin = datos[i].hora_solucion;
+			var inicioMinutos = parseInt(inicio.substr(3,2));
+			var inicioHoras = parseInt(inicio.substr(0,2));
+			var finMinutos = parseInt(fin.substr(3,2));
+			var finHoras = parseInt(fin.substr(0,2));
+			var transcurridoMinutos = finMinutos - inicioMinutos;
+			var transcurridoHoras = finHoras - inicioHoras;
+
+			if (transcurridoMinutos < 0) {
+			    transcurridoHoras--;
+			    transcurridoMinutos = 60 + transcurridoMinutos;
+			  }
+			  
+			  horas = transcurridoHoras.toString();
+			  minutos = transcurridoMinutos.toString();
+			  
+			if (horas.length < 2) {
+			    horas = "0"+horas;
+			  }
+			  
+			if (minutos.length < 2) {
+			    minutos = "0"+minutos;
+			  }
+
+			var duracion=horas+":"+minutos;
+			var newfecha = datos[i].fecha_inicio.split('-').reverse().join('/');
+			html+="<tr><td>" + (i+1); + "</td>";
+			html+="<td>" + datos[i].nombre +" "+datos[i].apellido+"</td>";
+			html+="<td>" + res +"...</td>";
+			html+="<td>" + newfecha + "</td>";
+			html+="<td>" + datos[i].hora_inicio+"-"+datos[i].hora_solucion+"</td>";
+			html+="<td>" + duracion + "</td>";
+			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a></td>";
+			}
+			
+			html+="</tbody> </table> </div>";
+			$("#div_contenedor").html("");
+			$("#div_contenedor").html(html);
+				
+	           },"json");
+	}
 };
 
-
-
-
-
 /*-----------------------------Cargar Imagen en el sistema--------------------------*/
-
-
-
 
 function archivo(input)
 {
@@ -367,7 +445,6 @@ function archivo(input)
     reader[i].onloadstart= function(){
 
       $('#list').after('<div id="cargarr'+this.numero+'" class="col-xs-6 col-sm-4 col-md-12 col-lg-2 ">img ==='+this.numero+'</div>' );
-
     }
     reader[i].onloadend= function(){
 
@@ -379,14 +456,10 @@ function archivo(input)
     }
     reader[i].readAsDataURL(input.files[i]);
   }
-
   console.log(reader);
-  
 }
 
-
 $(document).on("change", "#cargar_imagen", function(){
-
 
 archivo(this);
 });

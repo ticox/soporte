@@ -88,6 +88,15 @@ public function buscar_servicio_solucionado($id_servicio){
   
       return $datos->fetch();
 
+   } 
+
+   public function buscar_servicio_solucionado_reporte($id_servicio){
+
+  $sql="select servicio.*, solucion_servicio.*, usuario.nombre, usuario.apellido, usuario.correo from servicio, usuario, solucion_servicio where servicio.estatus='solucionado' and servicio.id_servicio=solucion_servicio.id_servicio and usuario.id_usuario=solucion_servicio.id_usuario_sol and servicio.id_servicio=$id_servicio";
+      $datos = $this->_db->query($sql);
+      $datos->setFetchMode(PDO::FETCH_ASSOC);
+    $this->datoss = $datos->fetch();
+
    }  
 
 
@@ -116,6 +125,20 @@ public function modificar_solucion_servicio($datos){
       $this->_db->query($sql);
       return 0;
    }
+
+public function eliminar_servicio_pendiente($id_servicio){
+   
+ $sql="DELETE FROM `servicio` WHERE id_servicio=$id_servicio";
+$datos = $this->_db->query($sql);
+return 0;
+}
+
+public function eliminar_solucion_servicio($id_servicio){
+   
+ $sql="DELETE FROM `solucion_servicio` WHERE id_servicio=$id_servicio";
+$datos = $this->_db->query($sql);
+return 0;
+}
     
 
    

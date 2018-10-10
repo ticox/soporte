@@ -102,6 +102,7 @@ class servicioController extends Controller
             $phpmailer->AddAttachment($mensaje, "attach1");
             $phpmailer->AddBCC("soporte@cotedem.com", "bcc1");
             $phpmailer->IsHTML(true);
+            $phpmailer->CharSet = 'UTF-8';
             $enviado = $phpmailer->Send();
             if($enviado) {
                 echo 'Email Enviado Exiosamente';
@@ -112,15 +113,10 @@ class servicioController extends Controller
 
     }
 
-
     function buscar_servicio_usuario(){
 
        echo json_encode( $this->_index->buscar_servicio_usuario($_POST['servicio'],$_POST['estatus']));
     }
-
-
-	
-	
 }
 
 

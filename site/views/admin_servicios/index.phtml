@@ -45,7 +45,7 @@
 	<?php  } else { ?>
 		<td class="online">Solucionado</td>
 			<?php  } ?>
-			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalcambiar" id="cambiar_estatus" data-id_servicio="<?php echo $this->servicio[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Cambiar Estatus </a></td>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalcambiar" id="cambiar_estatus" data-id_servicio="<?php echo $this->servicio[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Cambiar Estatus </a> <a href="#"  id="eliminar_servicio_pendiente" data-id_servicio="<?php echo $this->servicio[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-trash"> </i> Eliminar</a></td>
 		</tr>
 		<?php endfor; ?>
 	<?php  } ?>
@@ -100,25 +100,15 @@
 	<?php  } else { ?>
 		<td class="online">Solucionado</td>
 			<?php  } ?>
-			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-list"> </i> Detalles </a> <a href="javascript:null()"  data-toggle="modal" data-target="#modaleservicio" id="editar_servicio_s" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Editar </a></td>
+			<td><a href="javascript:null()"  data-toggle="modal" data-target="#modalservicio" id="detalles_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-list"> </i> Detalles </a> <a href="javascript:null()"  data-toggle="modal" data-target="#modaleservicio" id="editar_servicio_s" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-pencil"> </i> Editar </a> <a href="#" id="eliminar_solucion_servicio" data-id_servicio="<?php echo $this->servicio_r[$i]['id_servicio'] ?>"> <i class="glyphicon glyphicon-trash"> </i> Eliminar</a></td>
 		</tr>
 		<?php endfor; ?>
-		<?php  } ?>
-					  
-					  </tbody>
-					</table>
-				
-
-					
+		<?php  } ?>					  
+					</tbody>
+				</table>		
 			</div>
-
-
 		</div>
-
-
 	</div>
-
-
 <div class="modal fade" id="modalcambiar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -155,9 +145,10 @@
         </button>
       </div>
       <div class="modal-body" id="ver_servicio">
-         <h3> <center> Cargando... </center></h3>
+         <h3> <center>Cargando...</center></h3>
       </div>
       <div class="modal-footer">
+      	<button type="button" id="pdf_detallado" class="btn btn-default">Generar PDF</button>
         <button type="button" id="reenviar_correo" class="btn btn-default">Reenviar Correo</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
