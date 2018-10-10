@@ -122,11 +122,18 @@ class pdfController extends Controller
 			//print_r($this->modelo);
 			
 
+
+    		if($_GET['fecha1']=='' && $_GET['fecha2']=='' ){
+
     		$this->modelo->buscar_servicios_admin_solucionados_reporte();
 
-    	
+    	}
 
 
+    	if($_GET['fecha1']!='' && $_GET['fecha2']!=''){
+
+    		$this->modelo->buscar_x_fecha_reporte($_GET['fecha1'],$_GET['fecha2']);
+    	}
     	  
 			
 			$this->_pdf = new fpdf('L','mm','A4');

@@ -42,9 +42,10 @@ $(".gift2").hide();
 
  $("#pdf_servicios_solucion").click(function() { 
 
-	//var id=$('#id_servicioxx').val();
+     var fecha1=$('#fecha1').val();
+     var fecha2=$('#fecha2').val();
 
-	document.location=base_url+'pdf/Reporte_x_empresa_s';
+	document.location=base_url+'pdf/Reporte_x_empresa_s?fecha1='+fecha1+'&fecha2='+fecha2;
 
     });
 
