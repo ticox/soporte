@@ -187,21 +187,16 @@
           <a href="#!" class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></a>
         </li>
         <li>
-          <a href="#!" class="btn-Notifications-area">
-            <i class="glyphicon glyphicon-bell"></i>
-            <span class="badge"></span>
+          <a href="<?php echo BASE_URL ?>public/manual.pdf" target="_blank" class="btn-modal-help">
+            <i class="zmdi zmdi-help-outline">Ayuda</i>
           </a>
-        </li>
+        </li> 
+      
         <li>
-          <a href="#!" class="btn-search">
-            <i class="glyphicon glyphicon-search"></i>
+          <a href="<?php echo BASE_URL ?>public/manual.pdf" target="_blank" class="btn-modal-help">
+            <i class="zmdi zmdi-help-outlinee"></i>
           </a>
-        </li>
-        <li>
-          <a href="#!" class="btn-modal-help">
-            <i class="zmdi zmdi-help-outline"></i>
-          </a>
-        </li>
+        </li> 
       </ul>
     </nav>
     <!-- Content page -->

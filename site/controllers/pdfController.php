@@ -8,8 +8,9 @@ class pdfController extends Controller
         parent::__construct();
         $this->getLibrary('fpdf');
 		$this->modelo=$this->loadModel('supervisor');
-		
+		date_default_timezone_set('America/Lima');
         $this->_pdf = new fpdf;
+
     }
     
     public function index(){}
@@ -322,9 +323,13 @@ $this->detalles=$this->loadModel('admin_servicios');
 			$this->_pdf->Cell(65,4, utf8_decode('FECHA INICIO'),1,0,'C');
 			$this->_pdf->Cell(40,4, utf8_decode('HORA SOLUCION'),1,0,'C');
 			$this->_pdf->Cell(40,4, utf8_decode('DURACION'),1,1,'C');
+
+
 			
 			//$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['hora_inicio'].' - '.$this->modelo->datoss[$i]['hora_solucion']),1,0,'L');
 			//$this->_pdf->Cell(20,4, utf8_decode($duracion),1,1,'L');
+			//$this->_pdf->SetY(31); /* Set 20 Eje Y */
+			//$this->_pdf->SetX(70); /* Set 20 Eje Y */
 
 
 			
@@ -437,7 +442,8 @@ $this->detalles=$this->loadModel('admin_servicios');
 			
 			//$this->_pdf->Cell(25,4, utf8_decode($this->modelo->datoss[$i]['hora_inicio'].' - '.$this->modelo->datoss[$i]['hora_solucion']),1,0,'L');
 			//$this->_pdf->Cell(20,4, utf8_decode($duracion),1,1,'L');
-
+			//$this->_pdf->Cell(40,4, utf8_decode(BASE_URL.'public/img/problemas/'.$this->detalles->datoss['imagen_solucion'].''),1,1,'L');
+			//$this->_pdf->Image(BASE_URL.'public/img/soluciones/'.$this->detalles->datoss['imagen_solucion'], 50 ,60, 200 , 100);
 
 			
 			//$this->_pdf->Cell(20,4, utf8_decode($total_horas_de_servicio),1,1,'L');

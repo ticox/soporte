@@ -95,7 +95,9 @@ $("#pdf_detallado").click(function() {
 
 	var id=$('#id_servicioxx').val();
 
-	document.location=base_url+'pdf/reporte_detallado2?id='+id;
+	window.open(base_url+'pdf/reporte_detallado2?id='+id, '_blank');
+
+	//document.location=base_url+'pdf/reporte_detallado2?id='+id;
 
     });
 

@@ -79,7 +79,7 @@ if(!Session::get('autenticado')){
 
      $this->getLibrary('class.phpmailer');
             
-            $email_user = "info@cotedem.com";
+           $email_user = "info@cotedem.com";
             $email_password = "Cotedem@2018";
             $asunto = "Respuesta a su solicitud de soporte";
             $nombre = $_POST['nombre'];
