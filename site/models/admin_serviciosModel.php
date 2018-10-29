@@ -59,22 +59,44 @@ class admin_serviciosModel extends Model
     print_r($datos);
     if($fotos['foto']['name'][0]==''){
 
-      echo $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
+       $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','','','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
                   $this->_db->query($sql);
     }else{
-      $target_path = "public/img/soluciones/";
+     /* $target_path = "public/img/soluciones/";
       $randon=mt_rand(1,1000);
                   $nombre='solucion-'.$randon.$fotos['foto']['name'][0];
                   $target_path = $target_path .$nombre;
-                 echo $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','".$nombre."','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
+                 $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','".$nombre."','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
                   $this->_db->query($sql);
                   move_uploaded_file($fotos['foto']['tmp_name'][0], $target_path); 
                   $obj_img = new SimpleImage();
                   $obj_img->load($target_path);
                   //$obj_img->resize(234,135);
+                 $obj_img->save($target_path);*/
+
+
+  $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','','','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
+                  $this->_db->query($sql);
+                  $id_solucion=$this->_db->lastInsertId();
+
+
+ for ($i=0; $i < 3 ; $i++)
+            { 
+                  $target_path = "public/img/soluciones/";
+                  $nombre=uniqid('solucion').$fotos['foto']['name'][$i];
+                  $target_path = $target_path .$nombre;
+                   $sql2="update solucion_servicio SET imagen_solucion".$i."='".$nombre."' WHERE id_solucion='$id_solucion'";
+                  $this->_db->query($sql2);
+                  move_uploaded_file($fotos['foto']['tmp_name'][$i], $target_path);
+                  $obj_img = new SimpleImage();
+                  $obj_img->load($target_path);
+                  //$obj_img->resize(234,135);
                   $obj_img->save($target_path);
+            }
+
+
 }
-     echo $sql2="update servicio SET estatus='".$datos['estatus']."' WHERE id_servicio='".$datos['id_servicio']."'";
+      $sql2="update servicio SET estatus='".$datos['estatus']."' WHERE id_servicio='".$datos['id_servicio']."'";
       $this->_db->query($sql2);
       return 0;
    }

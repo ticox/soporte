@@ -42,7 +42,38 @@ $otros=$datos['otrosrespuesta'];
 
     }else{
 
-      $target_path = "public/img/problemas/";
+
+      if(session::get('role')==1){
+                  $sql="insert into servicio values('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."' ,'".$otros."' , curdate() , curtime(),'".$datos['id_usuario']."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','','','')";
+                 $this->_db->query($sql);
+                 }else{
+                  $sql="insert into servicio values('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."' ,'".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','','','')";
+                 $this->_db->query($sql);
+                 }
+
+                  $id_servicio=$this->_db->lastInsertId();
+
+
+ for ($i=0; $i < 3 ; $i++)
+            { 
+                  $target_path = "public/img/problemas/";
+                  $nombre=uniqid('problema').$fotos['foto']['name'][$i];
+                  $target_path = $target_path .$nombre;
+                   $sql2="update servicio SET imagen_pedido".$i."='".$nombre."' WHERE id_servicio='$id_servicio'";
+                  $this->_db->query($sql2);
+                  move_uploaded_file($fotos['foto']['tmp_name'][$i], $target_path);
+                  $obj_img = new SimpleImage();
+                  $obj_img->load($target_path);
+                  //$obj_img->resize(234,135);
+                  $obj_img->save($target_path);
+            }
+
+
+}
+
+
+
+   /*   $target_path = "public/img/problemas/";
                   $randon=mt_rand(1,1000);
                   $nombre='problema-'.$randon.$fotos['foto']['name'][0];
                   $target_path = $target_path .$nombre;
@@ -58,7 +89,7 @@ $otros=$datos['otrosrespuesta'];
                   $obj_img->load($target_path);
                   //$obj_img->resize(234,135);
                   $obj_img->save($target_path);
-}
+}*/
    }
 
    public function buscar_servicios_usuarios(){

@@ -120,9 +120,16 @@ var estatus=this.dataset.estatus;
 			
 			html+="</tbody> </table>";
 			html+="</div>";
-			if(datos.imagen_pedido!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			if(datos.imagen_pedido0!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido0+"' ></center></div>";
 			}
+			if(datos.imagen_pedido1!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido1+"' ></center></div>";
+			}
+			if(datos.imagen_pedido2!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido2+"' ></center></div>";
+			}
+
 
 
 			if(datos.estatus=="solucionado"){
@@ -142,8 +149,14 @@ var estatus=this.dataset.estatus;
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_inicio.split('-').reverse().join('/');
-       		if(datos.imagen_solucion!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+       		if(datos.imagen_solucion0!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion0+"' ></center></div>";
+			}
+			if(datos.imagen_solucion1!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion1+"' ></center></div>";
+			}
+			if(datos.imagen_solucion2!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion2+"' ></center></div>";
 			}
 
 			inicio = datos.hora_inicio;

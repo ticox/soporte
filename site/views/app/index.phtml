@@ -227,10 +227,10 @@
 		</tr>
 		<tr>
 	
-		<td>TOTAL</td>
-		<td>HOY</td>
-		<td>ESTÁ SEMANA</td>
-		<td>ESTE MES</td>
+		<td>Total</td>
+		<td>Hoy</td>
+		<td>Está Semana</td>
+		<td>Este Mes</td>
 		</tr>
 		<tr>
 	
@@ -240,18 +240,18 @@
 		<td><?php echo $this->cont['mes']['num'] ?></td>
 		</tr>
 
-		<tr><td id="log_cen" colspan="7">log del sistema</td></tr>
+		<tr><td id="log_cen" colspan="7">Log del sistema - Ultimos 100 Registros</td></tr>
 		<tr>
-		<td>IP</td>
-		<td>ID_USUARIO</td>
-		<td>LOGIN</td>
-		<td>CONTROLADOR</td>
-		<td>METODO</td>
-		<td>FECHA</td>
-		<td>HORA</td>
+		<td>Ip</td>
+		<td>ID Usuario</td>
+		<td>Login</td>
+		<td>Controlador</td>
+		<td>Metodo</td>
+		<td>Fecha</td>
+		<td>Hora</td>
 		</tr>
-
-		<?php for ($i=0; $i < count($this->logs) ; $i++): ?>
+<!-- count($this->logs) -->
+		<?php for ($i=0; $i < 100 ; $i++): ?>
 
 		<tr>
 		<td><?php echo $this->logs[$i]['ip'] ?></td>

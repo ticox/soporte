@@ -24,7 +24,7 @@ class appController extends Controller
         }
 			$this->_view->setJs(array('js','jscolor'));
 			$this->_view->setCss(array('css'));
-        	$this->_view->titulo = 'menus';
+      $this->_view->titulo = 'Panel de Administración - COTEDEM';
 
         	$menu=$this->app->traer_menus();
         	$role=$this->app->traer_roles();

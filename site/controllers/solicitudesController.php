@@ -22,7 +22,7 @@ class solicitudesController extends Controller
         
 			$this->_view->setJs(array('principal'));
 			$this->_view->setCss(array('css','style'));
-        	$this->_view->titulo = 'Pedido/Servicio - COTEDEM';
+        	$this->_view->titulo = 'Mis Solicitudes- COTEDEM';
 
         	$servicios=$this->_index->buscar_servicios_usuarios();
         	

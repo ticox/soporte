@@ -43,10 +43,10 @@ $(".gift2").hide();
 $("#cambiar_estatus_servicios").click(function() { 
  
  if($('#observacion').val()!='' && $('#estatus').val()!='' && $('#fecha_inicio').val()!='' && $('#hora_inicio').val()!='' && $('#hora_fin').val()!=''){
-
+document.getElementById('form_cambiar_estatus').submit();
 $("#cambiar_estatus_servicios").attr('disabled','disabled');
 alertify.success('Su cambio se esta enviando correctamente.');
-$("#cambiar_estatus_servicios").submit();
+
 }
     });
 
@@ -160,13 +160,19 @@ $("#pdf_detallado").click(function() {
 			
 			html+="</tbody> </table>";
 			html+="</div>";
-			if(datos.imagen_pedido!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			if(datos.imagen_pedido0!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido0+"' ></center></div>";
+			}
+			if(datos.imagen_pedido1!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido1+"' ></center></div>";
+			}
+			if(datos.imagen_pedido2!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido2+"' ></center></div>";
 			}
 
 			html+="<i><b>Observaciones/Actividades:</b></i>";
 			html+="<textarea id='observacion' name='observacion' class='form-control' placeholder='Agregue la observacion aqui...' required='true'></textarea>";
-			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' id='cargar_imagen' name='foto[]' capture='camera'> <br>";
+			html+="<br><p><b>Adjuntar imagen/Foto:</b><input type='file' accept='image/*' multiple='multiple' id='cargar_imagen' name='foto[]' capture='camera'> <br>";
 			html+="<div id='list' class='col-md-12 titulo-img'><center> <h4> Previsualización </h4> </center></div><br>"; 
 			html+="<i><b>Cambiar Estatus:</b></i>";
 			html+="<select id='estatus' name='estatus' class='form-control' required='true'> <option value=''>--Seleccione--</option> <option value='pendiente'>Pendiente</option> <option value='solucionado'>Solucionado</option> </select>"
@@ -275,8 +281,14 @@ var servicio=this.dataset.id_servicio;
 			
 			html+="</tbody> </table>";
 			html+="</div>";
-			if(datos.imagen_pedido!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido+"' ></center></div>";
+			if(datos.imagen_pedido0!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido0+"' ></center></div>";
+			}
+			if(datos.imagen_pedido1!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido1+"' ></center></div>";
+			}
+			if(datos.imagen_pedido2!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido2+"' ></center></div>";
 			}
 
 
@@ -297,8 +309,14 @@ var servicio=this.dataset.id_servicio;
 			if(datos.estatus=="solucionado"){
 			
 			var newfecha = datos.fecha_inicio.split('-').reverse().join('/');
-       		if(datos.imagen_solucion!=''){
-       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion+"' ></center></div>";
+       		if(datos.imagen_solucion0!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion0+"' ></center></div>";
+			}
+			if(datos.imagen_solucion1!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion1+"' ></center></div>";
+			}
+			if(datos.imagen_solucion2!=''){
+       		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/soluciones/"+datos.imagen_solucion2+"' ></center></div>";
 			}
 
 			inicio = datos.hora_inicio;
@@ -394,7 +412,8 @@ function mostrar_servicios_solucionados(usuario){
 			html+="<td>" + datos[i].hora + "</td>";
 			html+="<td>" + datos[i].estatus + "</td>";
 			html+="<td><a href='javascript:null()' data-toggle='modal' data-target='#modalservicio' id='detalles_servicio' data-id_servicio="+datos[i].id_servicio+"><span class='glyphicon glyphicon-list'></span>Detalles</a>";
-			html+="<a href='javascript:null()'  data-toggle='modal' data-target='#modaleservicio' id='editar_servicio_s' data-id_servicio='"+datos[i].id_servicio+"'> <i class='glyphicon glyphicon-pencil'></i> Editar </a></td>";
+			html+="<a href='javascript:null()'  data-toggle='modal' data-target='#modaleservicio' id='editar_servicio_s' data-id_servicio='"+datos[i].id_servicio+"'> <i class='glyphicon glyphicon-pencil'></i> Editar </a>";
+			html+="<a href='javascript:null()' id='eliminar_servicio_pendiente' data-id_servicio='"+datos[i].id_servicio+"'> <span class='glyphicon glyphicon-trash'></span>Eliminar</a></td>";
 			}
 			
 			html+="</tbody> </table> </div> </div> </div>";

@@ -22,7 +22,7 @@ if(!Session::get('autenticado')){
 			
 			$this->_view->setJs(array('principal'));
 			$this->_view->setCss(array('css','style'));
-        	$this->_view->titulo = 'Pedido/Servicio - COTEDEM';
+        	$this->_view->titulo = 'Supervisor - COTEDEM';
 
         	$servicios=$this->_index->buscar_servicios_admin();
             $servicio_r=$this->_index->buscar_servicios_admin_solucionados();

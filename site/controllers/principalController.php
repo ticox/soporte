@@ -20,7 +20,7 @@ class principalController extends Controller
 			
 			$this->_view->setJs(array('principal','jquery.montage'));
 			$this->_view->setCss(array('css','style'));
-        	$this->_view->titulo = 'Inicio';
+        	$this->_view->titulo = 'SOPORTE - COTEDEM';
         	
         	
 			$this->_view->renderizar('index');

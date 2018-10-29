@@ -96,7 +96,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title> SOPORTE - COTEDEM </title>
+  <title><?php if(isset($this->titulo)) echo $this->titulo; ?></title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
