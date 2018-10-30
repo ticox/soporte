@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 29-10-2018 a las 15:11:24
+-- Tiempo de generación: 30-10-2018 a las 12:13:06
 -- Versión del servidor: 5.6.41-84.1
 -- Versión de PHP: 5.6.30
 
@@ -1672,7 +1672,100 @@ INSERT INTO `log` (`id`, `id_usuario`, `ip`, `controlador`, `metodo`, `fecha`, `
 (1625, 1, '181.199.32.2', 'admin_servicios', 'buscar_servicio_solucionado', '2018-10-29', '16:58:02'),
 (1626, 1, '181.199.32.2', 'admin_servicios', 'buscar_servicio_solucionado', '2018-10-29', '16:58:10'),
 (1627, 1, '181.199.32.2', 'admin_servicios', 'buscar_servicio_solucionado', '2018-10-29', '16:58:21'),
-(1628, 1, '181.199.32.2', 'principal', 'index', '2018-10-29', '16:58:32');
+(1628, 1, '181.199.32.2', 'principal', 'index', '2018-10-29', '16:58:32'),
+(1629, 1, '181.199.32.2', 'app', 'index', '2018-10-29', '17:32:51'),
+(1630, 1, '181.199.32.2', 'app', 'buscar_usuario', '2018-10-29', '17:33:03'),
+(1631, 1, '181.199.32.2', 'app', 'buscar_usuario', '2018-10-29', '17:33:03'),
+(1632, 1, '181.199.32.2', 'app', 'buscar_usuario', '2018-10-29', '17:33:03'),
+(1633, 1, '181.199.32.2', 'app', 'buscar_usuario', '2018-10-29', '17:33:04'),
+(1634, NULL, '186.46.62.21', 'login', 'index', '2018-10-29', '17:35:13'),
+(1635, 3, '186.46.62.21', 'login', 'index', '2018-10-29', '17:35:13'),
+(1636, 3, '186.46.62.21', 'principal', 'index', '2018-10-29', '17:35:13'),
+(1637, 3, '186.46.62.21', 'servicio', 'index', '2018-10-29', '17:35:16'),
+(1638, 3, '186.46.62.21', 'solicitudes', 'index', '2018-10-29', '17:35:17'),
+(1639, 3, '186.46.62.21', 'supervisor', 'index', '2018-10-29', '17:35:26'),
+(1640, 3, '186.46.62.21', 'supervisor', 'buscar_x_fecha', '2018-10-29', '17:36:33'),
+(1641, 3, '186.46.62.21', 'supervisor', 'buscar_x_fecha', '2018-10-29', '17:36:41'),
+(1642, 3, '186.46.62.21', 'login', 'cerrar', '2018-10-29', '17:36:53'),
+(1643, NULL, '186.46.62.21', 'login', 'index', '2018-10-29', '17:36:54'),
+(1644, NULL, '181.199.32.2', 'principal', 'index', '2018-10-30', '07:49:17'),
+(1645, NULL, '181.199.32.2', 'login', 'index', '2018-10-30', '07:49:18'),
+(1646, NULL, '181.199.32.2', 'login', 'index', '2018-10-30', '07:49:29'),
+(1647, 70, '181.199.32.2', 'login', 'index', '2018-10-30', '07:49:29'),
+(1648, 70, '181.199.32.2', 'principal', 'index', '2018-10-30', '07:49:29'),
+(1649, 70, '181.199.32.2', 'supervisor', 'index', '2018-10-30', '07:49:32'),
+(1650, NULL, '181.199.32.2', 'login', 'index', '2018-10-30', '07:49:52'),
+(1651, NULL, '181.199.32.2', 'login', 'index', '2018-10-30', '07:50:05'),
+(1652, 70, '181.199.32.2', 'login', 'index', '2018-10-30', '07:50:06'),
+(1653, 70, '181.199.32.2', 'principal', 'index', '2018-10-30', '07:50:07'),
+(1654, 70, '181.199.32.2', 'supervisor', 'index', '2018-10-30', '07:50:10'),
+(1655, 70, '181.199.32.2', 'supervisor', 'buscar_x_fecha', '2018-10-30', '07:50:21'),
+(1656, 70, '181.199.32.2', 'supervisor', 'buscar_x_fecha', '2018-10-30', '07:50:24'),
+(1657, 70, '181.199.32.2', 'pdf', 'reporte_x_empresa', '2018-10-30', '07:50:30'),
+(1658, 70, '181.199.32.2', 'pdf', 'reporte_x_empresa_s', '2018-10-30', '07:50:35'),
+(1659, NULL, '186.46.62.21', 'login', 'index', '2018-10-30', '10:13:46'),
+(1660, 78, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:37:34'),
+(1661, 78, '190.63.18.14', 'login', 'index', '2018-10-30', '12:37:35'),
+(1662, 78, '190.63.18.14', 'principal', 'index', '2018-10-30', '12:37:37'),
+(1663, 78, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:37:40'),
+(1664, 78, '190.63.18.14', 'login', 'cerrar', '2018-10-30', '12:37:45'),
+(1665, NULL, '190.63.18.14', 'login', 'index', '2018-10-30', '12:37:46'),
+(1666, NULL, '190.63.18.14', 'login', 'index', '2018-10-30', '12:37:51'),
+(1667, 2, '190.63.18.14', 'login', 'index', '2018-10-30', '12:37:56'),
+(1668, 2, '190.63.18.14', 'principal', 'index', '2018-10-30', '12:38:04'),
+(1669, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:38:08'),
+(1670, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:38:30'),
+(1671, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:39:45'),
+(1672, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:39:45'),
+(1673, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:39:57'),
+(1674, 2, '190.63.18.14', 'servicio', 'registrar_servicio', '2018-10-30', '12:40:27'),
+(1675, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:40:27'),
+(1676, 2, '190.63.18.14', 'servicio', 'registrar_servicio', '2018-10-30', '12:42:11'),
+(1677, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:42:12'),
+(1678, 2, '190.63.18.14', 'app', 'index', '2018-10-30', '12:42:33'),
+(1679, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:42:59'),
+(1680, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:43:00'),
+(1681, 2, '190.63.18.14', 'app', 'verificar_login', '2018-10-30', '12:43:21'),
+(1682, 2, '190.63.18.14', 'app', 'guardar_usuario', '2018-10-30', '12:43:30'),
+(1683, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:43:35'),
+(1684, 2, '190.63.18.14', 'servicio', 'registrar_servicio', '2018-10-30', '12:44:09'),
+(1685, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:44:09'),
+(1686, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:44:12'),
+(1687, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:44:16'),
+(1688, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:45:05'),
+(1689, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:45:07'),
+(1690, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:45:10'),
+(1691, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:46:02'),
+(1692, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:46:06'),
+(1693, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:46:10'),
+(1694, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:47:37'),
+(1695, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:47:40'),
+(1696, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:47:44'),
+(1697, 2, '190.63.18.14', 'app', 'index', '2018-10-30', '12:48:04'),
+(1698, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:14'),
+(1699, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:14'),
+(1700, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:14'),
+(1701, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:17'),
+(1702, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:17'),
+(1703, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:17'),
+(1704, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:18'),
+(1705, 2, '190.63.18.14', 'app', 'buscar_usuario', '2018-10-30', '12:48:19'),
+(1706, 2, '190.63.18.14', 'app', 'editar_usuario', '2018-10-30', '12:48:30'),
+(1707, 2, '190.63.18.14', 'app', 'buscar_roles', '2018-10-30', '12:48:31'),
+(1708, 2, '190.63.18.14', 'app', 'modificar_usuario', '2018-10-30', '12:48:39'),
+(1709, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:48:42'),
+(1710, 2, '190.63.18.14', 'servicio', 'registrar_servicio', '2018-10-30', '12:49:19'),
+(1711, 2, '190.63.18.14', 'servicio', 'index', '2018-10-30', '12:49:20'),
+(1712, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:49:22'),
+(1713, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:49:28'),
+(1714, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:50:22'),
+(1715, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:50:23'),
+(1716, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:50:28'),
+(1717, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:52:09'),
+(1718, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:52:10'),
+(1719, 2, '190.63.18.14', 'admin_servicios', 'buscar_servicio_usuario', '2018-10-30', '12:52:29'),
+(1720, 2, '190.63.18.14', 'admin_servicios', 'cambiar_estatus_servicio', '2018-10-30', '12:54:29'),
+(1721, 2, '190.63.18.14', 'admin_servicios', 'index', '2018-10-30', '12:54:30');
 
 -- --------------------------------------------------------
 
@@ -1842,7 +1935,7 @@ INSERT INTO `servicio` (`id_servicio`, `pedido`, `software`, `hardware`, `funcio
 (78, 'Por favor solicito ayuda con el mantenimiento de software en mi equipo.', 1, 0, 0, '0', '2018-10-18', '07:45:39', 77, '', '', 'solucionado', ''),
 (79, 'Por favor solicito ayuda con el mantenimiento de software en mi equipo.', 1, 0, 0, '0', '2018-10-18', '08:05:14', 74, '', '', 'solucionado', ''),
 (80, 'Por favor solicito ayuda con el mantenimiento de software en mi equipo.', 1, 0, 0, '0', '2018-10-18', '08:35:50', 81, '', '', 'solucionado', ''),
-(81, 'revision de mi equipo, esta lento', 1, 0, 0, '0', '2018-10-18', '11:38:28', 19, '2018-10-18', '12:40', 'pendiente', ''),
+(81, 'revision de mi equipo, esta lento', 1, 0, 0, '0', '2018-10-18', '11:38:28', 19, '2018-10-18', '12:40', 'solucionado', ''),
 (82, 'Por favor la elaboracion definitiva del inventario de equipos  de todas las areas.', 0, 0, 0, '0', '2018-10-18', '11:52:10', 19, '', '', 'pendiente', ''),
 (83, 'favor Dario  realizar cronograma para mantenimiento de equipos de toda la empresa, incluido el servidor. Muchas gracias\r\n', 0, 0, 0, '0', '2018-10-18', '11:53:21', 19, '', '', 'pendiente', ''),
 (84, 'Favor configuracion de impresora en area de RR.HH.\r\n', 0, 0, 0, '0', '2018-10-18', '11:58:39', 19, '', '', 'solucionado', ''),
@@ -1855,17 +1948,21 @@ INSERT INTO `servicio` (`id_servicio`, `pedido`, `software`, `hardware`, `funcio
 (91, 'Ayuda con la restauración y configuración del equipo de Danny Espinosa.', 0, 0, 0, '0', '2018-10-19', '13:45:14', 78, '', '', 'solucionado', ''),
 (92, 'Favor incluir dentro de la base de datos a los siguientes correos de la gente de Siemens\r\n \r\n-          paul.abad@siemens.com\r\n-          maria.urbina@siemens.com', 0, 0, 0, '0', '2018-10-21', '19:49:49', 78, '', '', 'solucionado', ''),
 (93, 'Por favor tu ayuda instalando la pantalla a Karla Villacis y la camara web para video conferencia. ', 0, 0, 0, 'Instalación de equipos', '2018-10-21', '20:03:23', 29, '2018-10-22', '17:00', 'solucionado', ''),
-(94, 'LA COMPUTADORA DE MEDARDO MOYA SE A REINICIADO TRES VECES EN EL DIA, Y AHORA SE QUEDO EN NEGRO Y NO HAY COMO PRENDERLA.', 0, 0, 0, '', '2018-10-22', '15:52:32', 3, '2018-10-23', '', 'pendiente', ''),
+(94, 'LA COMPUTADORA DE MEDARDO MOYA SE A REINICIADO TRES VECES EN EL DIA, Y AHORA SE QUEDO EN NEGRO Y NO HAY COMO PRENDERLA.', 0, 0, 0, '', '2018-10-22', '15:52:32', 3, '2018-10-23', '', 'solucionado', ''),
 (95, 'Su ayuda revisando mi word ya que se presenta un mensaje en el mismo', 0, 0, 0, '0', '2018-10-23', '08:43:03', 97, '', '', 'solucionado', ''),
 (96, 'Ayuda con la instalacion de los programas de Microsoft Project y Microsoft visio', 0, 0, 0, '0', '2018-10-23', '09:12:27', 17, '', '', 'solucionado', ''),
 (97, 'Tu ayuda para revisar el logo del sistema para facturacion electronica sobre el sistema ', 0, 0, 0, '0', '2018-10-23', '11:09:04', 29, '', '', 'solucionado', ''),
 (98, 'Tu ayuda revisando mi pie de firma para que no se pixele o ampliee al momento de llegar a los clientes por favor. ', 0, 0, 0, '0', '2018-10-23', '11:10:52', 56, '', '', 'solucionado', ''),
 (99, 'Tu ayuda configurando la cuenta de correo a José Gabriel para que pueda revisar los correos en su celular. ', 0, 0, 0, '0', '2018-10-23', '11:11:41', 56, '', '', 'pendiente', ''),
-(100, 'Inconvenientes con el biometrico sin informacion en el mismo, ya le reporte por watsap', 0, 0, 0, '', '2018-10-29', '11:34:11', 3, '2018-10-29', '', 'pendiente', ''),
+(100, 'Inconvenientes con el biometrico sin informacion en el mismo, ya le reporte por watsap', 0, 0, 0, '', '2018-10-29', '11:34:11', 3, '2018-10-29', '', 'solucionado', ''),
 (101, 'Tu ayuda habilitando una tarjeta de acceso a las oficinas. ', 0, 0, 0, '0', '2018-10-29', '12:51:44', 47, '', '', 'solucionado', ''),
 (102, 'Tu ayuda revisando el acceso al sistema ya que el mismo se bloquea en conexión al sistema SBS', 0, 0, 0, '0', '2018-10-29', '12:52:23', 45, '', '', 'solucionado', ''),
 (103, 'Tu ayuda revisando mi computador ya que me muestra mensajes sobre la licencia del mismo ', 0, 0, 0, '0', '2018-10-29', '12:53:56', 73, '', '', 'solucionado', ''),
-(104, 'Su ayuda con la revisión de mi equipo ya que al momento aún persiste de inconvenientes en el Outlook. ', 0, 0, 0, '0', '2018-10-29', '13:38:10', 77, '', '', 'solucionado', '');
+(104, 'Su ayuda con la revisión de mi equipo ya que al momento aún persiste de inconvenientes en el Outlook. ', 0, 0, 0, '0', '2018-10-29', '13:38:10', 77, '', '', 'solucionado', ''),
+(105, 'Tu ayuda eliminando el redireccionamiento de mi cuenta de correo. ', 0, 0, 0, '0', '2018-10-30', '10:40:27', 58, '', '', 'solucionado', ''),
+(106, 'Su ayuda con la revisión de los permisos y usuarios existentes sobre el equipo biometrico ', 0, 0, 0, '0', '2018-10-30', '10:42:11', 19, '', '', 'solucionado', ''),
+(107, 'Tu ayuda inicializando el equipo Dell asignado a mi persona y respaldando la información del usuario anterior. ', 0, 0, 0, '0', '2018-10-30', '10:44:09', 104, '', '', 'solucionado', ''),
+(108, 'Por favor su ayuda corrigiendo mi nombre en el buzón de correo sobre outlook', 0, 0, 0, '0', '2018-10-30', '10:49:19', 17, '', '', 'solucionado', '');
 
 -- --------------------------------------------------------
 
@@ -1968,7 +2065,14 @@ INSERT INTO `solucion_servicio` (`id_solucion`, `observacion`, `fecha_solucion`,
 (90, 'Se procede con la revisión y actualización del error mostrado en el equipo ', '2018-10-29', '10:20', 103, '', '2018-10-29', '10:00', 2),
 (91, 'Se procede con la revisión, al momento se establece comunicación mediante la red inalámbrica, se realizará una nueva revisión ya que el equipo esta siendo bloqueado por alguna politica interna de comunicaciones. ', '2018-10-29', '12:00', 102, '', '2018-10-29', '11:45', 2),
 (92, 'Se procede con la activación de la tarjeta de acceso a las oficinas del piso 8', '2018-10-29', '11:30', 101, '', '2018-10-29', '11:15', 2),
-(93, 'Se procede con la revisión del equipo, se realiza un reinicio a fabrica del software en el cual posterior a la restauración y colocación del office se vuelve a presentar el inconveniente. \r\nSe procede con la reinstalación de otra versión de office, en la cual en la instalación de office este funciona con normalidad, se restaura la información del usuario en el equipo. \r\nEn oficina se instala las impresoras y demás configuraciones propias del equipo. \r\n', '2018-10-29', '23:00', 104, '', '2018-10-24', '19:00', 2);
+(93, 'Se procede con la revisión del equipo, se realiza un reinicio a fabrica del software en el cual posterior a la restauración y colocación del office se vuelve a presentar el inconveniente. \r\nSe procede con la reinstalación de otra versión de office, en la cual en la instalación de office este funciona con normalidad, se restaura la información del usuario en el equipo. \r\nEn oficina se instala las impresoras y demás configuraciones propias del equipo. \r\n', '2018-10-29', '23:00', 104, '', '2018-10-24', '19:00', 2),
+(94, 'Se procede con la revisión y se verifica que el equipo servidor se encontraba apagado por posible falla eléctrica, al mismo se lo inicializa y se verifica el funcionamiento del aplicativo, el cual se restaura con normalidad. ', '2018-10-30', '16:20', 100, '', '2018-10-29', '16:00', 2),
+(95, 'Se procede con la eliminación del reenvío de correo que mantenía la cuenta de correo. ', '2018-10-30', '11:50', 105, '', '2018-10-30', '11:40', 2),
+(96, 'Se procede con la revisión de los usuarios y permisos que dispone la aplicación del sistema biometrico. ', '2018-10-30', '17:45', 106, '', '2018-10-29', '17:05', 2),
+(97, 'Se procede con el reinicio del equipo y la obtención del respaldo del usuario anterior, al equipo se procede con el ingreso del mismo al controlador de dominio bajo el usuario Djacome y con password Ingelcom2018', '2018-10-30', '11:20', 107, '', '2018-10-30', '08:00', 2),
+(98, 'Se procede con la corrección del nombre sobre el buzón de correo electrónico de Outlook ', '2018-10-30', '16:55', 108, '', '2018-10-29', '16:45', 2),
+(99, 'Se procede con la revisión del equipo, al mismo se requiere realizar un formateo de equipo para verificar si con la reinstalación se vuelve a presentar, por pedido del usuario no se procede debido a que el mismo indica que necesita el equipo, se coordina para otra fecha el servicio. ', '2018-10-30', '09:10', 94, '', '2018-10-23', '08:40', 2),
+(100, 'Se procede con la revisión y se verifica que la aplicación de video vigilancia tiene levantado el servicio el cual consume un alto porcentaje de memoria por lo que se detiene el servicio y el equipo inicia a trabajar normalmente. \r\nSe realiza apertura de programas de word y excel para verificar el desempeño del equipo el cual se presenta con normalidad. ', '2018-10-30', '13:00', 81, '', '2018-10-18', '12:40', 2);
 
 -- --------------------------------------------------------
 
@@ -2023,7 +2127,7 @@ INSERT INTO `usuario` (`id_usuario`, `login`, `password`, `cedula`, `nombre`, `a
 (14, 'hgonzalez', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1719856377, 'Hétor', 'Gonzalez Gomez', 'hgonzalez@ingelcom.com.ec', 'INGELCOM', '', 1, 3),
 (15, 'hmoran', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1723403703, 'Henry', 'Moran', 'ecommerce@ingelcom.com.ec', 'INGELCOM', 'Marketing', 1, 3),
 (16, 'jconstante', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1708014764, 'Jaime ', 'Constante Herrera', 'jconstante@ingelcom.com.ec', 'INGELCOM', 'GERENCIA', 1, 4),
-(17, 'jquishpe', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1724420698, 'Johana', 'Quisphe Songor', 'contabilidad@ingelcom.com.ec', 'INGELCOM', 'CONTABILIDAD', 1, 3),
+(17, 'jquishpe', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1724420698, 'Johanna', 'Quisphe Songor', 'contabilidad@ingelcom.com.ec', 'INGELCOM', 'CONTABILIDAD', 1, 3),
 (18, 'jjiron', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1714435334, 'Jorge Eduardo', 'Jiron Proaño', 'jjiron@ingelcom.com.ec', 'INGELCOM', 'Ventas', 1, 3),
 (19, 'mnolivos', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1710563683, 'Margarita', 'Nolivos Suquillo', 'margaritanolivos@ingelcom.com.ec', 'INGELCOM', 'GERENCIA', 1, 4),
 (20, 'malmachi', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1, 'Marlene', 'Almachi', 'miferreteria@ingelcom.com.ec', 'INGELCOM', 'VENTAS', 1, 3),
@@ -2109,7 +2213,8 @@ INSERT INTO `usuario` (`id_usuario`, `login`, `password`, `cedula`, `nombre`, `a
 (100, 'czambrano', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1753361086, 'Camila  ', 'Zambrano', 'czambrano@lexvalor.com', 'PEÑAHERRERA Y PONCE', 'Legal', 1, 4),
 (101, 'hbarahona', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 0, 'Héctor ', 'Barahona', 'hbarahona@lexvalor.com', 'LEXVALOR', 'Gerencia', 1, 4),
 (102, 'dfuenmayor', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1, 'Dayana ', 'Fuenmayor Solano', 'dfuenmayor@lexvalor.com', 'LEXVALOR', 'Legal ', 1, 3),
-(103, 'khoyos', 'f72e8e6ef0d687602a8f9baaa4b4c3dc617edc29', 503066631, 'Katherine', 'Hoyos', 'khoyos@lexvalor.com', 'LEXTAX', '', 1, 3);
+(103, 'khoyos', 'f72e8e6ef0d687602a8f9baaa4b4c3dc617edc29', 503066631, 'Katherine', 'Hoyos', 'khoyos@lexvalor.com', 'LEXTAX', '', 1, 3),
+(104, 'djacome', 'c0fde5f0f153a4dbe405e2ee0b5259632de16f9b', 1, 'Daniela ', 'Jacome ', 'djacome@ingelcom.com.ec', 'INGELCOM', 'GERENCIA', 1, 4);
 
 --
 -- Índices para tablas volcadas
@@ -2179,7 +2284,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1629;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1722;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
@@ -2203,13 +2308,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `solucion_servicio`
 --
 ALTER TABLE `solucion_servicio`
-  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_solucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de la tabla `switch`
@@ -2221,7 +2326,7 @@ ALTER TABLE `switch`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- Restricciones para tablas volcadas

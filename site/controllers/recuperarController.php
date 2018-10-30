@@ -35,6 +35,11 @@ class recuperarController extends Controller
     }
 
     public function cambiar(){
+
+        if(Session::get('autenticado')){
+            $this->redireccionar('principal');
+        }
+        
         $this->_view->area_l="apagada";
 		 
           $this->_view->titulo = 'Cambiar Contraseña - COTEDEM';

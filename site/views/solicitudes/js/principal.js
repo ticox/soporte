@@ -83,7 +83,7 @@ var estatus=this.dataset.estatus;
 			html+="<p>"+datos.pedido+"</p>";
 			html+="<div class='table-responsive'>";
 			
-			html+="<table class='table table-striped table-hover'><thead>";
+			/*html+="<table class='table table-striped table-hover'><thead>";
 			html+="<tr class='default'>";
 			html+="<th>Mantenimiento de software</th>";
 			html+="<th>Mantenimiento de hardware</th>";
@@ -118,7 +118,7 @@ var estatus=this.dataset.estatus;
 				html+="<tr><td colspan='4'><b>Otros:</b> "+datos.otros+"</td><tr>";
 			}
 			
-			html+="</tbody> </table>";
+			html+="</tbody> </table>";*/
 			html+="</div>";
 			if(datos.imagen_pedido0!=''){
        		html+="<div class='col-md-12'><center><img class='zoom mostrar_img' id='imagen2' width='400px' height='200px' src=' "+base_url+"public/img/problemas/"+datos.imagen_pedido0+"' ></center></div>";

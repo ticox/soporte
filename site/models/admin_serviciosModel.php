@@ -59,7 +59,7 @@ class admin_serviciosModel extends Model
     print_r($datos);
     if($fotos['foto']['name'][0]==''){
 
-       $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','','','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
+    $sql="insert into solucion_servicio values('','".$datos['observacion']."',curdate(), '".$datos['hora_fin']."','".$datos['id_servicio']."','','','','".$datos['fecha_inicio']."','".$datos['hora_inicio']."','".session::get('id_usuario')."')";
                   $this->_db->query($sql);
     }else{
      /* $target_path = "public/img/soluciones/";
@@ -80,7 +80,14 @@ class admin_serviciosModel extends Model
                   $id_solucion=$this->_db->lastInsertId();
 
 
- for ($i=0; $i < 3 ; $i++)
+if(count($fotos['foto']['name']) < 3){
+
+$recorrido=count($fotos['foto']['name']);
+
+}else{
+$recorrido=3;
+}
+ for ($i=0; $i < $recorrido ; $i++)
             { 
                   $target_path = "public/img/soluciones/";
                   $nombre=uniqid('solucion').$fotos['foto']['name'][$i];

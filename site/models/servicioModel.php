@@ -32,11 +32,11 @@ $otros=$datos['otrosrespuesta'];
 
         if(session::get('role')==1){
 
-        $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".$datos['id_usuario']."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','')";
+        $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".$datos['id_usuario']."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','','','')";
                   $this->_db->query($sql);
         }else{
 
-          $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','')";
+          $sql="INSERT INTO servicio values ('','".$datos['servicio']."','".$software."' ,'".$hardware."' ,'".$funcionamiento."','".$otros."' , curdate() , curtime(),'".session::get('id_usuario')."','".$datos['fecha_atencion']."' ,'".$datos['hora_atencion']."' ,'pendiente','','','')";
             $this->_db->query($sql);
         }
 
@@ -53,8 +53,14 @@ $otros=$datos['otrosrespuesta'];
 
                   $id_servicio=$this->_db->lastInsertId();
 
+if(count($fotos['foto']['name']) < 3){
 
- for ($i=0; $i < 3 ; $i++)
+$recorrido=count($fotos['foto']['name']);
+
+}else{
+$recorrido=3;
+}
+ for ($i=0; $i < $recorrido; $i++)
             { 
                   $target_path = "public/img/problemas/";
                   $nombre=uniqid('problema').$fotos['foto']['name'][$i];
@@ -67,9 +73,10 @@ $otros=$datos['otrosrespuesta'];
                   //$obj_img->resize(234,135);
                   $obj_img->save($target_path);
             }
-
-
 }
+}
+
+
 
 
 
@@ -90,7 +97,6 @@ $otros=$datos['otrosrespuesta'];
                   //$obj_img->resize(234,135);
                   $obj_img->save($target_path);
 }*/
-   }
 
    public function buscar_servicios_usuarios(){
 

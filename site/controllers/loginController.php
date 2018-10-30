@@ -17,7 +17,7 @@ class loginController extends Controller
             $this->redireccionar('principal');
         }
         
-        $this->_view->titulo = 'Iniciar Sesion';
+        $this->_view->titulo = 'Iniciar Sesion - COTEDEM';
         $this->_view->setCss(array('css','bootstrap-material-design.min'));
         $this->_view->setJs(array('js'));
 

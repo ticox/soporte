@@ -25,7 +25,7 @@ $( document ).on( "click", "#recuperar", function() {
 
 					$.post(base_url + 'recuperar/actualizarclave','nueva='+clave+'&login='+datos.login, function(){
 
-						alertify.alert("clave restablesida exitosamente se le ha enviado un correo con su nueva clave.");
+						alertify.alert("Clave restablecida exitosamente, Su nueva clave ha sido enviada a su correo.");
 				
 			});
 
@@ -35,14 +35,7 @@ $( document ).on( "click", "#recuperar", function() {
 						});
 
 				}
-			
 
-
-
-				
-			
-			
-			
 			
 			},'json');
 
@@ -66,7 +59,7 @@ $( document ).on( "click", "#cambiarclave", function() {
 				if(!datos){
 
 
-					alertify.alert("Clave Actual Incorrecta");
+					alertify.alert("Clave actual incorrecta, Por favor intente de nuevamente.");
 				}
 				else {
 			
@@ -85,7 +78,7 @@ $( document ).on( "click", "#cambiarclave", function() {
 
 	else {
 
-			alertify.alert("las contraseñas no coinciden");
+			alertify.alert("Las contraseñas no coinciden, Por favor intente de nuevamente.");
 
 			
 			}	
