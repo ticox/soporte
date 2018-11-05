@@ -18,7 +18,6 @@ class pdfController extends Controller
     public function Reporte_x_empresa()
     {
     		$this->_view->titulo = 'Reporte de solicitudes';
-			
 			//$this->modelo->buscar_servicios_admin_solucionados_reporte();
 			//print_r($this->modelo);
 			if($_POST['fecha1']=='' && $_POST['fecha2']=='' ){
